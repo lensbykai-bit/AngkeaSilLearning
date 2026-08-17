@@ -14,13 +14,13 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;color:var(--ink);background:linear-gradient(#fcf7ee,#fffaf3);font-family:"Kantumruy Pro","Noto Sans Khmer",system-ui,sans-serif}
+body{margin:0;color:var(--ink);background:linear-gradient(#fcf7ee,#fffaf3);font-family:"Kantumruy Pro","Kantumruy Pro",system-ui,sans-serif}
 body:before{
  content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;z-index:-1;
  background-image:radial-gradient(rgba(100,70,35,.23) .65px,transparent .65px);
  background-size:7px 7px;
 }
-h1,h2,h3,.brand strong{font-family:"Moul","Kantumruy Pro","Noto Sans Khmer",serif}
+h1,h2,h3,.brand strong{font-family:"Moul","Kantumruy Pro","Kantumruy Pro",serif}
 a{text-decoration:none;color:inherit}
 button{font:inherit}
 img{max-width:100%;display:block}
@@ -33,7 +33,7 @@ img{max-width:100%;display:block}
 .brand strong{font-size:26px;line-height:1.05;color:var(--navy)}
 .brand small{text-transform:uppercase;letter-spacing:3px;font-size:10px;font-weight:700;margin-top:8px}
 .main-nav{display:flex;justify-content:center;gap:45px;margin-left:auto}
-.main-nav a{font-family:"Moul","Kantumruy Pro","Noto Sans Khmer",serif;font-weight:700;padding:34px 0 28px;position:relative}
+.main-nav a{font-family:"Moul","Kantumruy Pro","Kantumruy Pro",serif;font-weight:700;padding:34px 0 28px;position:relative}
 .main-nav a:after{content:"";height:2px;background:var(--gold);position:absolute;left:50%;right:50%;bottom:18px;transition:.25s}
 .main-nav a:hover:after,.main-nav a.active:after{left:0;right:0}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:14px;border:0;border-radius:7px;padding:15px 24px;font-weight:700;cursor:pointer;transition:.2s}
@@ -45,15 +45,15 @@ img{max-width:100%;display:block}
 .lang-btn{border:0;background:transparent;color:var(--ink);font-weight:800;cursor:pointer;padding:4px 7px;border-radius:999px}
 .lang-btn.active{background:var(--navy);color:#fff}
 body.lang-km .hero h1{font-size:50px;line-height:1.32;letter-spacing:0}
-body.lang-km .main-nav a{font-family:"Noto Sans Khmer",Inter,sans-serif}
+body.lang-km .main-nav a{font-family:"Kantumruy Pro",Inter,sans-serif}
 body.lang-km .brand small{letter-spacing:.5px;text-transform:none}
-body.lang-km .eyebrow{font-family:"Noto Sans Khmer",Inter,sans-serif}
+body.lang-km .eyebrow{font-family:"Kantumruy Pro",Inter,sans-serif}
 
 .hero{position:relative;overflow:hidden;border-bottom:1px solid rgba(181,138,70,.18)}
 .hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(252,247,238,.96) 0%,rgba(252,247,238,.87) 45%,rgba(252,247,238,.35) 72%,rgba(252,247,238,.10));z-index:-1}
 .hero-pattern{position:absolute;right:-15px;bottom:0;width:690px;opacity:.60;z-index:-2}
 .hero-grid{min-height:470px;display:grid;grid-template-columns:1.05fr 1fr;align-items:center;gap:42px;padding:34px 0 10px}
-.eyebrow{display:inline-block;border:1px solid var(--line);border-radius:8px;padding:10px 15px;font-family:"Moul","Kantumruy Pro","Noto Sans Khmer",serif;font-weight:700;background:rgba(255,250,243,.78)}
+.eyebrow{display:inline-block;border:1px solid var(--line);border-radius:8px;padding:10px 15px;font-family:"Moul","Kantumruy Pro","Kantumruy Pro",serif;font-weight:700;background:rgba(255,250,243,.78)}
 .hero h1{font-size:60px;line-height:1.04;margin:18px 0 14px;letter-spacing:-1.6px;color:var(--navy)}
 .hero h1 .accent{color:var(--coral)}
 .hero p{max-width:560px;font-size:17px;line-height:1.8;color:#3b4c65}
@@ -82,7 +82,7 @@ body.lang-km .eyebrow{font-family:"Noto Sans Khmer",Inter,sans-serif}
 .course-body{padding:18px}
 .meta{color:#26364d;font-size:14px}.meta:first-letter{color:#e09a18}.meta span{color:#7d8796}
 .course-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:18px}
-.course-bottom strong{font-family:"Moul","Kantumruy Pro","Noto Sans Khmer",serif;font-size:28px;color:var(--navy)}
+.course-bottom strong{font-family:"Moul","Kantumruy Pro","Kantumruy Pro",serif;font-size:28px;color:var(--navy)}
 .course-bottom button{border:0;border-radius:6px;padding:11px 18px;background:var(--navy);color:white;cursor:pointer}
 .about{background:linear-gradient(90deg,rgba(6,31,67,.98),rgba(11,43,88,.95));color:white}
 .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:center}
@@ -91,7 +91,7 @@ body.lang-km .eyebrow{font-family:"Noto Sans Khmer",Inter,sans-serif}
 .about-points span{padding:9px 12px;border:1px solid rgba(230,194,125,.35);border-radius:6px}
 footer{background:#031b38;color:white;border-top:2px solid var(--gold);padding:25px 0}
 .footer-grid{display:grid;grid-template-columns:1.1fr .8fr 1.2fr;align-items:center;gap:25px}
-.footer-brand{display:flex;align-items:center;gap:12px}.footer-brand img{width:55px}.footer-brand div{display:flex;flex-direction:column}.footer-brand strong{font-family:"Moul","Kantumruy Pro","Noto Sans Khmer",serif;font-size:20px}.footer-brand small{opacity:.75;margin-top:4px}
+.footer-brand{display:flex;align-items:center;gap:12px}.footer-brand img{width:55px}.footer-brand div{display:flex;flex-direction:column}.footer-brand strong{font-family:"Moul","Kantumruy Pro","Kantumruy Pro",serif;font-size:20px}.footer-brand small{opacity:.75;margin-top:4px}
 .socials{display:flex;justify-content:center;gap:14px}.socials a{width:42px;height:42px;border:1px solid #bf8e3d;color:#e1af58;border-radius:50%;display:grid;place-items:center;font-weight:800}
 .email{text-align:right}
 .modal{position:fixed;inset:0;background:rgba(1,13,28,.72);display:none;place-items:center;z-index:100}
@@ -116,16 +116,16 @@ footer{background:#031b38;color:white;border-top:2px solid var(--gold);padding:2
 /* Khmer typography refinements */
 body{line-height:1.65}
 .brand strong,.benefit-grid h3,.course-bottom strong,.footer-brand strong{
-  font-family:"Kantumruy Pro","Noto Sans Khmer",sans-serif;
+  font-family:"Kantumruy Pro","Kantumruy Pro",sans-serif;
   font-weight:700;
 }
 .hero h1,.section h2,.about h2{
-  font-family:"Moul","Kantumruy Pro","Noto Sans Khmer",serif;
+  font-family:"Moul","Kantumruy Pro","Kantumruy Pro",serif;
   letter-spacing:0;
   line-height:1.35;
 }
 .main-nav a,.eyebrow{
-  font-family:"Kantumruy Pro","Noto Sans Khmer",sans-serif;
+  font-family:"Kantumruy Pro","Kantumruy Pro",sans-serif;
 }
 
 @media(max-width:1100px){
@@ -142,4 +142,34 @@ body{line-height:1.65}
   .language-switch{padding:4px 7px}
   .lang-btn{font-size:12px}
   body.lang-km .hero h1{font-size:32px}
+}
+
+
+/* Khmer typography — Kantumruy Pro */
+body.lang-km {
+  font-family: "Kantumruy Pro", Inter, system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.75;
+}
+
+body.lang-km h1,
+body.lang-km h2,
+body.lang-km h3,
+body.lang-km .brand strong {
+  font-family: "Kantumruy Pro", Inter, system-ui, sans-serif;
+  font-weight: 600;
+}
+
+body.lang-km .main-nav a,
+body.lang-km .btn,
+body.lang-km .eyebrow,
+body.lang-km .kicker {
+  font-family: "Kantumruy Pro", Inter, system-ui, sans-serif;
+  font-weight: 600;
+}
+
+body.lang-km p,
+body.lang-km small,
+body.lang-km .meta {
+  font-family: "Kantumruy Pro", Inter, system-ui, sans-serif;
 }
