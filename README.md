@@ -31,3 +31,17 @@ The website expects these existing assets:
 - `assets/course-web.png`
 
 After uploading the 3 updated files, commit the changes and refresh your GitHub Pages website.
+
+
+## Login + Sign Up UI
+
+The header now includes:
+- Login button
+- Sign Up button
+- Login / Sign Up modal
+- Password show/hide
+- Khmer + English translations
+- Light / Dark mode support
+
+Important: This is currently a front-end UI demo only.
+To create real user accounts, connect the forms to Firebase Authentication, Supabase Auth, or another backend/auth provider.

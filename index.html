@@ -51,6 +51,12 @@
           <span class="theme-slider"></span>
         </button>
 
+        
+        <div class="auth-actions">
+          <button class="auth-link login-open" type="button" data-i18n="login">ចូលគណនី</button>
+          <button class="auth-signup signup-open" type="button" data-i18n="signup">ចុះឈ្មោះ</button>
+        </div>
+
         <a class="btn btn-gold nav-cta" href="#courses" data-i18n="getStarted">ចាប់ផ្តើមរៀន</a>
       </div>
     </div>
@@ -215,6 +221,112 @@
       </a>
     </div>
   </footer>
+
+
+  <!-- LOGIN / SIGN UP MODAL -->
+  <div class="auth-modal" id="authModal" aria-hidden="true">
+    <div class="auth-card">
+      <button class="auth-close" type="button" aria-label="Close">×</button>
+
+      <div class="auth-brand">
+        <img src="assets/logo.svg" alt="Angkea Sil Learning">
+        <div>
+          <strong>Angkea Sil Learning</strong>
+          <small data-i18n="authWelcome">សូមស្វាគមន៍</small>
+        </div>
+      </div>
+
+      <div class="auth-tabs">
+        <button class="auth-tab active" type="button" data-auth-tab="login" data-i18n="login">ចូលគណនី</button>
+        <button class="auth-tab" type="button" data-auth-tab="signup" data-i18n="signup">ចុះឈ្មោះ</button>
+      </div>
+
+      <form class="auth-form active" id="loginForm" data-auth-panel="login">
+        <label>
+          <span data-i18n="emailLabel">អ៊ីមែល</span>
+          <input type="email" name="email" autocomplete="email" required
+                 data-i18n-placeholder="emailPlaceholder"
+                 placeholder="you@example.com">
+        </label>
+
+        <label>
+          <span data-i18n="passwordLabel">ពាក្យសម្ងាត់</span>
+          <div class="password-field">
+            <input type="password" name="password" autocomplete="current-password" required
+                   data-i18n-placeholder="passwordPlaceholder"
+                   placeholder="បញ្ចូលពាក្យសម្ងាត់">
+            <button class="password-toggle" type="button" aria-label="Show password">👁</button>
+          </div>
+        </label>
+
+        <div class="auth-row">
+          <label class="remember">
+            <input type="checkbox">
+            <span data-i18n="rememberMe">ចងចាំខ្ញុំ</span>
+          </label>
+          <button class="text-button" type="button" data-i18n="forgotPassword">ភ្លេចពាក្យសម្ងាត់?</button>
+        </div>
+
+        <button class="auth-submit" type="submit" data-i18n="loginButton">ចូលគណនី</button>
+
+        <p class="auth-note">
+          <span data-i18n="noAccount">មិនទាន់មានគណនី?</span>
+          <button class="text-button switch-to-signup" type="button" data-i18n="signupNow">ចុះឈ្មោះឥឡូវនេះ</button>
+        </p>
+      </form>
+
+      <form class="auth-form" id="signupForm" data-auth-panel="signup">
+        <label>
+          <span data-i18n="fullNameLabel">ឈ្មោះពេញ</span>
+          <input type="text" name="name" autocomplete="name" required
+                 data-i18n-placeholder="fullNamePlaceholder"
+                 placeholder="បញ្ចូលឈ្មោះរបស់អ្នក">
+        </label>
+
+        <label>
+          <span data-i18n="emailLabel">អ៊ីមែល</span>
+          <input type="email" name="email" autocomplete="email" required
+                 data-i18n-placeholder="emailPlaceholder"
+                 placeholder="you@example.com">
+        </label>
+
+        <label>
+          <span data-i18n="passwordLabel">ពាក្យសម្ងាត់</span>
+          <div class="password-field">
+            <input type="password" name="password" autocomplete="new-password" required minlength="6"
+                   data-i18n-placeholder="createPasswordPlaceholder"
+                   placeholder="បង្កើតពាក្យសម្ងាត់">
+            <button class="password-toggle" type="button" aria-label="Show password">👁</button>
+          </div>
+        </label>
+
+        <label>
+          <span data-i18n="confirmPasswordLabel">បញ្ជាក់ពាក្យសម្ងាត់</span>
+          <div class="password-field">
+            <input type="password" name="confirmPassword" autocomplete="new-password" required minlength="6"
+                   data-i18n-placeholder="confirmPasswordPlaceholder"
+                   placeholder="បញ្ចូលពាក្យសម្ងាត់ម្តងទៀត">
+            <button class="password-toggle" type="button" aria-label="Show password">👁</button>
+          </div>
+        </label>
+
+        <label class="terms">
+          <input type="checkbox" required>
+          <span data-i18n="agreeTerms">ខ្ញុំយល់ព្រមតាមលក្ខខណ្ឌប្រើប្រាស់</span>
+        </label>
+
+        <button class="auth-submit" type="submit" data-i18n="createAccount">បង្កើតគណនី</button>
+
+        <p class="auth-note">
+          <span data-i18n="haveAccount">មានគណនីរួចហើយ?</span>
+          <button class="text-button switch-to-login" type="button" data-i18n="loginNow">ចូលគណនី</button>
+        </p>
+      </form>
+
+      <div class="auth-demo-message" id="authDemoMessage" hidden></div>
+    </div>
+  </div>
+
 
   <div class="modal" id="introModal" aria-hidden="true">
     <div class="modal-card">
