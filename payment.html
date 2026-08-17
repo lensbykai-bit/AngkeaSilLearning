@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#fffaf2">
-  <title>ទំព័រទូទាត់ — អង្គារសិល៍ ឡឺនីង</title>
+  <title>ទូទាត់ — អង្គារសិល៍ ឡឺនីង</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +15,6 @@
 <body class="lang-km">
   <main class="payment-page">
     <div class="payment-shell">
-
       <section class="payment-brand">
         <a class="back-link" href="index.html">← ត្រឡប់ទៅមេរៀន</a>
 
@@ -23,100 +22,104 @@
           <img src="assets/logo.svg" alt="អង្គារសិល៍ ឡឺនីង">
           <div>
             <strong>អង្គារសិល៍ ឡឺនីង</strong>
-            <small>ការទូទាត់ដែលមានសុវត្ថិភាព</small>
+            <small>ការទូទាត់តាម ABA PayWay</small>
           </div>
         </div>
 
-        <h1>ទូទាត់សម្រាប់វគ្គសិក្សា</h1>
-        <p>ពិនិត្យព័ត៌មានរបស់អ្នក និងជ្រើសរើសវិធីទូទាត់។</p>
+        <h1>ស្កេនកូដដើម្បីទូទាត់</h1>
+        <p>កូដខាងក្រោមត្រូវបានបង្កើតដោយស្វ័យប្រវត្តិសម្រាប់វគ្គដែលអ្នកបានជ្រើស។</p>
       </section>
 
       <section class="payment-card">
-        <div class="summary">
+        <aside class="summary">
           <h2>សេចក្តីសង្ខេបការបញ្ជាទិញ</h2>
 
           <div class="summary-line">
             <span>វគ្គសិក្សា</span>
-            <strong id="courseName">វគ្គសិក្សា</strong>
+            <strong id="courseName">កំពុងផ្ទុក...</strong>
           </div>
 
           <div class="summary-line">
             <span>តម្លៃ</span>
-            <strong id="coursePrice">$0.00</strong>
+            <strong id="coursePrice">—</strong>
           </div>
 
           <div class="divider"></div>
 
           <div class="summary-line total">
             <span>សរុប</span>
-            <strong id="totalPrice">$0.00</strong>
-          </div>
-        </div>
-
-        <div class="payment-methods">
-          <h2>វិធីទូទាត់</h2>
-
-          <div class="method-tabs">
-            <button class="method-tab active" type="button" data-method="card">កាតធនាគារ</button>
-            <button class="method-tab" type="button" data-method="bank">ផ្ទេរតាមធនាគារ</button>
-            <button class="method-tab" type="button" data-method="qr">ស្កេនកូដទូទាត់</button>
+            <strong id="totalPrice">—</strong>
           </div>
 
-          <form class="method-panel active" data-panel="card" id="cardForm">
-            <label>
-              <span>ឈ្មោះម្ចាស់កាត</span>
-              <input type="text" placeholder="បញ្ចូលឈ្មោះម្ចាស់កាត" required>
-            </label>
+          <div class="summary-help">
+            <span>✓ តម្លៃត្រូវបានកំណត់នៅ Backend</span>
+            <span>✓ កូដថ្មីសម្រាប់ការទូទាត់ម្តងៗ</span>
+            <span>✓ ប្រព័ន្ធពិនិត្យស្ថានភាពដោយស្វ័យប្រវត្តិ</span>
+          </div>
+        </aside>
 
-            <label>
-              <span>លេខកាត</span>
-              <input type="text" inputmode="numeric" maxlength="19"
-                     placeholder="បញ្ចូលលេខកាត" required>
-            </label>
-
-            <div class="two-col">
-              <label>
-                <span>ថ្ងៃផុតកំណត់</span>
-                <input type="text" inputmode="numeric" maxlength="5"
-                       placeholder="ខែ/ឆ្នាំ" required>
-              </label>
-
-              <label>
-                <span>លេខសុវត្ថិភាព</span>
-                <input type="password" inputmode="numeric" maxlength="4"
-                       placeholder="បញ្ចូលលេខសុវត្ថិភាព" required>
-              </label>
+        <section class="qr-payment">
+          <div class="qr-heading">
+            <span class="qr-badge">១</span>
+            <div>
+              <h2>ABA KHQR</h2>
+              <p id="paymentStatus">កំពុងបង្កើតកូដទូទាត់...</p>
             </div>
+          </div>
 
-            <button class="pay-btn" type="submit">
-              <span>ទូទាត់ឥឡូវនេះ</span>
-              <span id="payAmount">$0.00</span>
+          <div class="qr-wrap">
+            <div class="loading-ring" id="qrLoading" aria-label="កំពុងផ្ទុក"></div>
+
+            <img
+              id="paymentQr"
+              class="payment-qr"
+              alt="កូដ ABA KHQR"
+              hidden
+            >
+
+            <div class="qr-error" id="qrError" hidden>
+              <strong>មិនអាចបង្កើតកូដទូទាត់បាន</strong>
+              <p id="qrErrorText">សូមព្យាយាមម្តងទៀត។</p>
+              <button id="retryQr" type="button">ព្យាយាមម្តងទៀត</button>
+            </div>
+          </div>
+
+          <div class="amount-box">
+            <span>ចំនួនត្រូវទូទាត់</span>
+            <strong id="payAmount">—</strong>
+          </div>
+
+          <div class="payment-meta">
+            <div>
+              <span>លេខប្រតិបត្តិការ</span>
+              <strong id="tranId">—</strong>
+            </div>
+            <div>
+              <span>កូដមានសុពលភាព</span>
+              <strong id="countdown">០៦:០០</strong>
+            </div>
+          </div>
+
+          <div class="qr-instructions">
+            <div><b>១</b><span>បើកកម្មវិធីធនាគារដែលគាំទ្រ KHQR</span></div>
+            <div><b>២</b><span>ស្កេនកូដខាងលើ</span></div>
+            <div><b>៣</b><span>ពិនិត្យឈ្មោះអ្នកទទួល និងចំនួនទឹកប្រាក់</span></div>
+            <div><b>៤</b><span>បញ្ជាក់ការទូទាត់ ហើយរង់ចាំប្រព័ន្ធផ្ទៀងផ្ទាត់</span></div>
+          </div>
+
+          <div class="payment-action-row">
+            <button class="confirm-payment" id="checkPayment" type="button" disabled>
+              ពិនិត្យការទូទាត់
             </button>
-          </form>
-
-          <div class="method-panel info-panel" data-panel="bank">
-            <div class="info-box">
-              <strong>ការផ្ទេរតាមធនាគារ</strong>
-              <p>
-                ទីនេះអាចដាក់ព័ត៌មានគណនីធនាគារ និងការណែនាំសម្រាប់អតិថិជន
-                មុនពេលធ្វើការផ្ទេរប្រាក់។
-              </p>
-            </div>
+            <button class="regenerate-payment" id="regenerateQr" type="button" hidden>
+              បង្កើតកូដថ្មី
+            </button>
           </div>
 
-          <div class="method-panel info-panel" data-panel="qr">
-            <div class="qr-placeholder">
-              <div class="qr-grid" aria-hidden="true"></div>
-              <strong>ស្កេនកូដដើម្បីទូទាត់</strong>
-              <p>ជំនួសកូដគំរូនេះដោយកូដទូទាត់ពិតរបស់អ្នក។</p>
-            </div>
-          </div>
-
-          <p class="demo-note">
-            ទំព័រនេះជាគំរូសម្រាប់ការរចនា។ ដើម្បីទទួលប្រាក់ពិត
-            ត្រូវភ្ជាប់ទៅប្រព័ន្ធទូទាត់ដែលអ្នកប្រើ។
+          <p class="notice" id="notice">
+            ប្រព័ន្ធនឹងពិនិត្យការទូទាត់ដោយស្វ័យប្រវត្តិ។ កុំបិទទំព័រនេះរហូតដល់មានសារបញ្ជាក់។
           </p>
-        </div>
+        </section>
       </section>
 
       <div class="payment-tools">
@@ -130,12 +133,13 @@
   <div class="success-modal" id="successModal" aria-hidden="true">
     <div class="success-card">
       <div class="success-icon">✓</div>
-      <h2>ការទូទាត់គំរូបានបញ្ចប់</h2>
-      <p>នេះជាគំរូប៉ុណ្ណោះ។ មិនមានប្រាក់ត្រូវបានកាត់ទេ។</p>
-      <button type="button" id="closeSuccess">រួចរាល់</button>
+      <h2>ការទូទាត់បានជោគជ័យ</h2>
+      <p id="successText">ប្រព័ន្ធបានផ្ទៀងផ្ទាត់ការទូទាត់របស់អ្នករួចរាល់។</p>
+      <a class="success-home" href="index.html">ត្រឡប់ទៅទំព័រដើម</a>
     </div>
   </div>
 
+  <script src="payway-config.js"></script>
   <script src="payment.js"></script>
 </body>
 </html>

@@ -166,16 +166,6 @@ document.getElementById("signupForm")?.addEventListener("submit", (event) => {
   }
 });
 
-/* ចុះឈ្មោះវគ្គ → ទំព័រទូទាត់ */
-document.querySelectorAll(".enroll-btn").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const course = btn.dataset.course || "វគ្គសិក្សា";
-    const price = btn.dataset.price || "0.00";
-
-    const params = new URLSearchParams({ course, price });
-    window.location.href = `payment.html?${params.toString()}`;
-  });
-});
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
