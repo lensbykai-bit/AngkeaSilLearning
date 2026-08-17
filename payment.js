@@ -106,6 +106,7 @@ function showError(message, allowRegenerate = true) {
   if (el.qrError) el.qrError.hidden = false;
   if (el.qrErrorText) el.qrErrorText.textContent = message || "សូមព្យាយាមម្តងទៀត។";
   if (el.checkPayment) el.checkPayment.disabled = true;
+  if (el.retryQr) el.retryQr.hidden = !allowRegenerate;
   if (el.regenerateQr) el.regenerateQr.hidden = !allowRegenerate;
 
   setStatus("មានបញ្ហាក្នុងការបង្កើតកូដ", "error");

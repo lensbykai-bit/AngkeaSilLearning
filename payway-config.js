@@ -9,7 +9,7 @@
  */
 (() => {
   const localHosts = new Set(["localhost", "127.0.0.1"]);
-  const PRODUCTION_BACKEND_URL = "https://REPLACE-WITH-YOUR-BACKEND-DOMAIN";
+  const PRODUCTION_BACKEND_URL = "https://angkeasillearning-backend.onrender.com";
 
   window.ASL_PAYWAY_API = localHosts.has(window.location.hostname)
     ? "http://localhost:3000"
