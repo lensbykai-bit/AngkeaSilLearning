@@ -249,7 +249,16 @@ document.addEventListener("keydown", (event) => {
 ------------------------- */
 document.querySelectorAll(".enroll-btn").forEach((btn) => {
   btn.addEventListener("click", () => {
-    alert(translations[currentLanguage].enrollAlert);
+    const course = btn.dataset.course || "Course";
+    const price = btn.dataset.price || "0.00";
+
+    const params = new URLSearchParams({
+      course,
+      price,
+      lang: currentLanguage
+    });
+
+    window.location.href = `payment.html?${params.toString()}`;
   });
 });
 

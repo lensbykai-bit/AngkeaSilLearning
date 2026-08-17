@@ -45,3 +45,19 @@ The header now includes:
 
 Important: This is currently a front-end UI demo only.
 To create real user accounts, connect the forms to Firebase Authentication, Supabase Auth, or another backend/auth provider.
+
+
+## Payment Page
+
+Enroll buttons now open `payment.html` and automatically pass:
+
+- Course name
+- Course price
+- Selected language
+
+New files:
+- `payment.html`
+- `payment.css`
+- `payment.js`
+
+Important: the payment page is currently a front-end demo. It does not charge cards or transfer money. To accept real payments, connect it to your actual payment gateway/provider.
