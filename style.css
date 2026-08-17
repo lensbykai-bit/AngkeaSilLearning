@@ -1274,3 +1274,34 @@ body.dark-mode .auth-demo-message{
     flex-direction:column;
   }
 }
+
+
+/* កំណែភាសាខ្មែរពេញលេញ */
+body,
+button,
+input,
+textarea,
+select,
+h1,h2,h3,h4,h5,h6,
+.brand strong,
+.footer-brand strong,
+.auth-brand strong{
+  font-family:"Kantumruy Pro",system-ui,sans-serif !important;
+}
+
+.course-title{
+  margin:0 0 10px;
+  color:var(--navy);
+  font-size:19px;
+  line-height:1.45;
+}
+
+body.dark-mode .course-title{
+  color:#f3f7fc;
+}
+
+@media(max-width:650px){
+  .course-title{
+    font-size:18px;
+  }
+}

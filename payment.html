@@ -4,124 +4,124 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#fffaf2">
-  <title>Payment — Angkea Sil Learning</title>
+  <title>ទំព័រទូទាត់ — អង្គារសិល៍ ឡឺនីង</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Kantumruy+Pro:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="payment.css">
 </head>
+
 <body class="lang-km">
   <main class="payment-page">
     <div class="payment-shell">
 
       <section class="payment-brand">
-        <a class="back-link" href="index.html">← <span data-i18n="back">ត្រឡប់ទៅមេរៀន</span></a>
+        <a class="back-link" href="index.html">← ត្រឡប់ទៅមេរៀន</a>
 
         <div class="brand-row">
-          <img src="assets/logo.svg" alt="Angkea Sil Learning">
+          <img src="assets/logo.svg" alt="អង្គារសិល៍ ឡឺនីង">
           <div>
-            <strong>Angkea Sil Learning</strong>
-            <small data-i18n="secureCheckout">ការទូទាត់ដែលមានសុវត្ថិភាព</small>
+            <strong>អង្គារសិល៍ ឡឺនីង</strong>
+            <small>ការទូទាត់ដែលមានសុវត្ថិភាព</small>
           </div>
         </div>
 
-        <h1 data-i18n="checkoutTitle">ទូទាត់សម្រាប់វគ្គសិក្សា</h1>
-        <p data-i18n="checkoutText">ពិនិត្យព័ត៌មានរបស់អ្នក និងជ្រើសរើសវិធីទូទាត់។</p>
+        <h1>ទូទាត់សម្រាប់វគ្គសិក្សា</h1>
+        <p>ពិនិត្យព័ត៌មានរបស់អ្នក និងជ្រើសរើសវិធីទូទាត់។</p>
       </section>
 
       <section class="payment-card">
         <div class="summary">
-          <h2 data-i18n="orderSummary">សេចក្តីសង្ខេបការបញ្ជាទិញ</h2>
+          <h2>សេចក្តីសង្ខេបការបញ្ជាទិញ</h2>
 
           <div class="summary-line">
-            <span data-i18n="courseLabel">វគ្គសិក្សា</span>
-            <strong id="courseName">Course</strong>
+            <span>វគ្គសិក្សា</span>
+            <strong id="courseName">វគ្គសិក្សា</strong>
           </div>
 
           <div class="summary-line">
-            <span data-i18n="priceLabel">តម្លៃ</span>
+            <span>តម្លៃ</span>
             <strong id="coursePrice">$0.00</strong>
           </div>
 
           <div class="divider"></div>
 
           <div class="summary-line total">
-            <span data-i18n="totalLabel">សរុប</span>
+            <span>សរុប</span>
             <strong id="totalPrice">$0.00</strong>
           </div>
         </div>
 
         <div class="payment-methods">
-          <h2 data-i18n="paymentMethod">វិធីទូទាត់</h2>
+          <h2>វិធីទូទាត់</h2>
 
           <div class="method-tabs">
-            <button class="method-tab active" type="button" data-method="card" data-i18n="cardMethod">កាត</button>
-            <button class="method-tab" type="button" data-method="bank" data-i18n="bankMethod">ធនាគារ</button>
-            <button class="method-tab" type="button" data-method="qr" data-i18n="qrMethod">QR</button>
+            <button class="method-tab active" type="button" data-method="card">កាតធនាគារ</button>
+            <button class="method-tab" type="button" data-method="bank">ផ្ទេរតាមធនាគារ</button>
+            <button class="method-tab" type="button" data-method="qr">ស្កេនកូដទូទាត់</button>
           </div>
 
           <form class="method-panel active" data-panel="card" id="cardForm">
             <label>
-              <span data-i18n="cardholder">ឈ្មោះលើកាត</span>
-              <input type="text" placeholder="Your name" required>
+              <span>ឈ្មោះម្ចាស់កាត</span>
+              <input type="text" placeholder="បញ្ចូលឈ្មោះម្ចាស់កាត" required>
             </label>
 
             <label>
-              <span data-i18n="cardNumber">លេខកាត</span>
-              <input type="text" inputmode="numeric" maxlength="19" placeholder="1234 5678 9012 3456" required>
+              <span>លេខកាត</span>
+              <input type="text" inputmode="numeric" maxlength="19"
+                     placeholder="បញ្ចូលលេខកាត" required>
             </label>
 
             <div class="two-col">
               <label>
-                <span data-i18n="expiry">ថ្ងៃផុតកំណត់</span>
-                <input type="text" inputmode="numeric" maxlength="5" placeholder="MM/YY" required>
+                <span>ថ្ងៃផុតកំណត់</span>
+                <input type="text" inputmode="numeric" maxlength="5"
+                       placeholder="ខែ/ឆ្នាំ" required>
               </label>
 
               <label>
-                <span>CVV</span>
-                <input type="password" inputmode="numeric" maxlength="4" placeholder="123" required>
+                <span>លេខសុវត្ថិភាព</span>
+                <input type="password" inputmode="numeric" maxlength="4"
+                       placeholder="បញ្ចូលលេខសុវត្ថិភាព" required>
               </label>
             </div>
 
             <button class="pay-btn" type="submit">
-              <span data-i18n="payNow">ទូទាត់ឥឡូវនេះ</span>
+              <span>ទូទាត់ឥឡូវនេះ</span>
               <span id="payAmount">$0.00</span>
             </button>
           </form>
 
           <div class="method-panel info-panel" data-panel="bank">
             <div class="info-box">
-              <strong data-i18n="bankTitle">ការផ្ទេរតាមធនាគារ</strong>
-              <p data-i18n="bankText">បញ្ចូលព័ត៌មានគណនីធនាគាររបស់អ្នកនៅទីនេះ ឬភ្ជាប់ទៅ Payment Gateway របស់អ្នក។</p>
+              <strong>ការផ្ទេរតាមធនាគារ</strong>
+              <p>
+                ទីនេះអាចដាក់ព័ត៌មានគណនីធនាគារ និងការណែនាំសម្រាប់អតិថិជន
+                មុនពេលធ្វើការផ្ទេរប្រាក់។
+              </p>
             </div>
           </div>
 
           <div class="method-panel info-panel" data-panel="qr">
             <div class="qr-placeholder">
               <div class="qr-grid" aria-hidden="true"></div>
-              <strong data-i18n="qrTitle">ស្កេន QR ដើម្បីទូទាត់</strong>
-              <p data-i18n="qrText">ជំនួស QR គំរូនេះដោយ QR ទូទាត់ពិតរបស់អ្នក។</p>
+              <strong>ស្កេនកូដដើម្បីទូទាត់</strong>
+              <p>ជំនួសកូដគំរូនេះដោយកូដទូទាត់ពិតរបស់អ្នក។</p>
             </div>
           </div>
 
-          <p class="demo-note" data-i18n="demoNote">
-            ទំព័រនេះជាគំរូ UI។ ដើម្បីទទួលប្រាក់ពិត ត្រូវភ្ជាប់ទៅ Payment Gateway ឬប្រព័ន្ធទូទាត់របស់អ្នក។
+          <p class="demo-note">
+            ទំព័រនេះជាគំរូសម្រាប់ការរចនា។ ដើម្បីទទួលប្រាក់ពិត
+            ត្រូវភ្ជាប់ទៅប្រព័ន្ធទូទាត់ដែលអ្នកប្រើ។
           </p>
         </div>
       </section>
 
       <div class="payment-tools">
-        <div class="language-switch">
-          <button class="lang-btn active" type="button" data-lang="km">ខ្មែរ</button>
-          <span>|</span>
-          <button class="lang-btn" type="button" data-lang="en">EN</button>
-        </div>
-
-        <button class="theme-switch" id="themeToggle" type="button" aria-label="Switch theme">
-          <span>☀</span><span>☾</span>
-          <i></i>
+        <button class="theme-switch" id="themeToggle" type="button" aria-label="ប្តូរពន្លឺ និងងងឹត">
+          <span>☀</span><span>☾</span><i></i>
         </button>
       </div>
     </div>
@@ -130,9 +130,9 @@
   <div class="success-modal" id="successModal" aria-hidden="true">
     <div class="success-card">
       <div class="success-icon">✓</div>
-      <h2 data-i18n="demoSuccess">ការទូទាត់គំរូបានបញ្ចប់</h2>
-      <p data-i18n="demoSuccessText">នេះជាគំរូប៉ុណ្ណោះ។ មិនមានប្រាក់ត្រូវបានកាត់ទេ។</p>
-      <button type="button" id="closeSuccess" data-i18n="done">រួចរាល់</button>
+      <h2>ការទូទាត់គំរូបានបញ្ចប់</h2>
+      <p>នេះជាគំរូប៉ុណ្ណោះ។ មិនមានប្រាក់ត្រូវបានកាត់ទេ។</p>
+      <button type="button" id="closeSuccess">រួចរាល់</button>
     </div>
   </div>
 

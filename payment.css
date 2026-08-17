@@ -475,3 +475,13 @@ body.dark-mode .success-card{
     grid-template-columns:1fr;
   }
 }
+
+
+/* កំណែភាសាខ្មែរពេញលេញ */
+body,
+button,
+input,
+h1,h2,h3,
+.brand-row strong{
+  font-family:"Kantumruy Pro",system-ui,sans-serif !important;
+}
