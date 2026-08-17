@@ -1,27 +1,33 @@
-# Angkea Sil Learning — Khmer + English
+# Angkea Sil Learning — Updated
 
-This version includes a built-in language switcher:
+This update includes:
 
-- Khmer (default)
-- English
-- Saves the selected language in the browser
-- Responsive on desktop and mobile
-- GitHub Pages ready
+- Khmer + English language switch
+- Khmer font: Kantumruy Pro
+- Light / Dark mode switch
+- Animated sun/moon slider
+- Remembers selected language
+- Remembers selected theme
+- Mobile responsive header
+- Uses your existing `assets/` folder
 
-## Upload / Replace on GitHub
+## Replace these files on GitHub
 
-Replace these three files in your existing repository:
+1. `index.html`
+2. `style.css`
+3. `script.js`
 
-- `index.html`
-- `style.css`
-- `script.js`
+Keep the existing `assets/` folder.
 
-Keep your current `assets/` folder unchanged.
+## Important
 
-## Language button
+The website expects these existing assets:
 
-The website header contains:
+- `assets/logo.svg`
+- `assets/hero-instructor.png`
+- `assets/temple-palm.svg`
+- `assets/course-chinese.png`
+- `assets/course-excel.png`
+- `assets/course-web.png`
 
-`ខ្មែរ | EN`
-
-Visitors can switch language instantly.
+After uploading the 3 updated files, commit the changes and refresh your GitHub Pages website.

@@ -4,62 +4,91 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Angkea Sil Learning — practical online learning and digital resources.">
+  <meta name="theme-color" content="#fffaf2">
   <title>Angkea Sil Learning</title>
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Kantumruy+Pro:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="site-header" id="home">
     <div class="container nav-wrap">
-      <a class="brand" href="#home" aria-label="Angkea Sil Learning home">
-        <img src="assets/logo.svg" alt="Angkea Sil Learning lotus logo">
-        <span>
+
+      <a class="brand" href="#home" aria-label="Angkea Sil Learning Home">
+        <img src="assets/logo.svg" alt="Angkea Sil Learning logo">
+        <span class="brand-text">
           <strong>Angkea Sil Learning</strong>
           <small data-i18n="tagline">ជំនាញអនុវត្ត។ លទ្ធផលពិតប្រាកដ។</small>
         </span>
       </a>
 
-      <button class="menu-btn" aria-label="Open menu" aria-expanded="false">☰</button>
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
 
-      <nav class="main-nav" aria-label="Primary navigation">
+      <nav class="main-nav" id="mainNav" aria-label="Primary navigation">
         <a class="active" href="#home" data-i18n="navHome">ទំព័រដើម</a>
         <a href="#courses" data-i18n="navCourses">មេរៀន</a>
         <a href="#about" data-i18n="navAbout">អំពីយើង</a>
         <a href="#contact" data-i18n="navContact">ទំនាក់ទំនង</a>
       </nav>
 
-      <div class="language-switch" aria-label="Language switcher">
-        <button class="lang-btn active" data-lang="km">ខ្មែរ</button>
-        <span>|</span>
-        <button class="lang-btn" data-lang="en">EN</button>
-      </div>
+      <div class="header-tools">
+        <!-- Khmer / English -->
+        <div class="language-switch" aria-label="Language switcher">
+          <button class="lang-btn active" data-lang="km" type="button">ខ្មែរ</button>
+          <span>|</span>
+          <button class="lang-btn" data-lang="en" type="button">EN</button>
+        </div>
 
-      <a class="btn btn-gold nav-cta" href="#courses" data-i18n="getStarted">ចាប់ផ្តើមរៀន</a>
+        <!-- Light / Dark -->
+        <button class="theme-switch" id="themeToggle" type="button"
+                aria-label="Switch Light and Dark Mode" aria-pressed="false">
+          <span class="theme-icon theme-sun">☀</span>
+          <span class="theme-icon theme-moon">☾</span>
+          <span class="theme-slider"></span>
+        </button>
+
+        <a class="btn btn-gold nav-cta" href="#courses" data-i18n="getStarted">ចាប់ផ្តើមរៀន</a>
+      </div>
     </div>
   </header>
 
   <main>
     <section class="hero">
       <img class="hero-pattern" src="assets/temple-palm.svg" alt="" aria-hidden="true">
+
       <div class="container hero-grid">
         <div class="hero-copy">
           <div class="eyebrow" data-i18n="eyebrow">✦ ជំនាញអនុវត្ត។ លទ្ធផលពិតប្រាកដ។</div>
+
           <h1>
             <span data-i18n="heroLine1">រៀនជំនាញដែលអាចប្រើបាន</span><br>
             <span class="accent" data-i18n="heroLine2">ដើម្បីទទួលបានលទ្ធផលពិតប្រាកដ។</span>
           </h1>
+
           <div class="ornament"><i></i><b>◇</b><i></i></div>
-          <p data-i18n="heroText">ទទួលបានមេរៀនអនឡាញដែលអាចអនុវត្តបាន ការណែនាំប្រកបដោយបទពិសោធន៍ និងធនធានសិក្សា ដើម្បីជួយអ្នកអភិវឌ្ឍជំនាញ និងសម្រេចគោលដៅរបស់អ្នក។</p>
+
+          <p data-i18n="heroText">
+            ទទួលបានមេរៀនអនឡាញដែលអាចអនុវត្តបាន ការណែនាំប្រកបដោយបទពិសោធន៍
+            និងធនធានសិក្សា ដើម្បីជួយអ្នកអភិវឌ្ឍជំនាញ និងសម្រេចគោលដៅរបស់អ្នក។
+          </p>
+
           <div class="hero-actions">
-            <a class="btn btn-navy" href="#courses"><span data-i18n="exploreCourses">ស្វែងរកមេរៀន</span> <span>→</span></a>
-            <button class="btn btn-outline" id="watchIntro">▶ <span data-i18n="watchIntro">មើលវីដេអូណែនាំ</span></button>
+            <a class="btn btn-navy" href="#courses">
+              <span data-i18n="exploreCourses">ស្វែងរកមេរៀន</span> <span>→</span>
+            </a>
+
+            <button class="btn btn-outline" id="watchIntro" type="button">
+              ▶ <span data-i18n="watchIntro">មើលវីដេអូណែនាំ</span>
+            </button>
           </div>
         </div>
 
         <div class="hero-visual">
-          <img src="assets/hero-instructor.png" alt="Instructor at a desk with laptop and learning materials">
+          <img src="assets/hero-instructor.png" alt="Instructor">
         </div>
       </div>
     </section>
@@ -73,6 +102,7 @@
             <p data-i18n="videoCoursesText">រៀនតាមល្បឿនផ្ទាល់ខ្លួន</p>
           </div>
         </article>
+
         <article>
           <div class="icon gold">▤</div>
           <div>
@@ -80,6 +110,7 @@
             <p data-i18n="ebooksText">សិក្សាបានគ្រប់ពេល គ្រប់ទីកន្លែង</p>
           </div>
         </article>
+
         <article>
           <div class="icon">★</div>
           <div>
@@ -97,7 +128,10 @@
             <span class="kicker" data-i18n="featuredLearning">មេរៀនដែលបានជ្រើសរើស</span>
             <h2 data-i18n="popularCourses">មេរៀនពេញនិយម</h2>
           </div>
-          <a href="#courses" class="text-link"><span data-i18n="viewAll">មើលមេរៀនទាំងអស់</span> →</a>
+
+          <a href="#courses" class="text-link">
+            <span data-i18n="viewAll">មើលមេរៀនទាំងអស់</span> →
+          </a>
         </div>
 
         <div class="course-grid">
@@ -107,7 +141,7 @@
               <div class="meta">★ 4.9 <span>(1,250)</span> · <span data-i18n="beginner">កម្រិតដំបូង</span></div>
               <div class="course-bottom">
                 <strong>$12.00</strong>
-                <button><span data-i18n="enrollNow">ចុះឈ្មោះឥឡូវនេះ</span></button>
+                <button type="button" class="enroll-btn" data-i18n="enrollNow">ចុះឈ្មោះឥឡូវនេះ</button>
               </div>
             </div>
           </article>
@@ -118,7 +152,7 @@
               <div class="meta">★ 4.8 <span>(980)</span> · <span data-i18n="beginner">កម្រិតដំបូង</span></div>
               <div class="course-bottom">
                 <strong>$10.00</strong>
-                <button><span data-i18n="enrollNow">ចុះឈ្មោះឥឡូវនេះ</span></button>
+                <button type="button" class="enroll-btn" data-i18n="enrollNow">ចុះឈ្មោះឥឡូវនេះ</button>
               </div>
             </div>
           </article>
@@ -129,7 +163,7 @@
               <div class="meta">★ 4.9 <span>(760)</span> · <span data-i18n="beginner">កម្រិតដំបូង</span></div>
               <div class="course-bottom">
                 <strong>$15.00</strong>
-                <button><span data-i18n="enrollNow">ចុះឈ្មោះឥឡូវនេះ</span></button>
+                <button type="button" class="enroll-btn" data-i18n="enrollNow">ចុះឈ្មោះឥឡូវនេះ</button>
               </div>
             </div>
           </article>
@@ -143,8 +177,13 @@
           <span class="kicker" data-i18n="why">ហេតុអ្វីជ្រើស Angkea Sil Learning?</span>
           <h2 data-i18n="aboutTitle">រៀនជំនាញដែលអ្នកអាចយកទៅប្រើបានពិតប្រាកដ។</h2>
         </div>
+
         <div class="about-copy">
-          <p data-i18n="aboutText">Angkea Sil Learning ផ្តល់មេរៀនវីដេអូ ឯកសារសិក្សាដែលអាចទាញយក និងវគ្គជំនាញអនុវត្ត ដោយមានការរចនាសាមញ្ញ ទំនើប និងងាយស្រួលប្រើ។</p>
+          <p data-i18n="aboutText">
+            Angkea Sil Learning ផ្តល់មេរៀនវីដេអូ ឯកសារសិក្សាដែលអាចទាញយក
+            និងវគ្គជំនាញអនុវត្ត ដោយមានការរចនាសាមញ្ញ ទំនើប និងងាយស្រួលប្រើ។
+          </p>
+
           <div class="about-points">
             <span data-i18n="responsive">✓ អាចប្រើបានល្អលើទូរស័ព្ទ និងកុំព្យូទ័រ</span>
             <span data-i18n="pagesReady">✓ ត្រៀមរួចសម្រាប់ GitHub Pages</span>
@@ -171,15 +210,19 @@
         <a href="#" aria-label="YouTube">▶</a>
       </div>
 
-      <a class="email" href="mailto:hello@angkeasillearning.com">✉ hello@angkeasillearning.com</a>
+      <a class="email" href="mailto:hello@angkeasillearning.com">
+        ✉ hello@angkeasillearning.com
+      </a>
     </div>
   </footer>
 
   <div class="modal" id="introModal" aria-hidden="true">
     <div class="modal-card">
-      <button class="close-modal" aria-label="Close">×</button>
+      <button class="close-modal" type="button" aria-label="Close">×</button>
       <h2 data-i18n="modalTitle">សូមស្វាគមន៍មកកាន់ Angkea Sil Learning</h2>
-      <p data-i18n="modalText">ប៊ូតុងនេះអាចភ្ជាប់ទៅវីដេអូណែនាំ YouTube ឬវីដេអូ Trailer របស់វគ្គសិក្សារបស់អ្នកបាន។</p>
+      <p data-i18n="modalText">
+        ប៊ូតុងនេះអាចភ្ជាប់ទៅវីដេអូណែនាំ YouTube ឬវីដេអូ Trailer របស់វគ្គសិក្សារបស់អ្នកបាន។
+      </p>
       <a class="btn btn-navy" href="#courses" data-i18n="browseCourses">មើលមេរៀន</a>
     </div>
   </div>

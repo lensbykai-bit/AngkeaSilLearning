@@ -35,6 +35,7 @@ const translations = {
     browseCourses: "មើលមេរៀន",
     enrollAlert: "សូមភ្ជាប់ប៊ូតុងនេះទៅទំព័រទូទាត់ ឬទំព័រវគ្គសិក្សារបស់អ្នក។"
   },
+
   en: {
     tagline: "Practical Skills. Real Results.",
     navHome: "Home",
@@ -73,62 +74,127 @@ const translations = {
   }
 };
 
-const menuBtn = document.querySelector('.menu-btn');
-const nav = document.querySelector('.main-nav');
-const modal = document.getElementById('introModal');
-let currentLanguage = localStorage.getItem('asl-language') || 'km';
+/* -------------------------
+   LANGUAGE
+------------------------- */
+let currentLanguage = localStorage.getItem("asl-language") || "km";
 
 function setLanguage(lang) {
   currentLanguage = lang;
-  localStorage.setItem('asl-language', lang);
+  localStorage.setItem("asl-language", lang);
 
-  document.documentElement.lang = lang === 'km' ? 'km' : 'en';
-  document.body.classList.toggle('lang-km', lang === 'km');
+  document.documentElement.lang = lang === "km" ? "km" : "en";
+  document.body.classList.toggle("lang-km", lang === "km");
 
-  document.querySelectorAll('[data-i18n]').forEach((el) => {
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
     const key = el.dataset.i18n;
-    if (translations[lang][key]) {
+    if (translations[lang] && translations[lang][key]) {
       el.textContent = translations[lang][key];
     }
   });
 
-  document.querySelectorAll('.lang-btn').forEach((btn) => {
-    btn.classList.toggle('active', btn.dataset.lang === lang);
+  document.querySelectorAll(".lang-btn").forEach((btn) => {
+    btn.classList.toggle("active", btn.dataset.lang === lang);
   });
 }
 
-document.querySelectorAll('.lang-btn').forEach((btn) => {
-  btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+document.querySelectorAll(".lang-btn").forEach((btn) => {
+  btn.addEventListener("click", () => setLanguage(btn.dataset.lang));
 });
 
-menuBtn?.addEventListener('click', () => {
-  const open = nav.classList.toggle('open');
-  menuBtn.setAttribute('aria-expanded', String(open));
+/* -------------------------
+   MOBILE MENU
+------------------------- */
+const menuBtn = document.getElementById("menuBtn");
+const mainNav = document.getElementById("mainNav");
+
+menuBtn?.addEventListener("click", () => {
+  const open = mainNav.classList.toggle("open");
+  menuBtn.setAttribute("aria-expanded", String(open));
 });
 
-document.querySelectorAll('.main-nav a').forEach((a) => {
-  a.addEventListener('click', () => nav.classList.remove('open'));
+document.querySelectorAll(".main-nav a").forEach((link) => {
+  link.addEventListener("click", () => {
+    mainNav.classList.remove("open");
+    menuBtn?.setAttribute("aria-expanded", "false");
+  });
 });
 
-document.getElementById('watchIntro')?.addEventListener('click', () => {
-  modal.classList.add('open');
-  modal.setAttribute('aria-hidden', 'false');
-});
+/* -------------------------
+   LIGHT / DARK MODE
+------------------------- */
+const themeToggle = document.getElementById("themeToggle");
+const themeMeta = document.querySelector('meta[name="theme-color"]');
 
-document.querySelector('.close-modal')?.addEventListener('click', () => {
-  modal.classList.remove('open');
-  modal.setAttribute('aria-hidden', 'true');
-});
+function applyTheme(theme) {
+  const isDark = theme === "dark";
 
-modal?.addEventListener('click', (e) => {
-  if (e.target === modal) {
-    modal.classList.remove('open');
-    modal.setAttribute('aria-hidden', 'true');
+  document.body.classList.toggle("dark-mode", isDark);
+
+  if (themeToggle) {
+    themeToggle.setAttribute("aria-pressed", String(isDark));
   }
+
+  if (themeMeta) {
+    themeMeta.setAttribute("content", isDark ? "#071321" : "#fffaf2");
+  }
+
+  localStorage.setItem("asl-theme", theme);
+}
+
+const savedTheme = localStorage.getItem("asl-theme");
+
+if (savedTheme) {
+  applyTheme(savedTheme);
+} else {
+  const prefersDark =
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  applyTheme(prefersDark ? "dark" : "light");
+}
+
+themeToggle?.addEventListener("click", () => {
+  const isDark = document.body.classList.contains("dark-mode");
+  applyTheme(isDark ? "light" : "dark");
 });
 
-document.querySelectorAll('.course-card button').forEach((btn) => {
-  btn.addEventListener('click', () => alert(translations[currentLanguage].enrollAlert));
+/* -------------------------
+   INTRO MODAL
+------------------------- */
+const modal = document.getElementById("introModal");
+const watchIntro = document.getElementById("watchIntro");
+const closeModal = document.querySelector(".close-modal");
+
+function openModal() {
+  modal?.classList.add("open");
+  modal?.setAttribute("aria-hidden", "false");
+}
+
+function closeIntroModal() {
+  modal?.classList.remove("open");
+  modal?.setAttribute("aria-hidden", "true");
+}
+
+watchIntro?.addEventListener("click", openModal);
+closeModal?.addEventListener("click", closeIntroModal);
+
+modal?.addEventListener("click", (event) => {
+  if (event.target === modal) closeIntroModal();
 });
 
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeIntroModal();
+});
+
+/* -------------------------
+   ENROLL BUTTONS
+------------------------- */
+document.querySelectorAll(".enroll-btn").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    alert(translations[currentLanguage].enrollAlert);
+  });
+});
+
+/* Initial language */
 setLanguage(currentLanguage);
