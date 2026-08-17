@@ -1,39 +1,27 @@
-# Angkea Sil Learning Theme
+# Angkea Sil Learning — Khmer + English
 
-A responsive static education landing page inspired by the supplied Angkea Sil Learning mockup.
+This version includes a built-in language switcher:
 
-## Included
-- Responsive homepage
-- Hero section
-- Course cards
-- Video / E-book / Certificate feature strip
-- About section
-- Mobile navigation
-- Intro modal
-- GitHub Pages workflow
-- Local image assets based on the supplied design reference
+- Khmer (default)
+- English
+- Saves the selected language in the browser
+- Responsive on desktop and mobile
+- GitHub Pages ready
 
-## Run locally
-Open `index.html` directly, or use a local server:
+## Upload / Replace on GitHub
 
-```bash
-python -m http.server 8000
-```
+Replace these three files in your existing repository:
 
-Then visit `http://localhost:8000`.
+- `index.html`
+- `style.css`
+- `script.js`
 
-## Publish with GitHub Pages
-1. Create a GitHub repository, for example `angkea-sil-learning`.
-2. Upload all files from this project.
-3. Go to **Settings → Pages**.
-4. Under **Build and deployment**, choose **GitHub Actions**.
-5. The included workflow publishes the site automatically.
+Keep your current `assets/` folder unchanged.
 
-## Customize
-- Brand colors: edit CSS variables at the top of `style.css`.
-- Course images: replace files in `assets/`.
-- Course prices/text: edit `index.html`.
-- Social and email links: edit the footer in `index.html`.
+## Language button
 
-## Design reference
-The original supplied mockup is stored at `assets/design-reference.png`.
+The website header contains:
+
+`ខ្មែរ | EN`
+
+Visitors can switch language instantly.

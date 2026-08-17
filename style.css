@@ -14,13 +14,13 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;color:var(--ink);background:linear-gradient(#fcf7ee,#fffaf3);font-family:Inter,system-ui,sans-serif}
+body{margin:0;color:var(--ink);background:linear-gradient(#fcf7ee,#fffaf3);font-family:"Kantumruy Pro","Noto Sans Khmer",system-ui,sans-serif}
 body:before{
  content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;z-index:-1;
  background-image:radial-gradient(rgba(100,70,35,.23) .65px,transparent .65px);
  background-size:7px 7px;
 }
-h1,h2,h3,.brand strong{font-family:"Playfair Display",Georgia,serif}
+h1,h2,h3,.brand strong{font-family:"Moul","Kantumruy Pro","Noto Sans Khmer",serif}
 a{text-decoration:none;color:inherit}
 button{font:inherit}
 img{max-width:100%;display:block}
@@ -33,7 +33,7 @@ img{max-width:100%;display:block}
 .brand strong{font-size:26px;line-height:1.05;color:var(--navy)}
 .brand small{text-transform:uppercase;letter-spacing:3px;font-size:10px;font-weight:700;margin-top:8px}
 .main-nav{display:flex;justify-content:center;gap:45px;margin-left:auto}
-.main-nav a{font-family:"Playfair Display",serif;font-weight:700;padding:34px 0 28px;position:relative}
+.main-nav a{font-family:"Moul","Kantumruy Pro","Noto Sans Khmer",serif;font-weight:700;padding:34px 0 28px;position:relative}
 .main-nav a:after{content:"";height:2px;background:var(--gold);position:absolute;left:50%;right:50%;bottom:18px;transition:.25s}
 .main-nav a:hover:after,.main-nav a.active:after{left:0;right:0}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:14px;border:0;border-radius:7px;padding:15px 24px;font-weight:700;cursor:pointer;transition:.2s}
@@ -41,13 +41,21 @@ img{max-width:100%;display:block}
 .btn-gold{background:linear-gradient(135deg,#c08417,#e5b451);color:white}
 .nav-cta{margin-left:20px}
 .menu-btn{display:none;background:none;border:0;font-size:27px;color:var(--navy)}
+.language-switch{display:flex;align-items:center;gap:7px;margin-left:10px;padding:6px 9px;border:1px solid rgba(185,138,58,.28);border-radius:999px;background:rgba(255,255,255,.56)}
+.lang-btn{border:0;background:transparent;color:var(--ink);font-weight:800;cursor:pointer;padding:4px 7px;border-radius:999px}
+.lang-btn.active{background:var(--navy);color:#fff}
+body.lang-km .hero h1{font-size:50px;line-height:1.32;letter-spacing:0}
+body.lang-km .main-nav a{font-family:"Noto Sans Khmer",Inter,sans-serif}
+body.lang-km .brand small{letter-spacing:.5px;text-transform:none}
+body.lang-km .eyebrow{font-family:"Noto Sans Khmer",Inter,sans-serif}
+
 .hero{position:relative;overflow:hidden;border-bottom:1px solid rgba(181,138,70,.18)}
 .hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(252,247,238,.96) 0%,rgba(252,247,238,.87) 45%,rgba(252,247,238,.35) 72%,rgba(252,247,238,.10));z-index:-1}
 .hero-pattern{position:absolute;right:-15px;bottom:0;width:690px;opacity:.60;z-index:-2}
 .hero-grid{min-height:470px;display:grid;grid-template-columns:1.05fr 1fr;align-items:center;gap:42px;padding:34px 0 10px}
-.eyebrow{display:inline-block;border:1px solid var(--line);border-radius:8px;padding:10px 15px;font-family:"Playfair Display",serif;font-weight:700;background:rgba(255,250,243,.78)}
+.eyebrow{display:inline-block;border:1px solid var(--line);border-radius:8px;padding:10px 15px;font-family:"Moul","Kantumruy Pro","Noto Sans Khmer",serif;font-weight:700;background:rgba(255,250,243,.78)}
 .hero h1{font-size:60px;line-height:1.04;margin:18px 0 14px;letter-spacing:-1.6px;color:var(--navy)}
-.hero h1 span{color:var(--coral)}
+.hero h1 .accent{color:var(--coral)}
 .hero p{max-width:560px;font-size:17px;line-height:1.8;color:#3b4c65}
 .ornament{display:flex;align-items:center;gap:14px;width:390px;color:var(--gold);margin:16px 0}
 .ornament i{height:1px;background:var(--gold2);flex:1}
@@ -74,7 +82,7 @@ img{max-width:100%;display:block}
 .course-body{padding:18px}
 .meta{color:#26364d;font-size:14px}.meta:first-letter{color:#e09a18}.meta span{color:#7d8796}
 .course-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:18px}
-.course-bottom strong{font-family:"Playfair Display",serif;font-size:28px;color:var(--navy)}
+.course-bottom strong{font-family:"Moul","Kantumruy Pro","Noto Sans Khmer",serif;font-size:28px;color:var(--navy)}
 .course-bottom button{border:0;border-radius:6px;padding:11px 18px;background:var(--navy);color:white;cursor:pointer}
 .about{background:linear-gradient(90deg,rgba(6,31,67,.98),rgba(11,43,88,.95));color:white}
 .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:center}
@@ -83,7 +91,7 @@ img{max-width:100%;display:block}
 .about-points span{padding:9px 12px;border:1px solid rgba(230,194,125,.35);border-radius:6px}
 footer{background:#031b38;color:white;border-top:2px solid var(--gold);padding:25px 0}
 .footer-grid{display:grid;grid-template-columns:1.1fr .8fr 1.2fr;align-items:center;gap:25px}
-.footer-brand{display:flex;align-items:center;gap:12px}.footer-brand img{width:55px}.footer-brand div{display:flex;flex-direction:column}.footer-brand strong{font-family:"Playfair Display",serif;font-size:20px}.footer-brand small{opacity:.75;margin-top:4px}
+.footer-brand{display:flex;align-items:center;gap:12px}.footer-brand img{width:55px}.footer-brand div{display:flex;flex-direction:column}.footer-brand strong{font-family:"Moul","Kantumruy Pro","Noto Sans Khmer",serif;font-size:20px}.footer-brand small{opacity:.75;margin-top:4px}
 .socials{display:flex;justify-content:center;gap:14px}.socials a{width:42px;height:42px;border:1px solid #bf8e3d;color:#e1af58;border-radius:50%;display:grid;place-items:center;font-weight:800}
 .email{text-align:right}
 .modal{position:fixed;inset:0;background:rgba(1,13,28,.72);display:none;place-items:center;z-index:100}
@@ -92,7 +100,7 @@ footer{background:#031b38;color:white;border-top:2px solid var(--gold);padding:2
 .close-modal{position:absolute;right:15px;top:12px;font-size:30px;border:0;background:none;cursor:pointer}
 @media(max-width:900px){
  .nav-wrap{height:76px}.brand{min-width:0}.brand strong{font-size:20px}.brand small{display:none}.brand img{width:48px;height:48px}
- .menu-btn{display:block;margin-left:auto}.main-nav{display:none;position:absolute;top:76px;left:0;right:0;background:var(--paper);padding:18px 24px;flex-direction:column;gap:0;border-bottom:1px solid var(--line)}
+ .menu-btn{display:block;margin-left:auto}.language-switch{order:2}.main-nav{display:none;position:absolute;top:76px;left:0;right:0;background:var(--paper);padding:18px 24px;flex-direction:column;gap:0;border-bottom:1px solid var(--line)}
  .main-nav.open{display:flex}.main-nav a{padding:14px}.nav-cta{display:none}
  .hero-grid{grid-template-columns:1fr;padding-top:32px}.hero h1{font-size:46px}.hero-visual{order:2}.hero-visual img{border-radius:20px}
  .benefit-grid,.course-grid,.about-grid,.footer-grid{grid-template-columns:1fr}
@@ -103,4 +111,35 @@ footer{background:#031b38;color:white;border-top:2px solid var(--gold);padding:2
 @media(max-width:560px){
  .container{width:min(100% - 28px,1320px)}.hero h1{font-size:38px}.hero-actions{flex-direction:column}.btn{width:100%}.ornament{width:100%}
  .section-heading{align-items:start;gap:14px;flex-direction:column}.section h2{font-size:32px}
+}
+
+/* Khmer typography refinements */
+body{line-height:1.65}
+.brand strong,.benefit-grid h3,.course-bottom strong,.footer-brand strong{
+  font-family:"Kantumruy Pro","Noto Sans Khmer",sans-serif;
+  font-weight:700;
+}
+.hero h1,.section h2,.about h2{
+  font-family:"Moul","Kantumruy Pro","Noto Sans Khmer",serif;
+  letter-spacing:0;
+  line-height:1.35;
+}
+.main-nav a,.eyebrow{
+  font-family:"Kantumruy Pro","Noto Sans Khmer",sans-serif;
+}
+
+@media(max-width:1100px){
+  .brand{min-width:260px}
+  .main-nav{gap:25px}
+  .language-switch{margin-left:auto}
+  .nav-cta{margin-left:0}
+}
+@media(max-width:900px){
+  .language-switch{margin-left:0}
+  body.lang-km .hero h1{font-size:40px}
+}
+@media(max-width:560px){
+  .language-switch{padding:4px 7px}
+  .lang-btn{font-size:12px}
+  body.lang-km .hero h1{font-size:32px}
 }
