@@ -1,221 +1,268 @@
 <!doctype html>
-<html lang="km">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>AngkeaSilLearning</title>
-  <meta name="description" content="AngkeaSilLearning - Khmer & Chinese inspired payment page" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Battambang:wght@300;400;700&family=Noto+Serif+SC:wght@500;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b1f3a" />
+  <title>AngkeaSil Learning — Practical Skills for Real Results</title>
+  <meta name="description" content="Learn practical digital skills with AngkeaSil Learning. Video lessons, downloadable materials, guided practice, and secure ABA KHQR checkout." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="page-pattern page-pattern-left"></div>
-  <div class="page-pattern page-pattern-right"></div>
+  <header class="site-header" id="home">
+    <div class="header-inner">
+      <a class="brand" href="#home" aria-label="AngkeaSil Learning home">
+        <img class="brand-logo" src="logo.svg" alt="AngkeaSil Learning logo" />
+        <span class="brand-copy">
+          <strong>AngkeaSil Learning</strong>
+          <small>Practical Skills for Real Results</small>
+        </span>
+      </a>
 
-  <header class="site-header">
-    <div class="brand-wrap">
-      <div class="brand-mark">花</div>
-      <div class="brand-copy">
-        <div class="brand-title">AngkeaSilLearning</div>
-        <div class="brand-sub">អង្គារសិល Learning • 中文学习</div>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
+
+      <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+        <a class="active" href="#home">Home</a>
+        <a href="#courses">Courses</a>
+        <a href="#materials">E-books</a>
+        <a href="#features">Free Lessons</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-btn" type="button" aria-label="Search">⌕</button>
+        <button class="cart-btn" type="button" aria-label="Shopping cart">🛒<span>0</span></button>
+        <a class="btn btn-navy btn-small" href="#contact">Log In / Sign Up</a>
+        <a class="btn btn-gold btn-small" href="#courses">Get Started</a>
       </div>
     </div>
-
-    <nav class="nav-actions">
-      <a href="#courses" class="nav-link">វគ្គសិក្សា</a>
-      <a href="#about" class="nav-link">អំពីយើង</a>
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">☾</button>
-    </nav>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="hero-content">
-        <p class="eyebrow">Khmer × Chinese Inspired Theme</p>
-        <h1>រៀនភាសាចិន<br>ក្នុងរចនាបទខ្មែរ ស្អាត សាមញ្ញ និងទាក់ទាញ</h1>
-        <p class="hero-desc">
-          ផ្ទាំងនេះត្រូវបានរៀបចំឡើងវិញឲ្យមានអារម្មណ៍បែបខ្មែរ លាយចិនបន្តិច
-          ដោយប្រើពណ៌ក្រហម មាស ខៀវងងឹត និងលំនាំតុបតែងស្រាលៗ។
-          ពេលអ្នកចុចទិញ នឹងមាន 2 ជំហាន៖ បញ្ជាក់ទឹកប្រាក់ → បង្ហាញ ABA KHQR។
-        </p>
+    <section class="hero-section">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <div class="pill-badge">★ <span>Learn Today, Lead Tomorrow</span></div>
+          <h1>Start Learning.<br><span>Build Your Future.</span></h1>
+          <p class="hero-description">Access practical online courses, digital materials, and expert guidance designed to help you grow your skills and succeed.</p>
 
-        <div class="hero-actions">
-          <a href="#courses" class="btn btn-gold">មើលវគ្គសិក្សា</a>
-          <button class="btn btn-red buy-now-btn"
-            data-course-id="chinese-basics"
-            data-course-name="វគ្គភាសាចិនមូលដ្ឋាន"
-            data-price="12.00"
-            type="button">
-            ទិញវគ្គគំរូ
-          </button>
+          <div class="hero-buttons">
+            <a class="btn btn-navy" href="#courses">Explore Courses <span>→</span></a>
+            <button class="btn btn-outline" id="watchIntroBtn" type="button"><span class="play-dot">▶</span> Watch Intro</button>
+          </div>
+
+          <div class="trust-row">
+            <div class="avatar-stack" aria-hidden="true">
+              <span>A</span><span>S</span><span>L</span><span>+</span>
+            </div>
+            <p>Trusted by<br><strong>10,000+ students 🎉</strong></p>
+          </div>
         </div>
 
-        <div class="hero-points">
-          <div class="point">✦ ទូទាត់តាម ABA KHQR</div>
-          <div class="point">✦ រចនាបទថ្មី បែបខ្មែរ × ចិន</div>
-          <div class="point">✦ ងាយប្រើលើទូរស័ព្ទ និងកុំព្យូទ័រ</div>
-        </div>
-      </div>
+        <div class="hero-showcase" aria-label="Featured learning experience">
+          <div class="hero-glow"></div>
+          <div class="instructor-card">
+            <div class="instructor-label">
+              <span class="signature">AngkeaSil</span>
+              <small>Founder & Instructor</small>
+            </div>
+            <div class="visual-frame">
+              <img src="course-chinese-km.png" alt="Featured AngkeaSil Learning course" />
+              <div class="visual-overlay">
+                <span class="visual-badge">Premium Learning</span>
+                <h2>Learn skills you can use.</h2>
+                <p>Clear lessons. Practical projects. Real progress.</p>
+              </div>
+            </div>
+          </div>
 
-      <div class="hero-preview">
-        <div class="preview-card">
-          <div class="preview-top">
-            <span class="mini-label">ABA KHQR</span>
-            <span class="mini-price">$12.00</span>
-          </div>
-          <div class="preview-qr-shell">
-            <div class="preview-qr"></div>
-          </div>
-          <div class="preview-footer">
-            ស្កេន KHQR ដើម្បីបង់ប្រាក់បានភ្លាមៗ
-          </div>
+          <aside class="hero-stats-card" aria-label="Learning platform statistics">
+            <div><span class="stat-icon">🎓</span><p><strong>5+</strong><small>Years Experience</small></p></div>
+            <div><span class="stat-icon">📖</span><p><strong>200+</strong><small>Premium Lessons</small></p></div>
+            <div><span class="stat-icon">👥</span><p><strong>10,000+</strong><small>Students</small></p></div>
+            <div><span class="stat-icon">⭐</span><p><strong>4.9/5</strong><small>Average Rating</small></p></div>
+          </aside>
         </div>
       </div>
     </section>
 
-    <section class="courses" id="courses">
-      <div class="section-title-wrap">
-        <p class="section-tag">Popular Courses</p>
-        <h2>វគ្គសិក្សារបស់យើង</h2>
-        <p class="section-desc">ជ្រើសរើសវគ្គណាមួយ រួចចុចទិញដើម្បីបន្តទៅការទូទាត់</p>
+    <section class="feature-strip" id="features">
+      <div class="feature-item">
+        <span class="feature-icon blue">▶</span>
+        <div><strong>Video Lessons</strong><small>Learn at your pace</small></div>
+      </div>
+      <div class="feature-item" id="materials">
+        <span class="feature-icon red">▤</span>
+        <div><strong>Downloadable PDF</strong><small>Study anywhere</small></div>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon green">●</span>
+        <div><strong>Community Support</strong><small>Get help & connect</small></div>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon orange">✓</span>
+        <div><strong>Assignments & Practice</strong><small>Practice real skills</small></div>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon purple">★</span>
+        <div><strong>Certificates</strong><small>Showcase achievement</small></div>
+      </div>
+    </section>
+
+    <section class="stats-bar" aria-label="Platform highlights">
+      <div><span>👥</span><p><strong>10,000+</strong><small>Active Students</small></p></div>
+      <div><span>📖</span><p><strong>200+</strong><small>Premium Lessons</small></p></div>
+      <div><span>▶</span><p><strong>500+</strong><small>Video Tutorials</small></p></div>
+      <div><span>⭐</span><p><strong>4.9/5</strong><small>Student Rating</small></p></div>
+    </section>
+
+    <section class="courses-section" id="courses">
+      <div class="section-heading-row">
+        <div>
+          <span class="section-kicker">POPULAR COURSES</span>
+          <h2>Choose what you want to learn</h2>
+        </div>
+        <a href="#courses" class="view-all">View All Courses →</a>
       </div>
 
       <div class="course-grid">
-        <article class="course-card featured">
-          <div class="card-corner">精选</div>
-          <h3>វគ្គភាសាចិនមូលដ្ឋាន</h3>
-          <p>សម្រាប់អ្នកចាប់ផ្តើមរៀនពីសូន្យ មានអក្សរ សម្លេង ពាក្យសព្ទ និងសន្ទនា</p>
-          <ul>
-            <li>មេរៀនសាមញ្ញ ងាយយល់</li>
-            <li>សន្ទនាប្រចាំថ្ងៃ</li>
-            <li>អក្សរចិនមូលដ្ឋាន</li>
-          </ul>
-          <div class="card-footer">
-            <div class="card-price">$12.00</div>
-            <button class="btn btn-red small buy-now-btn"
-              data-course-id="chinese-basics"
-              data-course-name="វគ្គភាសាចិនមូលដ្ឋាន"
-              data-price="12.00"
-              type="button">ទិញឥឡូវនេះ</button>
+        <article class="course-card">
+          <div class="course-cover cover-blue">
+            <img src="course-chinese-km.png" alt="Chinese language course" />
+            <span class="course-tag">BEST SELLER</span>
+          </div>
+          <div class="course-body">
+            <span class="course-category">Language</span>
+            <h3>Chinese Basics for Beginners</h3>
+            <div class="course-meta"><span>★ 4.9 (1,250)</span><span>2,500+ students</span></div>
+            <div class="course-footer"><strong>$12.00</strong><button class="btn btn-navy btn-enroll buy-now-btn" data-course-id="chinese-basics" data-course-name="Chinese Basics for Beginners" data-price="12.00" type="button">Enroll Now</button></div>
           </div>
         </article>
 
         <article class="course-card">
-          <h3>វគ្គភាសាចិនកម្រិតមធ្យម</h3>
-          <p>សម្រាប់អ្នកមានមូលដ្ឋានហើយ ចង់បន្តការសន្ទនា ការស្តាប់ និងការអាន</p>
-          <ul>
-            <li>សន្ទនាកម្រិតមធ្យម</li>
-            <li>បង្កើនវាក្យសព្ទ</li>
-            <li>លំហាត់អនុវត្ត</li>
-          </ul>
-          <div class="card-footer">
-            <div class="card-price">$18.00</div>
-            <button class="btn btn-red small buy-now-btn"
-              data-course-id="chinese-intermediate"
-              data-course-name="វគ្គភាសាចិនកម្រិតមធ្យម"
-              data-price="18.00"
-              type="button">ទិញឥឡូវនេះ</button>
+          <div class="course-cover cover-green">
+            <img src="course-excel-km.png" alt="Excel business course" />
+            <span class="course-tag">POPULAR</span>
+          </div>
+          <div class="course-body">
+            <span class="course-category">Business Skills</span>
+            <h3>Excel for Business and Work</h3>
+            <div class="course-meta"><span>★ 4.8 (980)</span><span>1,800+ students</span></div>
+            <div class="course-footer"><strong>$10.00</strong><button class="btn btn-navy btn-enroll buy-now-btn" data-course-id="excel-business" data-course-name="Excel for Business and Work" data-price="10.00" type="button">Enroll Now</button></div>
           </div>
         </article>
 
         <article class="course-card">
-          <h3>វគ្គភាសាចិនសម្រាប់ការងារ</h3>
-          <p>ផ្តោតលើការប្រើប្រាស់ភាសាចិនក្នុងការងារ ការទំនាក់ទំនង និងអាជីវកម្ម</p>
-          <ul>
-            <li>សន្ទនាផ្លូវការ</li>
-            <li>ការឆ្លើយតបការងារ</li>
-            <li>ស្ថានការណ៍ជាក់ស្តែង</li>
-          </ul>
-          <div class="card-footer">
-            <div class="card-price">$25.00</div>
-            <button class="btn btn-red small buy-now-btn"
-              data-course-id="chinese-business"
-              data-course-name="វគ្គភាសាចិនសម្រាប់ការងារ"
-              data-price="25.00"
-              type="button">ទិញឥឡូវនេះ</button>
+          <div class="course-cover cover-purple">
+            <img src="course-web-km.png" alt="Website development course" />
+            <span class="course-tag">NEW</span>
+          </div>
+          <div class="course-body">
+            <span class="course-category">Web Development</span>
+            <h3>Build a Website with HTML, CSS & JS</h3>
+            <div class="course-meta"><span>★ 4.9 (760)</span><span>1,200+ students</span></div>
+            <div class="course-footer"><strong>$15.00</strong><button class="btn btn-navy btn-enroll buy-now-btn" data-course-id="website-basics" data-course-name="Build a Website with HTML, CSS & JS" data-price="15.00" type="button">Enroll Now</button></div>
+          </div>
+        </article>
+
+        <article class="course-card coming-card">
+          <div class="course-cover finance-cover">
+            <div class="finance-graphic"><span>↗</span><b>$</b></div>
+            <span class="course-tag gold-tag">COMING SOON</span>
+          </div>
+          <div class="course-body">
+            <span class="course-category">Personal Growth</span>
+            <h3>Personal Finance for Beginners</h3>
+            <div class="course-meta"><span>★ 4.8 Preview</span><span>New course</span></div>
+            <div class="course-footer"><strong>$11.00</strong><button class="btn btn-muted btn-enroll" type="button" disabled>Coming Soon</button></div>
           </div>
         </article>
       </div>
     </section>
 
-    <section class="about" id="about">
-      <div class="about-box">
-        <h2>អំពី AngkeaSilLearning</h2>
-        <p>
-          យើងផ្តោតលើការបង្រៀនភាសាចិនជាភាសាខ្មែរ ដោយបន្សំការរៀនឲ្យមានអារម្មណ៍ទំនើប
-          និងមានអត្តសញ្ញាណ។ Theme នេះមានពណ៌ខៀវងងឹត បូកនឹងពណ៌មាស និងក្រហម
-          ដើម្បីឲ្យមានអារម្មណ៍បែបខ្មែរ លាយចិនបន្តិច សាកសមសម្រាប់គេហទំព័របង្រៀន។
-        </p>
+    <section class="about-section" id="about">
+      <div class="about-card">
+        <div>
+          <span class="section-kicker">WHY ANGKEASIL</span>
+          <h2>Learning that feels personal and useful.</h2>
+          <p>AngkeaSil Learning focuses on clear explanations, practical exercises, and skills students can apply immediately in school, work, and personal projects.</p>
+        </div>
+        <div class="about-points">
+          <div><span>01</span><p><strong>Simple lessons</strong><small>Clear, organized, beginner-friendly learning paths.</small></p></div>
+          <div><span>02</span><p><strong>Practical practice</strong><small>Projects and exercises built around real tasks.</small></p></div>
+          <div><span>03</span><p><strong>Flexible access</strong><small>Learn from your phone or computer at your own pace.</small></p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bottom-section" id="contact">
+      <blockquote class="testimonial">
+        <span>“</span>
+        <p>AngkeaSil courses are practical, easy to follow, and designed to help students build real confidence.</p>
+        <cite>— Student Community</cite>
+      </blockquote>
+
+      <div class="social-panel">
+        <a href="#contact"><span class="social-icon telegram">✈</span><div><small>Join us on Telegram</small><strong>@AngkeaSilLearning</strong></div></a>
+        <a href="#contact"><span class="social-icon facebook">f</span><div><small>Follow us on Facebook</small><strong>AngkeaSil Learning</strong></div></a>
+        <a href="#contact"><span class="social-icon youtube">▶</span><div><small>Subscribe on YouTube</small><strong>AngkeaSil Learning</strong></div></a>
       </div>
     </section>
   </main>
 
-  <!-- STEP 1 -->
+  <footer class="site-footer">
+    <p>© 2026 AngkeaSil Learning. All rights reserved.</p>
+    <p>Secure course checkout powered by ABA KHQR.</p>
+  </footer>
+
+  <!-- Checkout step 1 -->
   <div class="modal-overlay" id="checkoutStep1" aria-hidden="true">
-    <div class="modal payment-sheet">
-      <button class="close-btn" data-close="checkoutStep1" type="button">×</button>
-
-      <div class="sheet-brand">订单确认 • ABA PAYWAY</div>
-      <h2 class="sheet-title">ទឹកប្រាក់ត្រូវទូទាត់</h2>
+    <div class="modal payment-sheet" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+      <button class="close-btn" data-close="checkoutStep1" type="button" aria-label="Close">×</button>
+      <div class="sheet-brand">ANGKEASIL LEARNING • ABA PAYWAY</div>
+      <h2 class="sheet-title" id="checkoutTitle">Amount to Pay</h2>
       <div class="sheet-amount" id="step1Amount">$12.00</div>
-
       <div class="sheet-divider"></div>
-
       <div class="detail-grid">
-        <div class="detail-row"><span>ប្រភេទ</span><strong>ការទិញវគ្គសិក្សា</strong></div>
-        <div class="detail-row"><span>ឈ្មោះវគ្គ</span><strong id="step1CourseName">—</strong></div>
-        <div class="detail-row"><span>កាលបរិច្ឆេទ</span><strong id="step1Date">—</strong></div>
-        <div class="detail-row"><span>តម្លៃ</span><strong id="step1Price">$12.00</strong></div>
+        <div class="detail-row"><span>Type</span><strong>Course Purchase</strong></div>
+        <div class="detail-row"><span>Course</span><strong id="step1CourseName">—</strong></div>
+        <div class="detail-row"><span>Date</span><strong id="step1Date">—</strong></div>
+        <div class="detail-row"><span>Price</span><strong id="step1Price">$12.00</strong></div>
       </div>
-
       <div class="sheet-divider"></div>
-
       <div class="method-card active">
         <div class="method-icon">KH</div>
-        <div class="method-text">
-          <strong>ABA KHQR</strong>
-          <small>ស្កេនដោយ ABA Mobile ឬ Mobile Banking App ដែលគាំទ្រ KHQR</small>
-        </div>
+        <div class="method-text"><strong>ABA KHQR</strong><small>Scan with ABA Mobile or another banking app that supports KHQR.</small></div>
         <div class="check-mark">✓</div>
       </div>
-
-      <button class="btn btn-red full" id="continueToStep2" type="button">ការបញ្ជាទិញ</button>
+      <button class="btn btn-navy full" id="continueToStep2" type="button">Place Order</button>
     </div>
   </div>
 
-  <!-- STEP 2 -->
+  <!-- Checkout step 2 -->
   <div class="modal-overlay" id="checkoutStep2" aria-hidden="true">
-    <div class="modal qr-sheet">
-      <button class="close-btn light-close" data-close="checkoutStep2" type="button">×</button>
-
+    <div class="modal qr-sheet" role="dialog" aria-modal="true" aria-labelledby="qrTitle">
+      <button class="close-btn light-close" data-close="checkoutStep2" type="button" aria-label="Close">×</button>
       <div class="qr-payway-top">ABA' PAYWAY</div>
-      <h2 class="qr-title">ABA KHQR</h2>
-
+      <h2 class="qr-title" id="qrTitle">ABA KHQR</h2>
       <div class="qr-ticket">
         <div class="qr-red-head">KHQR</div>
         <div class="qr-ticket-body">
-          <div class="qr-course-name" id="qrCourseName">AngkeaSilLearning</div>
+          <div class="qr-course-name" id="qrCourseName">AngkeaSil Learning</div>
           <div class="qr-course-price" id="step2Amount">$12.00 <small>USD</small></div>
-          <img id="qrImage" class="qr-image" alt="ABA KHQR" />
+          <img id="qrImage" class="qr-image" alt="ABA KHQR payment code" />
         </div>
       </div>
-
-      <p class="scan-note">Scan with ABA Mobile, or other Mobile Banking App supporting KHQR</p>
-
+      <p class="scan-note">Scan with ABA Mobile or another Mobile Banking app supporting KHQR.</p>
       <div class="meta-grid">
-        <div class="meta-item">
-          <span>លេខប្រតិបត្តិការ</span>
-          <strong id="tranId">—</strong>
-        </div>
-        <div class="meta-item">
-          <span>ពេលនៅសល់</span>
-          <strong id="countdown">10:00</strong>
-        </div>
+        <div class="meta-item"><span>Transaction ID</span><strong id="tranId">—</strong></div>
+        <div class="meta-item"><span>Time Remaining</span><strong id="countdown">10:00</strong></div>
       </div>
-
-      <button class="btn btn-gold full" id="checkPaymentBtn" type="button">ពិនិត្យការទូទាត់</button>
+      <button class="btn btn-gold full" id="checkPaymentBtn" type="button">Check Payment</button>
       <p class="status-message" id="statusMessage"></p>
     </div>
   </div>
