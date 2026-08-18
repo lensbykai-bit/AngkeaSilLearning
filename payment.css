@@ -752,3 +752,89 @@ body.dark-mode .regenerate-payment{background:#132a43;border-color:#405a75;color
   .qr-wrap{width:min(270px,100%);min-height:270px;}
   .payment-qr{max-width:238px;max-height:238px;}
 }
+
+/* ===== Compact payment view used inside the homepage popup ===== */
+body.embed-mode{
+  min-height:0;
+  background:transparent !important;
+  overflow-x:hidden;
+}
+body.embed-mode .payment-page{
+  min-height:0;
+  padding:0;
+  background:transparent;
+}
+body.embed-mode .payment-shell{width:100%;}
+body.embed-mode .payment-brand,
+body.embed-mode .summary,
+body.embed-mode .payment-tools,
+body.embed-mode .qr-heading,
+body.embed-mode .amount-box,
+body.embed-mode .payment-meta{
+  display:none !important;
+}
+body.embed-mode .payment-card{
+  display:block;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  background:transparent !important;
+  overflow:visible;
+}
+body.embed-mode .qr-payment{
+  padding:0 6px 10px;
+  background:transparent !important;
+}
+body.embed-mode .qr-wrap{
+  width:min(340px,100%);
+  min-height:340px;
+  margin:0 auto 16px;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  background:transparent !important;
+  overflow:visible;
+}
+body.embed-mode .payment-qr{
+  width:auto;
+  max-width:min(320px,92vw);
+  max-height:none;
+  border-radius:20px;
+  box-shadow:0 18px 40px rgba(7,29,58,.12);
+}
+body.embed-mode .payment-meta{
+  max-width:390px;
+  margin:4px auto 14px;
+  grid-template-columns:1.15fr .85fr;
+  gap:10px;
+}
+body.embed-mode .payment-meta > div{
+  background:#f8fbff;
+  border-color:#dbe5f0;
+}
+body.embed-mode .payment-action-row{max-width:390px;}
+body.embed-mode .payment-action-row .confirm-payment{
+  padding:13px 18px;
+  border-radius:14px;
+}
+body.embed-mode .notice{
+  max-width:390px;
+  margin:12px auto 0;
+  color:#7c8795;
+  font-size:12px;
+  line-height:1.65;
+  text-align:center;
+}
+body.embed-mode.dark-mode .payment-meta > div{
+  background:#f8fbff;
+  border-color:#dbe5f0;
+}
+body.embed-mode.dark-mode .payment-meta span{color:#7b8795;}
+body.embed-mode.dark-mode .payment-meta strong{color:#0a2342;}
+body.embed-mode.dark-mode .notice{color:#7c8795;}
+
+@media (max-width:520px){
+  body.embed-mode .qr-wrap{min-height:310px;}
+  body.embed-mode .payment-qr{max-width:min(290px,90vw);}
+  body.embed-mode .payment-meta{grid-template-columns:1fr 1fr;}
+}

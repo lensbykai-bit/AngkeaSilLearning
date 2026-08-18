@@ -173,3 +173,47 @@ document.addEventListener("keydown", (event) => {
     if (authModal?.classList.contains("open")) closeAuth();
   }
 });
+
+/* KHQR purchase popup */
+const purchaseModal = document.getElementById("purchaseModal");
+const purchaseClose = document.getElementById("purchaseClose");
+const purchaseFrame = document.getElementById("purchaseFrame");
+
+function openPurchaseModal(courseId) {
+  if (!purchaseModal || !purchaseFrame || !courseId) return;
+  purchaseFrame.src = `payment.html?courseId=${encodeURIComponent(courseId)}&embed=1`;
+  purchaseModal.classList.add("open");
+  purchaseModal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+}
+
+function closePurchaseModal() {
+  if (!purchaseModal || !purchaseFrame) return;
+  purchaseModal.classList.remove("open");
+  purchaseModal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+  // Stop polling and countdown when the popup is closed.
+  window.setTimeout(() => {
+    if (!purchaseModal.classList.contains("open")) purchaseFrame.src = "about:blank";
+  }, 180);
+}
+
+document.querySelectorAll(".enroll-btn").forEach((link) => {
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+    const url = new URL(link.href, window.location.href);
+    const courseId = url.searchParams.get("courseId");
+    if (courseId) openPurchaseModal(courseId);
+  });
+});
+
+purchaseClose?.addEventListener("click", closePurchaseModal);
+purchaseModal?.addEventListener("click", (event) => {
+  if (event.target === purchaseModal) closePurchaseModal();
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && purchaseModal?.classList.contains("open")) {
+    closePurchaseModal();
+  }
+});

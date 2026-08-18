@@ -1597,3 +1597,89 @@ body.dark-mode .eyebrow{background:rgba(17,35,55,.82);color:#e6bc70;border-color
   .course-card > img{height:170px;}
   .about h2{font-size:30px;}
 }
+
+/* ===== KHQR purchase popup ===== */
+.purchase-modal{
+  position:fixed;
+  inset:0;
+  z-index:2200;
+  display:none;
+  place-items:center;
+  padding:20px;
+  background:rgba(3,15,30,.72);
+  backdrop-filter:blur(8px);
+}
+.purchase-modal.open{display:grid;}
+.purchase-dialog{
+  width:min(510px,100%);
+  max-height:min(820px,calc(100vh - 32px));
+  overflow:hidden;
+  border-radius:24px;
+  background:#fff;
+  box-shadow:0 28px 80px rgba(0,0,0,.34);
+  border:1px solid rgba(255,255,255,.5);
+  transform:translateY(10px) scale(.985);
+  opacity:0;
+  transition:transform .2s ease,opacity .2s ease;
+}
+.purchase-modal.open .purchase-dialog{
+  transform:translateY(0) scale(1);
+  opacity:1;
+}
+.purchase-modal-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  padding:20px 22px 14px 26px;
+  background:#fff;
+}
+.purchase-modal-head h2{
+  margin:0;
+  color:#0a2342;
+  font-family:"Kantumruy Pro",system-ui,sans-serif;
+  font-size:27px;
+  font-weight:600;
+  letter-spacing:-.02em;
+}
+.purchase-close{
+  width:40px;
+  height:40px;
+  display:grid;
+  place-items:center;
+  flex:0 0 auto;
+  border:0;
+  border-radius:50%;
+  background:#a9aaac;
+  color:white;
+  font-size:30px;
+  line-height:1;
+  cursor:pointer;
+  transition:transform .18s ease,background .18s ease;
+}
+.purchase-close:hover{background:#8f9092;transform:scale(1.04);}
+.purchase-frame-wrap{
+  overflow:auto;
+  max-height:calc(100vh - 116px);
+  padding:0 22px 22px;
+  background:#fff;
+}
+#purchaseFrame{
+  display:block;
+  width:100%;
+  height:610px;
+  border:0;
+  background:transparent;
+}
+body.modal-open{overflow:hidden;}
+body.dark-mode .purchase-modal{background:rgba(0,7,16,.78);}
+
+@media (max-width:560px){
+  .purchase-modal{padding:8px;align-items:center;}
+  .purchase-dialog{width:100%;border-radius:18px;max-height:calc(100vh - 16px);}
+  .purchase-modal-head{padding:18px 18px 10px 20px;}
+  .purchase-modal-head h2{font-size:25px;}
+  .purchase-close{width:38px;height:38px;font-size:28px;}
+  .purchase-frame-wrap{padding:0 12px 16px;max-height:calc(100vh - 90px);}
+  #purchaseFrame{height:590px;}
+}
