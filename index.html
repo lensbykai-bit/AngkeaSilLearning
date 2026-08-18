@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="km">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="អង្គារសិល៍ ឡឺនីង — វគ្គសិក្សាអនឡាញ មេរៀនឥតគិតថ្លៃ និងឯកសារសិក្សា។">
+  <meta name="theme-color" content="#ffffff">
+  <title>អង្គារសិល៍ ឡឺនីង — រៀនថ្ងៃនេះ បង្កើតអនាគត</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar" id="home">
+    <div class="shell nav-shell">
+      <a class="brand" href="#home" aria-label="អង្គារសិល៍ ឡឺនីង">
+        <img src="assets/logo.svg" alt="អង្គារសិល៍ ឡឺនីង">
+        <span>
+          <strong>អង្គារសិល៍ ឡឺនីង</strong>
+          <small>រៀនជំនាញ។ បង្កើតលទ្ធផលពិត។</small>
+        </span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="បើកម៉ឺនុយ">☰</button>
+
+      <nav class="nav-links" id="navLinks">
+        <a class="active" href="#home">ទំព័រដើម</a>
+        <a href="#courses">វគ្គសិក្សា</a>
+        <a href="#ebooks">សៀវភៅ</a>
+        <a href="#free">មេរៀនឥតគិតថ្លៃ</a>
+        <a href="#about">អំពីយើង</a>
+        <a href="#contact">ទំនាក់ទំនង</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn" id="searchBtn" type="button" aria-label="ស្វែងរក">⌕</button>
+        <button class="cart-btn" id="cartBtn" type="button" aria-label="កន្ត្រក">
+          🛒 <span>0</span>
+        </button>
+        <button class="login-btn login-open" type="button">ចូល / ចុះឈ្មោះ</button>
+        <a class="gold-btn" href="#courses">ចាប់ផ្តើម</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-glow glow-a"></div>
+      <div class="hero-glow glow-b"></div>
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <div class="pill">★ រៀនថ្ងៃនេះ ដឹកនាំអនាគតថ្ងៃស្អែក</div>
+          <h1>ចាប់ផ្តើមរៀន។<br><span>បង្កើតអនាគតរបស់អ្នក។</span></h1>
+          <p>
+            ចូលរៀនវគ្គសិក្សាអនឡាញ ឯកសារឌីជីថល និងមេរៀនអនុវត្ត
+            ដែលរៀបចំឲ្យងាយយល់ ដើម្បីអភិវឌ្ឍជំនាញ និងសម្រេចគោលដៅរបស់អ្នក។
+          </p>
+          <div class="hero-buttons">
+            <a class="primary-btn" href="#courses">ស្វែងរកវគ្គសិក្សា <b>→</b></a>
+            <button class="secondary-btn" id="watchIntro" type="button">▶ មើលវីដេអូណែនាំ</button>
+          </div>
+
+          <div class="trust-row">
+            <div class="avatars">
+              <span>រ</span><span>ស</span><span>ម</span><span>ក</span>
+            </div>
+            <div><strong>អ្នកសិក្សាជាច្រើន</strong><small>ជឿទុកចិត្តលើមេរៀនរបស់យើង ✨</small></div>
+          </div>
+        </div>
+
+        <div class="hero-person">
+          <div class="signature">Angkea Sil</div>
+          <div class="role">Founder & Instructor</div>
+
+          <div class="portrait-card">
+            <div class="portrait-bg">
+              <div class="desk">
+                <div class="books"><i></i><i></i><i></i></div>
+                <div class="laptop"><span>ASL</span></div>
+              </div>
+              <div class="person-illustration" aria-label="គ្រូបង្រៀន">
+                <div class="head"></div>
+                <div class="hair"></div>
+                <div class="neck"></div>
+                <div class="shirt"></div>
+                <div class="arms"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="experience-card">
+            <div><b>🎓</b><span><strong>5+</strong><small>ឆ្នាំបទពិសោធន៍</small></span></div>
+            <div><b>📖</b><span><strong>200+</strong><small>មេរៀនគុណភាព</small></span></div>
+            <div><b>👥</b><span><strong>10K+</strong><small>អ្នកសិក្សា</small></span></div>
+            <div><b>⭐</b><span><strong>4.9/5</strong><small>ការវាយតម្លៃ</small></span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="shell feature-strip">
+        <article><span class="feature-icon blue">▶</span><div><b>មេរៀនវីដេអូ</b><small>រៀនតាមល្បឿនរបស់អ្នក</small></div></article>
+        <article id="ebooks"><span class="feature-icon red">▤</span><div><b>ឯកសារ PDF</b><small>ទាញយកសិក្សាគ្រប់ទីកន្លែង</small></div></article>
+        <article><span class="feature-icon green">☵</span><div><b>ក្រុមគាំទ្រ</b><small>សួរ និងចែករំលែកចំណេះដឹង</small></div></article>
+        <article id="free"><span class="feature-icon orange">✓</span><div><b>អនុវត្តជាក់ស្តែង</b><small>អភិវឌ្ឍជំនាញពិត</small></div></article>
+        <article><span class="feature-icon purple">★</span><div><b>វិញ្ញាបនបត្រ</b><small>បង្ហាញសមិទ្ធផលរបស់អ្នក</small></div></article>
+      </div>
+    </section>
+
+    <section class="numbers">
+      <div class="shell numbers-grid">
+        <div><span>👥</span><strong>10,000+</strong><small>អ្នកសិក្សាសកម្ម</small></div>
+        <div><span>📖</span><strong>200+</strong><small>មេរៀនគុណភាព</small></div>
+        <div><span>▶</span><strong>500+</strong><small>វីដេអូបង្រៀន</small></div>
+        <div><span>⭐</span><strong>4.9/5</strong><small>ការវាយតម្លៃ</small></div>
+      </div>
+    </section>
+
+    <section class="courses-section" id="courses">
+      <div class="shell">
+        <div class="section-title-row">
+          <div>
+            <span class="eyebrow">ជ្រើសរើសវគ្គដែលសមនឹងអ្នក</span>
+            <h2>វគ្គសិក្សាពេញនិយម</h2>
+          </div>
+          <a href="#courses">មើលវគ្គទាំងអស់ →</a>
+        </div>
+
+        <div class="course-grid">
+          <article class="course-card">
+            <div class="course-cover cover-blue">
+              <span class="badge">中文</span>
+              <div>
+                <small>ចាប់ផ្តើមពីសូន្យ</small>
+                <h3>មូលដ្ឋាន<br>ភាសាចិន</h3>
+              </div>
+              <div class="cover-art">你</div>
+            </div>
+            <div class="course-info">
+              <div class="rating">★ 4.9 <span>(1,250)</span> <em>2,500+ សិស្ស</em></div>
+              <div class="price-row"><strong>$12.00</strong><a class="enroll-btn" href="payment.html?courseId=chinese-basics">ចុះឈ្មោះ</a></div>
+            </div>
+          </article>
+
+          <article class="course-card">
+            <div class="course-cover cover-green">
+              <span class="badge">XLS</span>
+              <div>
+                <small>ការងារ & អាជីវកម្ម</small>
+                <h3>Excel សម្រាប់<br>អាជីវកម្ម</h3>
+              </div>
+              <div class="cover-art">X</div>
+            </div>
+            <div class="course-info">
+              <div class="rating">★ 4.8 <span>(980)</span> <em>1,800+ សិស្ស</em></div>
+              <div class="price-row"><strong>$10.00</strong><a class="enroll-btn" href="payment.html?courseId=excel-business">ចុះឈ្មោះ</a></div>
+            </div>
+          </article>
+
+          <article class="course-card">
+            <div class="course-cover cover-purple">
+              <span class="badge">JS</span>
+              <div>
+                <small>HTML • CSS • JavaScript</small>
+                <h3>បង្កើត<br>គេហទំព័រ</h3>
+              </div>
+              <div class="cover-art">⌘</div>
+            </div>
+            <div class="course-info">
+              <div class="rating">★ 4.9 <span>(760)</span> <em>1,200+ សិស្ស</em></div>
+              <div class="price-row"><strong>$15.00</strong><a class="enroll-btn" href="payment.html?courseId=website-basics">ចុះឈ្មោះ</a></div>
+            </div>
+          </article>
+
+          <article class="course-card">
+            <div class="course-cover cover-gold">
+              <span class="badge">FREE</span>
+              <div>
+                <small>មេរៀនណែនាំ</small>
+                <h3>គ្រប់គ្រង<br>ហិរញ្ញវត្ថុផ្ទាល់ខ្លួន</h3>
+              </div>
+              <div class="cover-art">↗</div>
+            </div>
+            <div class="course-info">
+              <div class="rating">★ 4.8 <span>(1,100)</span> <em>2,000+ សិស្ស</em></div>
+              <div class="price-row"><strong>ឥតគិតថ្លៃ</strong><button class="free-btn" type="button">រៀនឥឡូវ</button></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section" id="about">
+      <div class="shell about-grid">
+        <div class="quote-card">
+          <span>“</span>
+          <p>មេរៀនត្រូវបានរៀបចំឲ្យងាយយល់ អនុវត្តបាន និងផ្តោតលើលទ្ធផលដែលអ្នកអាចប្រើបានពិតប្រាកដ។</p>
+          <strong>— អង្គារសិល៍ ឡឺនីង</strong>
+        </div>
+
+        <div class="about-content">
+          <span class="eyebrow">អំពីយើង</span>
+          <h2>ការរៀនដែលស្អាត សាមញ្ញ និងមានគោលដៅច្បាស់។</h2>
+          <p>យើងផ្តោតលើការបង្កើតមេរៀនដែលអាចសិក្សាបានដោយខ្លួនឯង មានឯកសារគាំទ្រ និងការអនុវត្តជាក់ស្តែង។</p>
+          <div class="about-tags"><span>✓ ងាយយល់</span><span>✓ អនុវត្តបាន</span><span>✓ សិក្សាគ្រប់ទីកន្លែង</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="social-section" id="contact">
+      <div class="shell social-grid">
+        <a href="#"><b class="tg">✈</b><span><small>ចូលរួមជាមួយយើង</small><strong>Telegram</strong></span></a>
+        <a href="#"><b class="fb">f</b><span><small>តាមដានពួកយើង</small><strong>Facebook</strong></span></a>
+        <a href="#"><b class="yt">▶</b><span><small>មើលវីដេអូថ្មីៗ</small><strong>YouTube</strong></span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <a class="brand footer-brand" href="#home">
+        <img src="assets/logo.svg" alt="">
+        <span><strong>អង្គារសិល៍ ឡឺនីង</strong><small>រៀនថ្ងៃនេះ បង្កើតអនាគតថ្ងៃស្អែក។</small></span>
+      </a>
+      <p>© 2026 អង្គារសិល៍ ឡឺនីង។ រក្សាសិទ្ធិគ្រប់យ៉ាង។</p>
+    </div>
+  </footer>
+
+  <!-- Search -->
+  <div class="search-panel" id="searchPanel" aria-hidden="true">
+    <div class="search-box">
+      <button class="modal-x" data-close="searchPanel" type="button">×</button>
+      <h3>ស្វែងរកមេរៀន</h3>
+      <input id="courseSearch" type="search" placeholder="វាយឈ្មោះវគ្គសិក្សា...">
+      <div id="searchResults" class="search-results"></div>
+    </div>
+  </div>
+
+  <!-- Intro -->
+  <div class="modal" id="introModal" aria-hidden="true">
+    <div class="intro-card">
+      <button class="modal-x" data-close="introModal" type="button">×</button>
+      <div class="intro-play">▶</div>
+      <h3>សូមស្វាគមន៍មកកាន់ អង្គារសិល៍ ឡឺនីង</h3>
+      <p>វីដេអូណែនាំនឹងត្រូវដាក់នៅទីនេះនៅ Version បន្ទាប់។</p>
+    </div>
+  </div>
+
+  <!-- Login / Signup -->
+  <div class="modal" id="authModal" aria-hidden="true">
+    <div class="auth-card">
+      <button class="modal-x" data-close="authModal" type="button">×</button>
+      <div class="auth-head">
+        <img src="assets/logo.svg" alt="">
+        <div><strong>អង្គារសិល៍ ឡឺនីង</strong><small>សូមស្វាគមន៍ត្រឡប់មកវិញ</small></div>
+      </div>
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-tab="login" type="button">ចូលគណនី</button>
+        <button class="auth-tab" data-tab="signup" type="button">ចុះឈ្មោះ</button>
+      </div>
+      <form class="auth-form active" data-panel="login">
+        <label>អ៊ីមែល<input type="email" required placeholder="you@example.com"></label>
+        <label>ពាក្យសម្ងាត់<input type="password" required placeholder="••••••••"></label>
+        <button class="primary-btn full" type="submit">ចូលគណនី</button>
+      </form>
+      <form class="auth-form" data-panel="signup">
+        <label>ឈ្មោះពេញ<input type="text" required placeholder="ឈ្មោះរបស់អ្នក"></label>
+        <label>អ៊ីមែល<input type="email" required placeholder="you@example.com"></label>
+        <label>ពាក្យសម្ងាត់<input type="password" required placeholder="••••••••"></label>
+        <button class="primary-btn full" type="submit">បង្កើតគណនី</button>
+      </form>
+      <p class="demo-note" id="authMessage">នេះជាទម្រង់ UI សម្រាប់ v1។ ប្រព័ន្ធគណនីពិតនឹងភ្ជាប់នៅ Version បន្ទាប់។</p>
+    </div>
+  </div>
+
+  <!-- Purchase / KHQR -->
+  <div class="purchase-modal" id="purchaseModal" aria-hidden="true">
+    <div class="purchase-card">
+      <button class="purchase-close" id="purchaseClose" type="button" aria-label="បិទ">×</button>
+      <div class="purchase-title">
+        <span>🔐</span>
+        <div><strong>ទូទាត់ដោយ ABA KHQR</strong><small>ការទូទាត់មានសុវត្ថិភាព</small></div>
+      </div>
+      <iframe id="purchaseFrame" title="ABA KHQR Payment" src="about:blank"></iframe>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
