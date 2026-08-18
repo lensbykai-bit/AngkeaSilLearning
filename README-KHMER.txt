@@ -23,10 +23,3 @@ Files:
 3. Upload file ថ្មីទាំងអស់ពី ZIP នេះ
 4. Commit changes
 5. Refresh website
-
-
-KHMER CHINESE PREMIUM v4
-- កែ Theme ឲ្យប្រណិតជាង v3
-- មានក្បាច់ស្រាលៗបែបខ្មែរ + អក្សរចិនតុបតែង
-- ពណ៌ Navy + Gold + Vermilion
-- រក្សា 2-Step Payment Popup និង Backend ដដែល
