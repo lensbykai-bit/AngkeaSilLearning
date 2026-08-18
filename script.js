@@ -5,7 +5,168 @@ const menu=$('#menuToggle'), nav=$('#navMenu'); menu?.addEventListener('click',(
 function openModal(id){const el=document.getElementById(id);if(!el)return;el.classList.add('open');body.classList.add('modal-open')}
 function closeModal(id){const el=document.getElementById(id);if(!el)return;el.classList.remove('open');if(!$('.modal.open,.purchase-modal.open'))body.classList.remove('modal-open')}
 $$('[data-close]').forEach(b=>b.addEventListener('click',()=>closeModal(b.dataset.close))); $$('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)closeModal(m.id)}));
-$('#watchIntro')?.addEventListener('click',()=>openModal('introModal')); $$('.login-open').forEach(b=>b.addEventListener('click',()=>openModal('authModal'))); $('#searchBtn')?.addEventListener('click',()=>{openModal('searchModal');setTimeout(()=>$('#courseSearch')?.focus(),80)}); $('#cartBtn')?.addEventListener('click',()=>showToast('កន្ត្រកនឹងត្រូវបន្ថែមនៅ Version បន្ទាប់។')); 
+
+// ============================================================
+// Shopping cart
+// ============================================================
+const CART_CATALOG = {
+  "chinese-basics": {
+    name: "មូលដ្ឋានភាសាចិន",
+    price: 12,
+    image: "assets/course-chinese-v12.svg"
+  },
+  "excel-business": {
+    name: "Excel សម្រាប់អាជីវកម្ម",
+    price: 10,
+    image: "assets/course-excel-v12.svg"
+  },
+  "website-basics": {
+    name: "បង្កើតគេហទំព័រ HTML, CSS & JS",
+    price: 15,
+    image: "assets/course-web-v12.svg"
+  }
+};
+
+function getCart() {
+  try {
+    const value = JSON.parse(localStorage.getItem("asl-cart") || "[]");
+    return Array.isArray(value) ? [...new Set(value.filter(id => CART_CATALOG[id]))] : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveCart(items) {
+  const clean = [...new Set(items.filter(id => CART_CATALOG[id]))];
+  localStorage.setItem("asl-cart", JSON.stringify(clean));
+  updateCartUI();
+}
+
+function addToCart(id) {
+  if (!CART_CATALOG[id]) return;
+  const items = getCart();
+  if (!items.includes(id)) {
+    items.push(id);
+    saveCart(items);
+    showToast("បានបន្ថែមមេរៀនទៅកន្ត្រក ✓");
+  } else {
+    showToast("មេរៀននេះមានក្នុងកន្ត្រករួចហើយ។");
+  }
+}
+
+function removeFromCart(id) {
+  saveCart(getCart().filter(x => x !== id));
+}
+
+function formatMoney(value) {
+  return `$${Number(value || 0).toFixed(2)}`;
+}
+
+function updateCartUI() {
+  const items = getCart();
+  const countBadge = $("#cartBtn b");
+  const list = $("#cartList");
+  const itemCount = $("#cartItemCount");
+  const totalEl = $("#cartTotal");
+  const checkoutBtn = $("#cartCheckoutBtn");
+
+  if (countBadge) countBadge.textContent = String(items.length);
+  if (itemCount) itemCount.textContent = String(items.length);
+
+  const total = items.reduce((sum, id) => sum + CART_CATALOG[id].price, 0);
+  if (totalEl) totalEl.textContent = formatMoney(total);
+
+  if (checkoutBtn) {
+    checkoutBtn.disabled = items.length === 0;
+    checkoutBtn.textContent = items.length > 1
+      ? `ចាប់ផ្តើមទូទាត់ (${items.length} វគ្គ)`
+      : "ចាប់ផ្តើមទូទាត់";
+  }
+
+  if (!list) return;
+
+  if (!items.length) {
+    list.innerHTML = `
+      <div class="cart-empty">
+        <div>🛒</div>
+        <strong>កន្ត្រករបស់អ្នកនៅទទេ</strong>
+        <small>ចុច «＋ កន្ត្រក» លើមេរៀនដែលអ្នកចង់ទិញ។</small>
+      </div>`;
+    return;
+  }
+
+  list.innerHTML = items.map(id => {
+    const item = CART_CATALOG[id];
+    return `
+      <article class="cart-row" data-cart-id="${id}">
+        <img src="${item.image}" alt="${item.name}">
+        <div class="cart-row-copy">
+          <small>វគ្គសិក្សា</small>
+          <strong>${item.name}</strong>
+          <button class="cart-pay-one" type="button" data-pay-course="${id}">ទូទាត់វគ្គនេះ</button>
+        </div>
+        <div class="cart-row-side">
+          <b>${formatMoney(item.price)}</b>
+          <button class="cart-remove" type="button" data-remove-course="${id}" aria-label="លុប">×</button>
+        </div>
+      </article>`;
+  }).join("");
+}
+
+$("#cartBtn")?.addEventListener("click", () => {
+  updateCartUI();
+  openModal("cartModal");
+});
+
+document.addEventListener("click", (e) => {
+  const add = e.target.closest(".add-cart-btn");
+  if (add) {
+    e.preventDefault();
+    addToCart(add.dataset.courseId);
+    return;
+  }
+
+  const remove = e.target.closest("[data-remove-course]");
+  if (remove) {
+    e.preventDefault();
+    removeFromCart(remove.dataset.removeCourse);
+    return;
+  }
+
+  const payOne = e.target.closest("[data-pay-course]");
+  if (payOne) {
+    e.preventDefault();
+    closeModal("cartModal");
+    openPurchase(payOne.dataset.payCourse);
+  }
+});
+
+$("#cartCheckoutBtn")?.addEventListener("click", () => {
+  const items = getCart();
+  if (!items.length) return;
+  // PayWay integration currently creates one KHQR transaction per course.
+  closeModal("cartModal");
+  openPurchase(items[0]);
+});
+
+window.addEventListener("message", (event) => {
+  if (event.origin !== location.origin) return;
+  if (event.data?.type !== "asl-payment-approved") return;
+
+  const paidId = event.data.courseId;
+  if (paidId) removeFromCart(paidId);
+
+  const remaining = getCart();
+  if (!remaining.length) {
+    showToast("ការទូទាត់បានជោគជ័យ និងកន្ត្រកបានសម្អាត ✓");
+  } else {
+    showToast(`ទូទាត់បានជោគជ័យ។ នៅសល់ ${remaining.length} វគ្គក្នុងកន្ត្រក។`);
+  }
+});
+
+updateCartUI();
+
+$('#watchIntro')?.addEventListener('click',()=>openModal('introModal')); $$('.login-open').forEach(b=>b.addEventListener('click',()=>openModal('authModal'))); $('#searchBtn')?.addEventListener('click',()=>{openModal('searchModal');setTimeout(()=>$('#courseSearch')?.focus(),80)}); 
 // Premium navigation popups
 $("#popularCoursesBtn")?.addEventListener("click", (e) => {
   e.preventDefault();

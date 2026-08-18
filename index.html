@@ -96,15 +96,24 @@
       <div class="course-grid">
         <article class="course-card">
           <div class="course-thumb"><img src="assets/course-chinese-v12.svg" alt="មូលដ្ឋានភាសាចិន"><span>中文</span></div>
-          <div class="course-body"><h3>មូលដ្ឋានភាសាចិន</h3><div class="course-meta">★ 4.9 <em>(1,250)</em><small>2,500+ សិស្ស</small></div><div class="course-bottom"><strong>$12.00</strong><a class="enroll-btn" href="payment.html?courseId=chinese-basics">ចុះឈ្មោះ</a></div></div>
+          <div class="course-body"><h3>មូលដ្ឋានភាសាចិន</h3><div class="course-meta">★ 4.9 <em>(1,250)</em><small>2,500+ សិស្ស</small></div><div class="course-bottom"><strong>$12.00</strong><div class="course-actions">
+      <button class="add-cart-btn" type="button" data-course-id="chinese-basics" aria-label="បន្ថែមទៅកន្ត្រក">＋ កន្ត្រក</button>
+      <a class="enroll-btn" href="payment.html?courseId=chinese-basics">ទិញឥឡូវ</a>
+    </div></div></div>
         </article>
         <article class="course-card">
           <div class="course-thumb"><img src="assets/course-excel-v12.svg" alt="Excel សម្រាប់អាជីវកម្ម"><span>XLS</span></div>
-          <div class="course-body"><h3>Excel សម្រាប់អាជីវកម្ម</h3><div class="course-meta">★ 4.8 <em>(980)</em><small>1,800+ សិស្ស</small></div><div class="course-bottom"><strong>$10.00</strong><a class="enroll-btn" href="payment.html?courseId=excel-business">ចុះឈ្មោះ</a></div></div>
+          <div class="course-body"><h3>Excel សម្រាប់អាជីវកម្ម</h3><div class="course-meta">★ 4.8 <em>(980)</em><small>1,800+ សិស្ស</small></div><div class="course-bottom"><strong>$10.00</strong><div class="course-actions">
+      <button class="add-cart-btn" type="button" data-course-id="excel-business" aria-label="បន្ថែមទៅកន្ត្រក">＋ កន្ត្រក</button>
+      <a class="enroll-btn" href="payment.html?courseId=excel-business">ទិញឥឡូវ</a>
+    </div></div></div>
         </article>
         <article class="course-card">
           <div class="course-thumb"><img src="assets/course-web-v12.svg" alt="បង្កើតគេហទំព័រ"><span>JS</span></div>
-          <div class="course-body"><h3>បង្កើតគេហទំព័រ HTML, CSS & JS</h3><div class="course-meta">★ 4.9 <em>(760)</em><small>1,200+ សិស្ស</small></div><div class="course-bottom"><strong>$15.00</strong><a class="enroll-btn" href="payment.html?courseId=website-basics">ចុះឈ្មោះ</a></div></div>
+          <div class="course-body"><h3>បង្កើតគេហទំព័រ HTML, CSS & JS</h3><div class="course-meta">★ 4.9 <em>(760)</em><small>1,200+ សិស្ស</small></div><div class="course-bottom"><strong>$15.00</strong><div class="course-actions">
+      <button class="add-cart-btn" type="button" data-course-id="website-basics" aria-label="បន្ថែមទៅកន្ត្រក">＋ កន្ត្រក</button>
+      <a class="enroll-btn" href="payment.html?courseId=website-basics">ទិញឥឡូវ</a>
+    </div></div></div>
         </article>
         <article class="course-card" id="free">
           <div class="course-thumb"><img src="assets/course-finance-v12.svg" alt="ហិរញ្ញវត្ថុផ្ទាល់ខ្លួន"><span>FREE</span></div>
@@ -164,7 +173,36 @@
     <div class="modal-kicker">សៀវភៅ</div>
     <h3>ឆាប់ៗនេះ</h3>
     <p>យើងកំពុងរៀបចំសៀវភៅ និងឯកសារសិក្សាថ្មីៗ ដើម្បីឲ្យអ្នកអាចអាន និងទាញយកបានកាន់តែងាយស្រួល។</p>
-    <div class="coming-tags"><span>PDF</span><span>E-book</span><span>Worksheet</span></div>
+  </div>
+</div>
+
+
+<!-- Shopping cart popup -->
+<div class="modal premium-modal" id="cartModal">
+  <div class="modal-card cart-modal-card">
+    <button data-close="cartModal" aria-label="បិទ">×</button>
+
+    <div class="cart-title-row">
+      <div>
+        <div class="modal-kicker">កន្ត្រករបស់អ្នក</div>
+        <h3>ពិនិត្យមេរៀនមុនទូទាត់</h3>
+        <p>ពិនិត្យមេរៀន តម្លៃ និងសរុបមុនចាប់ផ្តើមការទូទាត់។</p>
+      </div>
+      <div class="cart-bag">🛒</div>
+    </div>
+
+    <div class="cart-list" id="cartList"></div>
+
+    <div class="cart-summary">
+      <div><span>ចំនួនមេរៀន</span><strong id="cartItemCount">0</strong></div>
+      <div class="cart-total-row"><span>សរុបតម្លៃ</span><strong id="cartTotal">$0.00</strong></div>
+    </div>
+
+    <div class="cart-checkout-note" id="cartCheckoutNote">
+      ABA PayWay បច្ចុប្បន្នទូទាត់មួយវគ្គម្តង។ សរុបខាងលើសម្រាប់ឆែកមើលកន្ត្រករបស់អ្នក។
+    </div>
+
+    <button class="cart-checkout-btn" id="cartCheckoutBtn" type="button">ចាប់ផ្តើមទូទាត់</button>
   </div>
 </div>
 

@@ -165,6 +165,29 @@ function paymentState(result) {
 }
 
 
+
+function removePaidCourseFromCart(id) {
+  if (!id) return;
+  try {
+    const current = JSON.parse(localStorage.getItem("asl-cart") || "[]");
+    const list = Array.isArray(current) ? current.filter(item => item !== id) : [];
+    localStorage.setItem("asl-cart", JSON.stringify(list));
+  } catch (error) {
+    console.warn("Unable to update cart:", error);
+  }
+
+  try {
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage(
+        { type: "asl-payment-approved", courseId: id },
+        window.location.origin
+      );
+    }
+  } catch (error) {
+    console.warn("Unable to notify parent window:", error);
+  }
+}
+
 function unlockPurchasedCourse(id) {
   if (!id) return;
   try {
@@ -206,6 +229,7 @@ async function checkPayment({ manual = false } = {}) {
 
     if (state === "approved") {
       unlockPurchasedCourse(courseId);
+      removePaidCourseFromCart(courseId);
       paymentCompleted = true;
       stopTimers();
 
