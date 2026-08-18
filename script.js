@@ -1,96 +1,13 @@
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
-const body=document.body, toast=$("#toast");
-
-function showToast(message){
-  if(!toast)return;
-  toast.textContent=message;
-  toast.classList.add("show");
-  clearTimeout(showToast.t);
-  showToast.t=setTimeout(()=>toast.classList.remove("show"),2200);
-}
-
-const menuToggle=$("#menuToggle"), navLinks=$("#navLinks");
-menuToggle?.addEventListener("click",()=>navLinks?.classList.toggle("open"));
-$$(".nav-links a").forEach(a=>a.addEventListener("click",()=>navLinks?.classList.remove("open")));
-
-function openLayer(id){
-  const el=document.getElementById(id);
-  if(!el)return;
-  el.classList.add("open");
-  el.setAttribute("aria-hidden","false");
-  body.classList.add("modal-open");
-}
-function closeLayer(id){
-  const el=document.getElementById(id);
-  if(!el)return;
-  el.classList.remove("open");
-  el.setAttribute("aria-hidden","true");
-  if(!$(".modal.open,.search-panel.open,.purchase-modal.open")) body.classList.remove("modal-open");
-}
-$$("[data-close]").forEach(btn=>btn.addEventListener("click",()=>closeLayer(btn.dataset.close)));
-$$(".modal,.search-panel").forEach(layer=>layer.addEventListener("click",e=>{if(e.target===layer)closeLayer(layer.id)}));
-
-$("#watchIntro")?.addEventListener("click",()=>openLayer("introModal"));
-$("#searchBtn")?.addEventListener("click",()=>{openLayer("searchPanel");setTimeout(()=>$("#courseSearch")?.focus(),80)});
-$("#cartBtn")?.addEventListener("click",()=>showToast("កន្ត្រកនឹងត្រូវបន្ថែមនៅ Version បន្ទាប់។"));
-$$(".login-open").forEach(btn=>btn.addEventListener("click",()=>openLayer("authModal")));
-$$(".free-btn").forEach(btn=>btn.addEventListener("click",()=>showToast("មេរៀនឥតគិតថ្លៃនឹងបើកនៅ Version បន្ទាប់។")));
-
-const courses=[
-  {name:"មូលដ្ឋានភាសាចិន",price:"$12.00",id:"chinese-basics"},
-  {name:"Excel សម្រាប់អាជីវកម្ម",price:"$10.00",id:"excel-business"},
-  {name:"បង្កើតគេហទំព័រ",price:"$15.00",id:"website-basics"},
-  {name:"គ្រប់គ្រងហិរញ្ញវត្ថុផ្ទាល់ខ្លួន",price:"ឥតគិតថ្លៃ",id:"free"}
-];
-const courseSearch=$("#courseSearch"), searchResults=$("#searchResults");
-function renderSearch(q=""){
-  if(!searchResults)return;
-  const key=q.trim().toLowerCase();
-  const rows=courses.filter(c=>!key||c.name.toLowerCase().includes(key));
-  searchResults.innerHTML=rows.map(c=>c.id==="free"
-    ? `<a href="#free"><span>${c.name}</span><b>${c.price}</b></a>`
-    : `<a href="payment.html?courseId=${c.id}" class="search-buy"><span>${c.name}</span><b>${c.price}</b></a>`
-  ).join("") || `<div style="padding:12px;color:#758196">រកមិនឃើញវគ្គសិក្សា</div>`;
-}
-courseSearch?.addEventListener("input",e=>renderSearch(e.target.value));
-$("#searchBtn")?.addEventListener("click",()=>renderSearch());
-
-const authTabs=$$(".auth-tab"), authForms=$$(".auth-form");
-authTabs.forEach(tab=>tab.addEventListener("click",()=>{
-  authTabs.forEach(x=>x.classList.toggle("active",x===tab));
-  authForms.forEach(f=>f.classList.toggle("active",f.dataset.panel===tab.dataset.tab));
-}));
-authForms.forEach(form=>form.addEventListener("submit",e=>{
-  e.preventDefault();
-  const msg=$("#authMessage");
-  if(msg)msg.textContent="ទម្រង់បានត្រៀមរួច។ ប្រព័ន្ធគណនីពិតនឹងភ្ជាប់នៅ Version បន្ទាប់។";
-}));
-
-const purchaseModal=$("#purchaseModal"), purchaseFrame=$("#purchaseFrame"), purchaseClose=$("#purchaseClose");
-function openPurchase(courseId){
-  if(!purchaseModal||!purchaseFrame||!courseId)return;
-  purchaseFrame.src=`payment.html?courseId=${encodeURIComponent(courseId)}&embed=1`;
-  purchaseModal.classList.add("open");
-  purchaseModal.setAttribute("aria-hidden","false");
-  body.classList.add("modal-open");
-}
-function closePurchase(){
-  purchaseModal?.classList.remove("open");
-  purchaseModal?.setAttribute("aria-hidden","true");
-  body.classList.remove("modal-open");
-  setTimeout(()=>{if(purchaseFrame&&!purchaseModal?.classList.contains("open"))purchaseFrame.src="about:blank"},180);
-}
-purchaseClose?.addEventListener("click",closePurchase);
-purchaseModal?.addEventListener("click",e=>{if(e.target===purchaseModal)closePurchase()});
-document.addEventListener("click",e=>{
-  const link=e.target.closest(".enroll-btn,.search-buy");
-  if(!link)return;
-  const url=new URL(link.href,location.href);
-  const id=url.searchParams.get("courseId");
-  if(id){e.preventDefault();closeLayer("searchPanel");openPurchase(id)}
-});
-document.addEventListener("keydown",e=>{
-  if(e.key!=="Escape")return;
-  $$(".modal.open,.search-panel.open").forEach(x=>closeLayer(x.id));
-  if(purchaseModal?.classList.contains("open"))closePurchase();
-});
+const body=document.body, toast=$('#toast');
+function showToast(msg){if(!toast)return;toast.textContent=msg;toast.classList.add('show');clearTimeout(showToast.t);showToast.t=setTimeout(()=>toast.classList.remove('show'),2200)}
+const menu=$('#menuToggle'), nav=$('#navMenu'); menu?.addEventListener('click',()=>nav?.classList.toggle('open')); $$('nav a').forEach(a=>a.addEventListener('click',()=>nav?.classList.remove('open')));
+function openModal(id){const el=document.getElementById(id);if(!el)return;el.classList.add('open');body.classList.add('modal-open')}
+function closeModal(id){const el=document.getElementById(id);if(!el)return;el.classList.remove('open');if(!$('.modal.open,.purchase-modal.open'))body.classList.remove('modal-open')}
+$$('[data-close]').forEach(b=>b.addEventListener('click',()=>closeModal(b.dataset.close))); $$('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)closeModal(m.id)}));
+$('#watchIntro')?.addEventListener('click',()=>openModal('introModal')); $$('.login-open').forEach(b=>b.addEventListener('click',()=>openModal('authModal'))); $('#searchBtn')?.addEventListener('click',()=>{openModal('searchModal');setTimeout(()=>$('#courseSearch')?.focus(),80)}); $('#cartBtn')?.addEventListener('click',()=>showToast('កន្ត្រកនឹងត្រូវបន្ថែមនៅ Version បន្ទាប់។')); $$('.free-btn').forEach(b=>b.addEventListener('click',()=>showToast('មេរៀនឥតគិតថ្លៃនឹងបើកនៅ Version បន្ទាប់។')));
+const courses=[{name:'មូលដ្ឋានភាសាចិន',price:'$12.00',id:'chinese-basics'},{name:'Excel សម្រាប់អាជីវកម្ម',price:'$10.00',id:'excel-business'},{name:'បង្កើតគេហទំព័រ HTML, CSS & JS',price:'$15.00',id:'website-basics'}];
+const search=$('#courseSearch'), results=$('#searchResults'); function renderSearch(q=''){if(!results)return;const k=q.trim().toLowerCase();const rows=courses.filter(c=>!k||c.name.toLowerCase().includes(k));results.innerHTML=rows.map(c=>`<a class="search-buy" href="payment.html?courseId=${c.id}"><span>${c.name}</span><b>${c.price}</b></a>`).join('')||'<div style="padding:10px;color:#748196">រកមិនឃើញវគ្គសិក្សា</div>'} search?.addEventListener('input',e=>renderSearch(e.target.value)); $('#searchBtn')?.addEventListener('click',()=>renderSearch());
+const tabs=$$('.auth-tab'), forms=$$('.auth-form'); tabs.forEach(t=>t.addEventListener('click',()=>{tabs.forEach(x=>x.classList.toggle('active',x===t));forms.forEach(f=>f.classList.toggle('active',f.dataset.panel===t.dataset.tab))})); forms.forEach(f=>f.addEventListener('submit',e=>{e.preventDefault();showToast('ប្រព័ន្ធគណនីពិតនឹងភ្ជាប់នៅ Version បន្ទាប់។')}));
+const purchase=$('#purchaseModal'), frame=$('#purchaseFrame'); function openPurchase(id){if(!purchase||!frame)return;frame.src=`payment.html?courseId=${encodeURIComponent(id)}&embed=1`;purchase.classList.add('open');body.classList.add('modal-open')} function closePurchase(){purchase?.classList.remove('open');body.classList.remove('modal-open');setTimeout(()=>{if(frame&&!purchase?.classList.contains('open'))frame.src='about:blank'},180)} $('#purchaseClose')?.addEventListener('click',closePurchase); purchase?.addEventListener('click',e=>{if(e.target===purchase)closePurchase()});
+document.addEventListener('click',e=>{const a=e.target.closest('.enroll-btn,.search-buy');if(!a)return;const u=new URL(a.href,location.href);const id=u.searchParams.get('courseId');if(id){e.preventDefault();closeModal('searchModal');openPurchase(id)}}); document.addEventListener('keydown',e=>{if(e.key!=='Escape')return;$$('.modal.open').forEach(m=>closeModal(m.id));if(purchase?.classList.contains('open'))closePurchase()});
