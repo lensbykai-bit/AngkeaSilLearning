@@ -31,7 +31,7 @@ if (!Array.isArray(owned) || !owned.includes(courseId) || !CATALOG[courseId]) {
     </div>`;
 } else {
   const c = CATALOG[courseId];
-  document.title = `${c.name} — អង្គារសិល៍ ឡឺនីង`;
+  document.title = `${c.name} — អង្គាសីល ល័ននីង`;
   document.getElementById("sidebarTitle").textContent = c.name;
   document.getElementById("lessonTitle").textContent = c.name;
   document.getElementById("lessonSubtitle").textContent = "ជ្រើសមេរៀនខាងឆ្វេង ដើម្បីបន្តការសិក្សា។";
