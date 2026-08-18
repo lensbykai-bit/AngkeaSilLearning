@@ -644,3 +644,156 @@ body.dark-mode .regenerate-payment{
   color:#ffd782;
   border-color:#8d6c32;
 }
+
+/* =========================================================
+   ANGKEA SIL LEARNING — PAYMENT THEME REFINEMENT 2026
+========================================================= */
+:root{
+  --navy:#071d3a;
+  --navy2:#0b315d;
+  --gold:#c99232;
+  --gold2:#e5be70;
+  --rose:#df7888;
+  --paper:#fffaf4;
+  --bg:#fbf5ed;
+  --ink:#172840;
+  --muted:#6f7c8c;
+  --line:#eadbc5;
+  --card:#fffdfa;
+}
+
+body{
+  background:
+    radial-gradient(circle at 12% 8%,rgba(223,120,136,.08),transparent 22%),
+    radial-gradient(circle at 88% 14%,rgba(201,146,50,.09),transparent 24%),
+    linear-gradient(135deg,#fffaf5,#f7efe5 62%,#fffaf5);
+}
+.payment-page{padding:34px 18px 46px;}
+.payment-shell{width:min(1100px,100%);}
+.payment-brand{margin-bottom:20px;padding-right:92px;}
+.back-link{margin-bottom:16px;font-size:13px;color:#40516a;}
+.back-link:hover{color:var(--gold);}
+.brand-row img{width:54px;height:54px;filter:drop-shadow(0 7px 15px rgba(7,29,58,.09));}
+.brand-row strong{font-size:22px;}
+.brand-row small{font-size:12px;}
+.payment-brand h1{margin:20px 0 8px;font-size:34px;line-height:1.45;}
+.payment-brand p{font-size:14px;line-height:1.7;max-width:720px;}
+
+.payment-card{
+  grid-template-columns:.72fr 1.28fr;
+  border-color:rgba(201,146,50,.22);
+  border-radius:28px;
+  box-shadow:0 28px 80px rgba(47,36,24,.11);
+}
+.summary{
+  position:relative;
+  overflow:hidden;
+  padding:38px 34px;
+  background:linear-gradient(158deg,#071d3a 0%,#0b315d 68%,#123f70 100%);
+}
+.summary:after{
+  content:"";
+  position:absolute;
+  left:50%;bottom:-78px;
+  width:230px;height:230px;
+  transform:translateX(-50%);
+  background:url('assets/logo.svg') center/contain no-repeat;
+  opacity:.065;
+  filter:grayscale(.15);
+}
+.summary:before{
+  content:"";
+  position:absolute;
+  width:250px;height:250px;
+  right:-140px;top:-140px;
+  border-radius:50%;
+  border:1px solid rgba(229,190,112,.16);
+  box-shadow:0 0 0 32px rgba(229,190,112,.035),0 0 0 64px rgba(223,120,136,.022);
+}
+.summary > *{position:relative;z-index:2;}
+.summary h2{font-size:21px;margin-bottom:26px;}
+.summary-line{margin:16px 0;}
+.summary-line span{font-size:13px;}
+.summary-line strong{font-size:14px;}
+.summary-line.total{padding-top:2px;}
+.summary-line.total strong{font-size:27px;color:#ffd274;}
+.summary-help{margin-top:32px;padding-top:22px;font-size:12px;color:#d9e4f1;}
+
+.qr-payment{padding:38px 42px 34px;}
+.qr-heading{margin-bottom:20px;}
+.qr-heading h2{font-size:22px;}
+.qr-heading p{font-size:13px;}
+.qr-badge{width:38px;height:38px;background:linear-gradient(145deg,#08254a,#0c3b70);box-shadow:0 7px 18px rgba(7,29,58,.15);}
+.qr-wrap{
+  width:min(290px,100%);
+  min-height:290px;
+  margin-bottom:20px;
+  border-color:#ead9bd;
+  border-radius:22px;
+  background:linear-gradient(145deg,#fff,#fffaf2);
+  box-shadow:0 15px 38px rgba(43,31,17,.09);
+}
+.payment-qr{max-width:256px;max-height:256px;}
+.amount-box{max-width:520px;margin-bottom:18px;border-radius:14px;padding:14px 16px;background:linear-gradient(135deg,#fff3df,#fff9ee);border-color:#e9cf9d;}
+.amount-box strong{font-size:22px;color:#b87712;}
+.payment-meta{max-width:520px;margin:0 auto 18px;display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.payment-meta > div{padding:12px 13px;border:1px solid #ecdfcd;border-radius:12px;background:#fffdfa;}
+.payment-meta span{display:block;margin-bottom:4px;color:#7b8795;font-size:11px;}
+.payment-meta strong{display:block;color:var(--navy);font-size:13px;word-break:break-word;}
+.qr-instructions{max-width:520px;gap:9px;margin-bottom:18px;}
+.qr-instructions div{padding:10px 12px;border-radius:12px;background:#fffdfa;border-color:#eee2d1;}
+.qr-instructions b{width:28px;height:28px;background:#f0dfbf;}
+.qr-instructions span{font-size:13px;}
+.payment-action-row{max-width:520px;margin:0 auto;display:grid;gap:10px;}
+.confirm-payment,.regenerate-payment{width:100%;border-radius:12px;padding:13px 18px;}
+.confirm-payment{box-shadow:0 12px 28px rgba(7,29,58,.16);}
+.confirm-payment:not(:disabled):hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(7,29,58,.19);}
+.confirm-payment:disabled{opacity:.58;cursor:not-allowed;box-shadow:none;}
+.regenerate-payment{border:1px solid #dcc79e;background:#fffaf1;color:var(--navy);font-weight:700;cursor:pointer;}
+.notice{max-width:520px;font-size:11px;}
+.payment-tools{top:8px;}
+.theme-switch{width:64px;height:32px;box-shadow:0 7px 20px rgba(7,29,58,.10);}
+.theme-switch i{width:26px;height:26px;}
+body.dark-mode .theme-switch i{transform:translateX(32px);}
+.success-card{border:1px solid rgba(201,146,50,.25);border-radius:22px;box-shadow:0 30px 80px rgba(0,0,0,.28);}
+.success-home{display:inline-flex;align-items:center;justify-content:center;margin-top:6px;padding:11px 20px;border-radius:10px;background:var(--navy);color:#fff;text-decoration:none;font-weight:700;}
+
+body.dark-mode{
+  --line:#304965;
+  --card:#0f2238;
+  background:
+    radial-gradient(circle at 12% 8%,rgba(223,120,136,.05),transparent 22%),
+    radial-gradient(circle at 88% 14%,rgba(229,190,112,.05),transparent 24%),
+    linear-gradient(135deg,#071321,#0b1c30 62%,#071321);
+}
+body.dark-mode .payment-card{background:#0f2238;border-color:#304965;}
+body.dark-mode .qr-wrap{background:linear-gradient(145deg,#132a43,#102238);border-color:#3a5572;}
+body.dark-mode .payment-meta > div{background:#132a43;border-color:#3a5572;}
+body.dark-mode .payment-meta span{color:#9fb0c4;}
+body.dark-mode .payment-meta strong{color:#f0f5fb;}
+body.dark-mode .amount-box{background:#172b42;border-color:#405a75;}
+body.dark-mode .qr-instructions div{background:#132a43;border-color:#3d5570;}
+body.dark-mode .regenerate-payment{background:#132a43;border-color:#405a75;color:#f0f5fb;}
+
+@media(max-width:860px){
+  .payment-card{grid-template-columns:.8fr 1.2fr;}
+  .qr-payment{padding:34px 28px;}
+  .summary{padding:34px 27px;}
+}
+@media(max-width:760px){
+  .payment-brand{padding-right:0;}
+  .payment-card{grid-template-columns:1fr;}
+  .summary:after{display:none;}
+  .payment-tools{position:absolute;right:0;top:7px;margin:0;}
+  .summary{padding:28px 25px;}
+  .qr-payment{padding:30px 24px;}
+}
+@media(max-width:500px){
+  .payment-page{padding:20px 12px 34px;}
+  .payment-brand h1{font-size:28px;}
+  .brand-row strong{font-size:19px;}
+  .payment-card{border-radius:22px;}
+  .payment-meta{grid-template-columns:1fr;}
+  .qr-wrap{width:min(270px,100%);min-height:270px;}
+  .payment-qr{max-width:238px;max-height:238px;}
+}
