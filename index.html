@@ -24,9 +24,9 @@
     <button class="menu-toggle" id="menuToggle" type="button">☰</button>
     <nav id="navMenu">
       <a class="active" href="#home">ទំព័រដើម</a>
-      <a href="#courses">មេរៀនថ្មីៗ</a>
-      <a href="#ebooks">សៀវភៅ</a>
-      <a href="#courses">មេរៀនទិញ</a>
+      <a href="#" id="popularCoursesBtn">មេរៀនថ្មីៗ</a>
+      <a href="#" id="ebooksBtn">សៀវភៅ</a>
+      <a href="my-courses.html">មេរៀនទិញ</a>
       <a href="#about">អំពីយើង</a>
       <a href="#contact">ទំនាក់ទំនង</a>
     </nav>
@@ -125,6 +125,48 @@
 </main>
 
 <footer><div class="container footer-wrap"><a class="brand footer-brand" href="#home"><img src="assets/logo.svg" alt=""><span><strong>អង្គារសិល៍ ឡឺនីង</strong><small>រៀនថ្ងៃនេះ បង្កើតអនាគតថ្ងៃស្អែក។</small></span></a><p>© 2026 អង្គារសិល៍ ឡឺនីង។ រក្សាសិទ្ធិគ្រប់យ៉ាង។</p></div></footer>
+
+
+<!-- Popular courses popup -->
+<div class="modal premium-modal" id="popularCoursesModal">
+  <div class="modal-card popular-modal-card">
+    <button data-close="popularCoursesModal" aria-label="បិទ">×</button>
+    <div class="modal-kicker">មេរៀនថ្មីៗ</div>
+    <h3>វគ្គសិក្សាពេញនិយម</h3>
+    <p class="modal-lead">ជ្រើសរើសវគ្គដែលអ្នកចង់រៀន ហើយចាប់ផ្តើមអភិវឌ្ឍជំនាញរបស់អ្នក។</p>
+
+    <div class="popular-popup-grid">
+      <a class="popup-course search-buy" href="payment.html?courseId=chinese-basics">
+        <img src="assets/course-chinese-v12.svg" alt="មូលដ្ឋានភាសាចិន">
+        <span><small>ភាសា</small><strong>មូលដ្ឋានភាសាចិន</strong><b>$12.00</b></span>
+      </a>
+      <a class="popup-course search-buy" href="payment.html?courseId=excel-business">
+        <img src="assets/course-excel-v12.svg" alt="Excel សម្រាប់អាជីវកម្ម">
+        <span><small>អាជីវកម្ម</small><strong>Excel សម្រាប់អាជីវកម្ម</strong><b>$10.00</b></span>
+      </a>
+      <a class="popup-course search-buy" href="payment.html?courseId=website-basics">
+        <img src="assets/course-web-v12.svg" alt="បង្កើតគេហទំព័រ">
+        <span><small>បច្ចេកវិទ្យា</small><strong>បង្កើតគេហទំព័រ</strong><b>$15.00</b></span>
+      </a>
+      <a class="popup-course" href="#free" data-close-link="popularCoursesModal">
+        <img src="assets/course-finance-v12.svg" alt="ហិរញ្ញវត្ថុផ្ទាល់ខ្លួន">
+        <span><small>ឥតគិតថ្លៃ</small><strong>ហិរញ្ញវត្ថុផ្ទាល់ខ្លួន</strong><b>FREE</b></span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- E-books coming-soon popup -->
+<div class="modal premium-modal" id="ebooksModal">
+  <div class="modal-card ebooks-modal-card">
+    <button data-close="ebooksModal" aria-label="បិទ">×</button>
+    <div class="coming-icon">📚</div>
+    <div class="modal-kicker">សៀវភៅ</div>
+    <h3>ឆាប់ៗនេះ</h3>
+    <p>យើងកំពុងរៀបចំសៀវភៅ និងឯកសារសិក្សាថ្មីៗ ដើម្បីឲ្យអ្នកអាចអាន និងទាញយកបានកាន់តែងាយស្រួល។</p>
+    <div class="coming-tags"><span>PDF</span><span>E-book</span><span>Worksheet</span></div>
+  </div>
+</div>
 
 <div class="modal" id="introModal"><div class="modal-card"><button data-close="introModal">×</button><div class="play-big">▶</div><h3>វីដេអូណែនាំ</h3><p>វីដេអូណែនាំនឹងដាក់នៅ Version បន្ទាប់។</p></div></div>
 <div class="modal" id="authModal"><div class="modal-card auth-card"><button data-close="authModal">×</button><h3>ចូល / ចុះឈ្មោះ</h3><div class="auth-tabs"><button class="auth-tab active" data-tab="login">ចូលគណនី</button><button class="auth-tab" data-tab="signup">ចុះឈ្មោះ</button></div><form class="auth-form active" data-panel="login"><input type="email" placeholder="អ៊ីមែល" required><input type="password" placeholder="ពាក្យសម្ងាត់" required><button class="primary-btn" type="submit">ចូលគណនី</button></form><form class="auth-form" data-panel="signup"><input type="text" placeholder="ឈ្មោះពេញ" required><input type="email" placeholder="អ៊ីមែល" required><input type="password" placeholder="ពាក្យសម្ងាត់" required><button class="primary-btn" type="submit">បង្កើតគណនី</button></form><small class="demo-note">ប្រព័ន្ធគណនីពិតនឹងភ្ជាប់នៅ Version បន្ទាប់។</small></div></div>

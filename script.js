@@ -5,7 +5,25 @@ const menu=$('#menuToggle'), nav=$('#navMenu'); menu?.addEventListener('click',(
 function openModal(id){const el=document.getElementById(id);if(!el)return;el.classList.add('open');body.classList.add('modal-open')}
 function closeModal(id){const el=document.getElementById(id);if(!el)return;el.classList.remove('open');if(!$('.modal.open,.purchase-modal.open'))body.classList.remove('modal-open')}
 $$('[data-close]').forEach(b=>b.addEventListener('click',()=>closeModal(b.dataset.close))); $$('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)closeModal(m.id)}));
-$('#watchIntro')?.addEventListener('click',()=>openModal('introModal')); $$('.login-open').forEach(b=>b.addEventListener('click',()=>openModal('authModal'))); $('#searchBtn')?.addEventListener('click',()=>{openModal('searchModal');setTimeout(()=>$('#courseSearch')?.focus(),80)}); $('#cartBtn')?.addEventListener('click',()=>showToast('កន្ត្រកនឹងត្រូវបន្ថែមនៅ Version បន្ទាប់។')); $$('.free-btn').forEach(b=>b.addEventListener('click',()=>showToast('មេរៀនឥតគិតថ្លៃនឹងបើកនៅ Version បន្ទាប់។')));
+$('#watchIntro')?.addEventListener('click',()=>openModal('introModal')); $$('.login-open').forEach(b=>b.addEventListener('click',()=>openModal('authModal'))); $('#searchBtn')?.addEventListener('click',()=>{openModal('searchModal');setTimeout(()=>$('#courseSearch')?.focus(),80)}); $('#cartBtn')?.addEventListener('click',()=>showToast('កន្ត្រកនឹងត្រូវបន្ថែមនៅ Version បន្ទាប់។')); 
+// Premium navigation popups
+$("#popularCoursesBtn")?.addEventListener("click", (e) => {
+  e.preventDefault();
+  nav?.classList.remove("open");
+  openModal("popularCoursesModal");
+});
+
+$("#ebooksBtn")?.addEventListener("click", (e) => {
+  e.preventDefault();
+  nav?.classList.remove("open");
+  openModal("ebooksModal");
+});
+
+$$("[data-close-link]").forEach((link) => {
+  link.addEventListener("click", () => closeModal(link.dataset.closeLink));
+});
+
+$$('.free-btn').forEach(b=>b.addEventListener('click',()=>showToast('មេរៀនឥតគិតថ្លៃនឹងបើកនៅ Version បន្ទាប់។')));
 const courses=[{name:'មូលដ្ឋានភាសាចិន',price:'$12.00',id:'chinese-basics'},{name:'Excel សម្រាប់អាជីវកម្ម',price:'$10.00',id:'excel-business'},{name:'បង្កើតគេហទំព័រ HTML, CSS & JS',price:'$15.00',id:'website-basics'}];
 const search=$('#courseSearch'), results=$('#searchResults'); function renderSearch(q=''){if(!results)return;const k=q.trim().toLowerCase();const rows=courses.filter(c=>!k||c.name.toLowerCase().includes(k));results.innerHTML=rows.map(c=>`<a class="search-buy" href="payment.html?courseId=${c.id}"><span>${c.name}</span><b>${c.price}</b></a>`).join('')||'<div style="padding:10px;color:#748196">រកមិនឃើញវគ្គសិក្សា</div>'} search?.addEventListener('input',e=>renderSearch(e.target.value)); $('#searchBtn')?.addEventListener('click',()=>renderSearch());
 const tabs=$$('.auth-tab'), forms=$$('.auth-form'); tabs.forEach(t=>t.addEventListener('click',()=>{tabs.forEach(x=>x.classList.toggle('active',x===t));forms.forEach(f=>f.classList.toggle('active',f.dataset.panel===t.dataset.tab))})); forms.forEach(f=>f.addEventListener('submit',e=>{e.preventDefault();showToast('ប្រព័ន្ធគណនីពិតនឹងភ្ជាប់នៅ Version បន្ទាប់។')}));

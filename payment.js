@@ -164,6 +164,19 @@ function paymentState(result) {
   return "other";
 }
 
+
+function unlockPurchasedCourse(id) {
+  if (!id) return;
+  try {
+    const current = JSON.parse(localStorage.getItem("asl-owned-courses") || "[]");
+    const list = Array.isArray(current) ? current : [];
+    if (!list.includes(id)) list.push(id);
+    localStorage.setItem("asl-owned-courses", JSON.stringify(list));
+  } catch (error) {
+    console.warn("Unable to save purchased course locally:", error);
+  }
+}
+
 async function checkPayment({ manual = false } = {}) {
   if (!activeTranId || checking || !API_BASE || paymentCompleted) return false;
 
@@ -192,6 +205,7 @@ async function checkPayment({ manual = false } = {}) {
     const state = paymentState(result);
 
     if (state === "approved") {
+      unlockPurchasedCourse(courseId);
       paymentCompleted = true;
       stopTimers();
 
