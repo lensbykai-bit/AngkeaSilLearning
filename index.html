@@ -28,7 +28,7 @@
       <a href="#" id="ebooksBtn">សៀវភៅ</a>
       <a href="my-courses.html">មេរៀនទិញ</a>
       <a href="#about">អំពីយើង</a>
-      <a href="#contact">ទំនាក់ទំនង</a>
+      <a href="#" id="contactBtn">ទំនាក់ទំនង</a>
     </nav>
     <div class="nav-actions">
       <button class="round-btn" id="searchBtn" aria-label="ស្វែងរក">⌕</button>
@@ -45,7 +45,10 @@
     <div class="container hero-grid">
       <div class="hero-copy">
         <div class="hero-pill">★ រៀនថ្ងៃនេះ ដឹកនាំអនាគតថ្ងៃស្អែក</div>
-        <h1>ចាប់ផ្តើមរៀន។<br><span>បង្កើតអនាគតរបស់អ្នក។</span></h1>
+        <h1 class="hero-5d-title">
+          <span class="hero-line hero-line-main">ចាប់ផ្តើមរៀនថ្ងៃនេះ</span>
+          <span class="hero-line hero-line-accent">ដើម្បីកសាងអនាគតដែលអ្នកប្រាថ្នា</span>
+        </h1>
         <p>ចូលរៀនវគ្គសិក្សាអនឡាញ ឯកសារឌីជីថល និងមេរៀនអនុវត្ត ដែលរៀបចំឲ្យងាយយល់ ដើម្បីអភិវឌ្ឍជំនាញ និងសម្រេចគោលដៅរបស់អ្នក។</p>
         <div class="hero-buttons">
           <a class="primary-btn" href="#courses">ស្វែងរកវគ្គសិក្សា <span>→</span></a>
@@ -238,6 +241,50 @@
   </div>
 </div>
 
+
+
+<!-- Contact popup -->
+<div class="modal premium-modal contact-overlay" id="contactModal">
+  <div class="modal-card contact-modal-card">
+    <button class="contact-close-btn" data-close="contactModal" type="button" aria-label="បិទ"><span aria-hidden="true">×</span></button>
+
+    <div class="contact-modal-head">
+      <div class="contact-head-mark">✦</div>
+      <div>
+        <div class="modal-kicker">ទំនាក់ទំនង</div>
+        <h3>ជ្រើសរើសវិធីទំនាក់ទំនង</h3>
+        <p>អ្នកអាចទាក់ទងតាមលេខទូរស័ព្ទ ឬ Telegram។ ព័ត៌មានពិតអាចបញ្ចូលនៅក្នុងកន្លែងខាងក្រោមបាន។</p>
+      </div>
+    </div>
+
+    <div class="contact-choice-grid">
+      <button class="contact-choice contact-phone" type="button" data-contact-placeholder="phone">
+        <div class="contact-choice-icon">☎</div>
+        <div class="contact-choice-copy">
+          <small>លេខទូរស័ព្ទ</small>
+          <strong id="contactPhoneText">បញ្ចូលលេខទូរស័ព្ទនៅទីនេះ</strong>
+          <span>ចុចដើម្បីហៅទូរស័ព្ទ</span>
+        </div>
+        <b>→</b>
+      </button>
+
+      <button class="contact-choice contact-telegram" type="button" data-contact-placeholder="telegram">
+        <div class="contact-choice-icon">✈</div>
+        <div class="contact-choice-copy">
+          <small>Telegram</small>
+          <strong id="contactTelegramText">បញ្ចូល Telegram Username នៅទីនេះ</strong>
+          <span>ចុចដើម្បីបើក Telegram</span>
+        </div>
+        <b>→</b>
+      </button>
+    </div>
+
+    <div class="contact-modal-note">
+      <span>💡</span>
+      <p>កំណែនេះបានរៀបកន្លែងទំនាក់ទំនងរួច។ អ្នកអាចប្តូរទៅលេខ និង Telegram ពិតបានពេលណាក៏បាន។</p>
+    </div>
+  </div>
+</div>
 
 <!-- Shopping cart popup -->
 <div class="modal premium-modal cart-overlay" id="cartModal">

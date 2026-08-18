@@ -234,3 +234,22 @@ $("#viewAllLessonsBtn")?.addEventListener("click", () => {
   window.addEventListener("resize", update);
   setTimeout(update, 120);
 })();
+
+
+// v2.0 — Contact popup
+$("#contactBtn")?.addEventListener("click", (e) => {
+  e.preventDefault();
+  nav?.classList.remove("open");
+  openModal("contactModal");
+});
+
+$$('[data-contact-placeholder]').forEach((button) => {
+  button.addEventListener('click', () => {
+    const type = button.dataset.contactPlaceholder;
+    if (type === 'phone') {
+      showToast('សូមបញ្ចូលលេខទូរស័ព្ទពិតនៅក្នុង Contact Popup។');
+    } else {
+      showToast('សូមបញ្ចូល Telegram Username ពិតនៅក្នុង Contact Popup។');
+    }
+  });
+});
