@@ -264,38 +264,9 @@ button{font:inherit}
   font-size:23px;
 }
 
-.qr-instructions{
-  display:grid;
-  gap:10px;
-  max-width:470px;
-  margin:0 auto 24px;
-}
 
-.qr-instructions div{
-  display:flex;
-  align-items:center;
-  gap:11px;
-  padding:10px 12px;
-  border:1px solid #eee0c9;
-  border-radius:10px;
-  background:#fffcf7;
-}
 
-.qr-instructions b{
-  width:29px;
-  height:29px;
-  flex:0 0 auto;
-  display:grid;
-  place-items:center;
-  border-radius:50%;
-  background:#e9d3aa;
-  color:var(--navy);
-}
 
-.qr-instructions span{
-  color:#4c5b6f;
-  font-size:14px;
-}
 
 .confirm-payment{
   width:min(470px,100%);
@@ -464,19 +435,8 @@ body.dark-mode .amount-box strong{
   color:#ffd06e;
 }
 
-body.dark-mode .qr-instructions div{
-  background:#132a43;
-  border-color:#3d5570;
-}
 
-body.dark-mode .qr-instructions span{
-  color:#d3deeb;
-}
 
-body.dark-mode .qr-instructions b{
-  background:#314b68;
-  color:#fff;
-}
 
 body.dark-mode .theme-switch i{
   transform:translateX(36px);
@@ -736,14 +696,10 @@ body{
 .payment-qr{max-width:256px;max-height:256px;}
 .amount-box{max-width:520px;margin-bottom:18px;border-radius:14px;padding:14px 16px;background:linear-gradient(135deg,#fff3df,#fff9ee);border-color:#e9cf9d;}
 .amount-box strong{font-size:22px;color:#b87712;}
-.payment-meta{max-width:520px;margin:0 auto 18px;display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.payment-meta{max-width:520px;margin:0 auto 16px;display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .payment-meta > div{padding:12px 13px;border:1px solid #ecdfcd;border-radius:12px;background:#fffdfa;}
 .payment-meta span{display:block;margin-bottom:4px;color:#7b8795;font-size:11px;}
 .payment-meta strong{display:block;color:var(--navy);font-size:13px;word-break:break-word;}
-.qr-instructions{max-width:520px;gap:9px;margin-bottom:18px;}
-.qr-instructions div{padding:10px 12px;border-radius:12px;background:#fffdfa;border-color:#eee2d1;}
-.qr-instructions b{width:28px;height:28px;background:#f0dfbf;}
-.qr-instructions span{font-size:13px;}
 .payment-action-row{max-width:520px;margin:0 auto;display:grid;gap:10px;}
 .confirm-payment,.regenerate-payment{width:100%;border-radius:12px;padding:13px 18px;}
 .confirm-payment{box-shadow:0 12px 28px rgba(7,29,58,.16);}
@@ -772,7 +728,6 @@ body.dark-mode .payment-meta > div{background:#132a43;border-color:#3a5572;}
 body.dark-mode .payment-meta span{color:#9fb0c4;}
 body.dark-mode .payment-meta strong{color:#f0f5fb;}
 body.dark-mode .amount-box{background:#172b42;border-color:#405a75;}
-body.dark-mode .qr-instructions div{background:#132a43;border-color:#3d5570;}
 body.dark-mode .regenerate-payment{background:#132a43;border-color:#405a75;color:#f0f5fb;}
 
 @media(max-width:860px){
