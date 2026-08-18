@@ -198,3 +198,39 @@ $("#viewAllLessonsBtn")?.addEventListener("click", () => {
   openModal("allLessonsModal");
 });
 
+
+
+// v1.9 — Scroll up/down controls for all lessons popup
+(function initLessonsScrollControls(){
+  const area = document.getElementById("lessonsScrollArea");
+  const up = document.getElementById("lessonsScrollUp");
+  const down = document.getElementById("lessonsScrollDown");
+  const topShadow = document.getElementById("lessonsShadowTop");
+  const bottomShadow = document.getElementById("lessonsShadowBottom");
+  if (!area || !up || !down) return;
+
+  function update(){
+    const max = Math.max(0, area.scrollHeight - area.clientHeight);
+    const y = area.scrollTop;
+    up.disabled = y <= 2;
+    down.disabled = y >= max - 2;
+    topShadow?.classList.toggle("visible", y > 5);
+    bottomShadow?.classList.toggle("visible", y < max - 5);
+  }
+
+  function move(direction){
+    const amount = Math.max(190, area.clientHeight * .72);
+    area.scrollBy({top:direction * amount, behavior:"smooth"});
+  }
+
+  up.addEventListener("click", () => move(-1));
+  down.addEventListener("click", () => move(1));
+  area.addEventListener("scroll", update, {passive:true});
+
+  document.getElementById("viewAllLessonsBtn")?.addEventListener("click", () => {
+    setTimeout(() => { area.scrollTop = 0; update(); }, 80);
+  });
+
+  window.addEventListener("resize", update);
+  setTimeout(update, 120);
+})();

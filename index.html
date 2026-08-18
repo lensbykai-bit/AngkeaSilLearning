@@ -149,65 +149,52 @@
 
 
 <!-- All lessons popup -->
-<div class="modal premium-modal" id="allLessonsModal">
-  <div class="modal-card all-lessons-modal-card">
-    <button data-close="allLessonsModal" aria-label="បិទ">×</button>
+<div class="modal premium-modal lessons-library-overlay" id="allLessonsModal">
+  <div class="modal-card all-lessons-modal-card lessons-library-card">
+    <button class="lessons-close-btn" data-close="allLessonsModal" type="button" aria-label="បិទ"><span aria-hidden="true">×</span></button>
 
-    <div class="all-lessons-head">
-      <div>
-        <div class="modal-kicker">មេរៀនវីដេអូ</div>
+    <header class="lessons-library-head">
+      <div class="lessons-head-icon" aria-hidden="true">▶</div>
+      <div class="lessons-head-copy">
+        <div class="modal-kicker">បណ្ណាល័យមេរៀនវីដេអូ</div>
         <h3>មើលមេរៀនទាំងអស់</h3>
-        <p>មេរៀនបន្ថែមត្រូវបានរៀបជាប្រភេទ ដើម្បីឲ្យអ្នកងាយស្វែងរក និងជ្រើសរើស។</p>
+        <p>Scroll ចុះក្រោម ឬឡើងលើ ដើម្បីមើលមេរៀនបន្ថែមបានយ៉ាងងាយស្រួល។</p>
       </div>
-      <div class="video-count-badge">8+ វីដេអូ</div>
+      <div class="video-count-badge">12+ មេរៀន</div>
+    </header>
+
+    <div class="lessons-scroll-shell">
+      <div class="lessons-scroll-shadow lessons-shadow-top" id="lessonsShadowTop"></div>
+
+      <div class="lessons-scroll-area" id="lessonsScrollArea">
+        <div class="video-lesson-grid">
+          <article class="video-lesson-card"><div class="video-thumb thumb-blue"><span>▶</span><b>中文</b></div><div class="video-card-copy"><small>ភាសា</small><strong>ភាសាចិនសម្រាប់អ្នកចាប់ផ្តើម</strong><span>12 មេរៀន • វីដេអូ</span></div><button class="lesson-open-btn" type="button">→</button></article>
+          <article class="video-lesson-card"><div class="video-thumb thumb-green"><span>▶</span><b>XLS</b></div><div class="video-card-copy"><small>អាជីវកម្ម</small><strong>Excel សម្រាប់ការងារ</strong><span>10 មេរៀន • វីដេអូ</span></div><button class="lesson-open-btn" type="button">→</button></article>
+          <article class="video-lesson-card"><div class="video-thumb thumb-purple"><span>▶</span><b>JS</b></div><div class="video-card-copy"><small>បច្ចេកវិទ្យា</small><strong>HTML, CSS និង JavaScript</strong><span>15 មេរៀន • វីដេអូ</span></div><button class="lesson-open-btn" type="button">→</button></article>
+          <article class="video-lesson-card"><div class="video-thumb thumb-gold"><span>▶</span><b>FREE</b></div><div class="video-card-copy"><small>ហិរញ្ញវត្ថុ</small><strong>គ្រប់គ្រងលុយផ្ទាល់ខ្លួន</strong><span>8 មេរៀន • វីដេអូ</span></div><button class="lesson-open-btn" type="button">→</button></article>
+          <article class="video-lesson-card"><div class="video-thumb thumb-cyan"><span>▶</span><b>AI</b></div><div class="video-card-copy"><small>បច្ចេកវិទ្យា</small><strong>មូលដ្ឋាន AI សម្រាប់អ្នកចាប់ផ្តើម</strong><span>9 មេរៀន • វីដេអូ</span></div><button class="lesson-open-btn" type="button">→</button></article>
+          <article class="video-lesson-card"><div class="video-thumb thumb-rose"><span>▶</span><b>MK</b></div><div class="video-card-copy"><small>Marketing</small><strong>Digital Marketing មូលដ្ឋាន</strong><span>11 មេរៀន • វីដេអូ</span></div><button class="lesson-open-btn" type="button">→</button></article>
+          <article class="video-lesson-card"><div class="video-thumb thumb-indigo"><span>▶</span><b>WEB</b></div><div class="video-card-copy"><small>Website</small><strong>បង្កើត Website ដំបូងរបស់អ្នក</strong><span>13 មេរៀន • វីដេអូ</span></div><button class="lesson-open-btn" type="button">→</button></article>
+          <article class="video-lesson-card"><div class="video-thumb thumb-orange"><span>▶</span><b>BIZ</b></div><div class="video-card-copy"><small>អាជីវកម្ម</small><strong>មូលដ្ឋានអាជីវកម្មអនឡាញ</strong><span>10 មេរៀន • វីដេអូ</span></div><button class="lesson-open-btn" type="button">→</button></article>
+          <article class="video-lesson-card"><div class="video-thumb thumb-navy"><span>▶</span><b>CV</b></div><div class="video-card-copy"><small>ការងារ</small><strong>រៀបចំ CV និង Portfolio</strong><span>7 មេរៀន • វីដេអូ</span></div><button class="lesson-open-btn" type="button">→</button></article>
+          <article class="video-lesson-card"><div class="video-thumb thumb-teal"><span>▶</span><b>SM</b></div><div class="video-card-copy"><small>Social Media</small><strong>បង្កើត Content សម្រាប់ Social Media</strong><span>12 មេរៀន • វីដេអូ</span></div><button class="lesson-open-btn" type="button">→</button></article>
+          <article class="video-lesson-card"><div class="video-thumb thumb-red"><span>▶</span><b>YT</b></div><div class="video-card-copy"><small>YouTube</small><strong>ចាប់ផ្តើម Channel និងវីដេអូ</strong><span>10 មេរៀន • វីដេអូ</span></div><button class="lesson-open-btn" type="button">→</button></article>
+          <article class="video-lesson-card"><div class="video-thumb thumb-violet"><span>▶</span><b>DS</b></div><div class="video-card-copy"><small>Design</small><strong>មូលដ្ឋាន Design សម្រាប់អ្នកចាប់ផ្តើម</strong><span>9 មេរៀន • វីដេអូ</span></div><button class="lesson-open-btn" type="button">→</button></article>
+        </div>
+      </div>
+
+      <div class="lessons-scroll-shadow lessons-shadow-bottom" id="lessonsShadowBottom"></div>
+
+      <div class="lessons-scroll-controls">
+        <button id="lessonsScrollUp" class="lessons-scroll-btn" type="button" aria-label="Scroll ឡើង"><span>↑</span><small>ឡើង</small></button>
+        <button id="lessonsScrollDown" class="lessons-scroll-btn primary" type="button" aria-label="Scroll ចុះ"><span>↓</span><small>ចុះ</small></button>
+      </div>
     </div>
 
-    <div class="video-lesson-grid">
-      <article class="video-lesson-card">
-        <div class="video-thumb thumb-blue"><span>▶</span><b>中文</b></div>
-        <div><small>ភាសា</small><strong>ភាសាចិនសម្រាប់អ្នកចាប់ផ្តើម</strong><span>12 មេរៀន</span></div>
-      </article>
-
-      <article class="video-lesson-card">
-        <div class="video-thumb thumb-green"><span>▶</span><b>XLS</b></div>
-        <div><small>អាជីវកម្ម</small><strong>Excel សម្រាប់ការងារ</strong><span>10 មេរៀន</span></div>
-      </article>
-
-      <article class="video-lesson-card">
-        <div class="video-thumb thumb-purple"><span>▶</span><b>JS</b></div>
-        <div><small>បច្ចេកវិទ្យា</small><strong>HTML, CSS និង JavaScript</strong><span>15 មេរៀន</span></div>
-      </article>
-
-      <article class="video-lesson-card">
-        <div class="video-thumb thumb-gold"><span>▶</span><b>FREE</b></div>
-        <div><small>ហិរញ្ញវត្ថុ</small><strong>គ្រប់គ្រងលុយផ្ទាល់ខ្លួន</strong><span>8 មេរៀន</span></div>
-      </article>
-
-      <article class="video-lesson-card">
-        <div class="video-thumb thumb-cyan"><span>▶</span><b>AI</b></div>
-        <div><small>បច្ចេកវិទ្យា</small><strong>មូលដ្ឋាន AI សម្រាប់អ្នកចាប់ផ្តើម</strong><span>9 មេរៀន</span></div>
-      </article>
-
-      <article class="video-lesson-card">
-        <div class="video-thumb thumb-rose"><span>▶</span><b>MK</b></div>
-        <div><small>Marketing</small><strong>Digital Marketing មូលដ្ឋាន</strong><span>11 មេរៀន</span></div>
-      </article>
-
-      <article class="video-lesson-card">
-        <div class="video-thumb thumb-indigo"><span>▶</span><b>WEB</b></div>
-        <div><small>Website</small><strong>បង្កើត Website ដំបូងរបស់អ្នក</strong><span>13 មេរៀន</span></div>
-      </article>
-
-      <article class="video-lesson-card">
-        <div class="video-thumb thumb-orange"><span>▶</span><b>BIZ</b></div>
-        <div><small>អាជីវកម្ម</small><strong>មូលដ្ឋានអាជីវកម្មអនឡាញ</strong><span>10 មេរៀន</span></div>
-      </article>
-    </div>
-
-    <div class="all-lessons-footer">
+    <footer class="all-lessons-footer">
       <span>មេរៀនថ្មីៗនឹងត្រូវបានបន្ថែមជាបន្តបន្ទាប់។</span>
       <a href="#courses" data-close-link="allLessonsModal">ត្រឡប់ទៅមេរៀនពេញនិយម</a>
-    </div>
+    </footer>
   </div>
 </div>
 
