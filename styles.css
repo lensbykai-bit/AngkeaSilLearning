@@ -1,0 +1,243 @@
+
+:root{
+  --bg1:#031225;
+  --bg2:#0a2848;
+  --panel:#102946;
+  --panel-2:#14365c;
+  --line:rgba(255,255,255,.12);
+  --text:#f6fbff;
+  --muted:#a9bfd6;
+  --accent:#d20a0a;
+  --accent-2:#0f67ff;
+  --success:#17c964;
+  --shadow:0 20px 80px rgba(0,0,0,.35);
+}
+body.light{
+  --bg1:#eef5ff;
+  --bg2:#d8e8fb;
+  --panel:#ffffff;
+  --panel-2:#f5f9ff;
+  --line:rgba(10,38,64,.12);
+  --text:#0b2039;
+  --muted:#5d7389;
+  --shadow:0 18px 60px rgba(11,32,57,.12);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:"Inter","Battambang",system-ui,sans-serif;
+  color:var(--text);
+  background:radial-gradient(circle at top left, #11345d 0%, var(--bg1) 35%, #03111f 100%);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+body.light{
+  background:linear-gradient(180deg,var(--bg1),var(--bg2));
+}
+.bg-orb{
+  position:fixed; border-radius:50%; filter:blur(50px); opacity:.18; pointer-events:none; z-index:0;
+}
+.orb-1{ width:260px; height:260px; background:#0f67ff; top:70px; left:-90px; }
+.orb-2{ width:260px; height:260px; background:#d20a0a; right:-100px; top:260px; }
+
+.site-header, main{ position:relative; z-index:1; }
+.site-header{
+  max-width:1200px; margin:0 auto; padding:26px 20px 8px;
+  display:flex; align-items:center; justify-content:space-between; gap:20px;
+}
+.brand{ display:flex; align-items:center; gap:14px; }
+.brand-logo{
+  width:58px;height:58px;border-radius:50%;
+  display:grid;place-items:center;
+  background:linear-gradient(135deg,#ffdde7,#ffd4f0 45%,#c5f0ff);
+  color:#12243a; font-size:28px; box-shadow:var(--shadow);
+}
+.brand-title{font-size:28px; font-weight:800; letter-spacing:.2px}
+.brand-sub{color:var(--muted); font-size:14px}
+.top-actions{display:flex; align-items:center; gap:12px}
+.ghost-btn,.theme-toggle,.primary-btn,.secondary-btn{
+  border:none; cursor:pointer; text-decoration:none;
+}
+.ghost-btn{
+  color:var(--text); border:1px solid var(--line); padding:11px 16px; border-radius:12px;
+  background:rgba(255,255,255,.04);
+}
+.theme-toggle{
+  width:44px;height:44px;border-radius:50%;
+  background:rgba(255,255,255,.06); color:var(--text); border:1px solid var(--line);
+  font-size:20px;
+}
+.hero{
+  max-width:1200px; margin:18px auto 30px; padding:26px 20px 10px;
+  display:grid; grid-template-columns:1.15fr .85fr; gap:34px; align-items:center;
+}
+.eyebrow{
+  margin:0 0 10px; color:#7cd2ff; font-weight:700; letter-spacing:1px; text-transform:uppercase; font-size:13px;
+}
+.hero h1{font-size:52px; line-height:1.08; margin:0 0 16px; font-weight:800}
+.hero-text{
+  font-family:"Battambang","Inter",sans-serif; color:var(--muted); font-size:17px; line-height:1.8;
+  max-width:720px; margin-bottom:20px;
+}
+.hero-actions{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:20px}
+.primary-btn,.secondary-btn{
+  padding:14px 22px; border-radius:14px; font-size:16px; font-weight:700;
+}
+.primary-btn{background:linear-gradient(180deg,#df1010,#b90707); color:#fff; box-shadow:0 12px 30px rgba(210,10,10,.25)}
+.primary-btn.small{padding:11px 16px; font-size:14px}
+.primary-btn.full{width:100%}
+.secondary-btn{
+  background:rgba(255,255,255,.06); color:var(--text); border:1px solid var(--line);
+}
+.hero-points{
+  list-style:none; padding:0; margin:0; display:grid; gap:10px; color:#d5e6f7; font-family:"Battambang","Inter",sans-serif;
+}
+body.light .hero-points{color:#25435f}
+
+.hero-card{display:flex; justify-content:center}
+.mini-card{
+  width:min(420px,100%); background:linear-gradient(180deg,rgba(18,42,70,.88),rgba(10,29,51,.9));
+  border:1px solid var(--line); border-radius:28px; padding:24px; box-shadow:var(--shadow);
+}
+body.light .mini-card{background:linear-gradient(180deg,#ffffff,#f2f7ff)}
+.mini-header{display:flex; align-items:center; gap:10px; color:var(--muted); font-weight:600; margin-bottom:14px}
+.dot{width:10px;height:10px;border-radius:50%; background:var(--success)}
+.mini-price{font-size:42px; font-weight:800; margin-bottom:16px}
+.mini-qr-box{
+  height:230px; border-radius:20px; background:rgba(255,255,255,.04); border:1px dashed var(--line);
+  display:grid; place-items:center;
+}
+.fake-qr{
+  width:160px; height:160px; background:
+    linear-gradient(90deg,#000 12px,transparent 12px) 0 0/40px 40px,
+    linear-gradient(#000 12px,transparent 12px) 0 0/40px 40px,
+    linear-gradient(90deg,transparent 28px,#000 28px 40px) 0 0/40px 40px,
+    linear-gradient(transparent 28px,#000 28px 40px) 0 0/40px 40px,
+    repeating-linear-gradient(90deg,#000 0 4px,#fff 4px 8px),
+    repeating-linear-gradient(#000 0 4px,#fff 4px 8px);
+  background-blend-mode:multiply;
+  border:8px solid #fff;
+}
+.mini-note{color:var(--muted); text-align:center; margin:16px 0 0; font-family:"Battambang","Inter",sans-serif}
+
+.courses{
+  max-width:1200px; margin:10px auto 80px; padding:0 20px;
+}
+.section-head{margin-bottom:18px}
+.section-head h2{font-size:34px; margin:0 0 8px}
+.section-head p{margin:0; color:var(--muted); font-family:"Battambang","Inter",sans-serif}
+.course-grid{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:18px;
+}
+.course-card{
+  background:linear-gradient(180deg,rgba(18,42,70,.9),rgba(10,29,51,.9));
+  border:1px solid var(--line); border-radius:24px; padding:22px; box-shadow:var(--shadow);
+}
+body.light .course-card{background:linear-gradient(180deg,#ffffff,#f4f8ff)}
+.course-card.featured{
+  border-color:rgba(255,210,122,.45);
+  box-shadow:0 16px 50px rgba(0,0,0,.25), inset 0 0 0 1px rgba(255,210,122,.12);
+}
+.badge{
+  display:inline-block; margin-bottom:12px; padding:7px 11px; background:rgba(255,197,84,.14);
+  color:#ffd477; border:1px solid rgba(255,197,84,.2); border-radius:999px; font-size:12px; font-weight:800;
+}
+.course-card h3{margin:0 0 8px; font-size:23px}
+.course-card p{margin:0 0 14px; color:var(--muted); line-height:1.7; font-family:"Battambang","Inter",sans-serif}
+.course-features{margin:0 0 18px; padding-left:18px; color:#dbe9f8; font-family:"Battambang","Inter",sans-serif}
+body.light .course-features{color:#274969}
+.course-features li{margin-bottom:8px}
+.card-bottom{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:10px}
+.price{font-size:28px; font-weight:800; color:#ffd166}
+
+/* Modal */
+.modal-overlay{
+  position:fixed; inset:0; background:rgba(0,0,0,.68);
+  display:none; align-items:center; justify-content:center; padding:18px; z-index:30;
+}
+.modal-overlay.show{display:flex}
+.modal{
+  width:min(100%,560px); max-height:90vh; overflow:auto;
+  background:linear-gradient(180deg,#1a1a1d,#111214);
+  color:#fff; border-radius:24px; border:1px solid rgba(255,255,255,.08);
+  padding:26px; position:relative; box-shadow:var(--shadow);
+}
+.close-btn{
+  position:absolute; right:16px; top:14px; width:40px; height:40px; border:none; cursor:pointer;
+  border-radius:50%; font-size:28px; line-height:1; background:rgba(255,255,255,.08); color:#eaeaea;
+}
+.payway-inline-brand, .payway-header{
+  text-align:center; margin-bottom:10px; font-weight:800; letter-spacing:.8px; color:#fff; font-size:20px;
+}
+.payway-inline-brand span,.payway-header span{color:#cfdfff; font-style:italic}
+.sheet-title{font-family:"Battambang","Inter",sans-serif; text-align:center; margin:8px 0 2px; font-size:34px}
+.sheet-amount{font-size:58px; text-align:center; font-weight:800; color:#19c96b; margin-bottom:12px}
+.sheet-divider{border-top:1px dashed rgba(255,255,255,.35); margin:16px 0}
+.info-grid{display:grid; gap:10px}
+.info-row{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+.info-row span{color:#c3c7cc; font-family:"Battambang","Inter",sans-serif}
+.info-row strong{text-align:left; font-family:"Battambang","Inter",sans-serif}
+
+.method-card{
+  display:grid; grid-template-columns:54px 1fr auto; align-items:center; gap:14px;
+  background:#17181b; border:1px solid rgba(255,255,255,.14); border-radius:16px; padding:14px; margin-bottom:18px;
+}
+.method-card.active{border-color:#cf2228; box-shadow:inset 0 0 0 1px rgba(207,34,40,.4)}
+.method-icon{
+  width:40px; height:40px; border-radius:10px; background:#1f7cd8; display:grid; place-items:center;
+  color:#fff; font-weight:800; font-size:13px;
+}
+.method-copy small{display:block; color:#b6bcc4; margin-top:4px; font-family:"Battambang","Inter",sans-serif}
+.method-check{color:#f03b3b; font-size:22px; font-weight:900}
+
+/* step 2 */
+.khqr-sheet{
+  width:min(100%,460px);
+  background:#f3f3f3;
+  color:#0b2039;
+}
+.payway-header{color:#21344b; margin-top:4px}
+.khqr-title{font-size:24px; margin:12px 0 12px}
+.khqr-ticket{
+  width:100%; background:#fff; border-radius:22px; overflow:hidden; box-shadow:0 12px 35px rgba(0,0,0,.1);
+}
+.khqr-top{
+  background:#ef1b1b; color:#fff; text-align:center; font-size:22px; font-weight:800; padding:12px 14px;
+  clip-path:polygon(0 0,100% 0,100% 72%,90% 100%,0 100%);
+}
+.khqr-body{padding:18px}
+.khqr-course{font-size:14px; color:#364b60; margin-bottom:6px}
+.khqr-amount{font-size:18px; font-weight:800; color:#0b2039}
+.khqr-amount small{font-size:13px; font-weight:600; color:#5a6f83}
+.qr-image{
+  display:block; width:min(100%,250px); aspect-ratio:1/1; object-fit:contain; margin:14px auto 0;
+}
+.scan-help{
+  text-align:center; color:#748699; line-height:1.6; font-family:"Inter",sans-serif; margin:14px 0 16px;
+}
+.meta-boxes{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px}
+.meta-box{
+  background:#fff; border:1px solid #e3e8ed; border-radius:14px; padding:14px;
+}
+.meta-box span{display:block; font-size:13px; color:#6f8398; margin-bottom:7px}
+.meta-box strong{font-size:18px}
+.status-message{
+  text-align:center; font-family:"Battambang","Inter",sans-serif; min-height:28px; margin:14px 0 0; color:#2e567d;
+}
+
+@media (max-width: 980px){
+  .hero{grid-template-columns:1fr; gap:24px}
+  .hero h1{font-size:40px}
+  .course-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width: 720px){
+  .site-header{flex-direction:column; align-items:flex-start}
+  .hero h1{font-size:32px}
+  .hero-text{font-size:16px}
+  .course-grid{grid-template-columns:1fr}
+  .sheet-title{font-size:28px}
+  .sheet-amount{font-size:48px}
+  .info-row{grid-template-columns:1fr}
+  .meta-boxes{grid-template-columns:1fr}
+  .brand-title{font-size:24px}
+}
