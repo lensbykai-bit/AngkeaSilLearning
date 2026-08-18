@@ -178,31 +178,49 @@
 
 
 <!-- Shopping cart popup -->
-<div class="modal premium-modal" id="cartModal">
+<div class="modal premium-modal cart-overlay" id="cartModal">
   <div class="modal-card cart-modal-card">
-    <button data-close="cartModal" aria-label="បិទ">×</button>
+    <button class="cart-close-btn" data-close="cartModal" type="button" aria-label="បិទ">
+      <span aria-hidden="true">×</span>
+    </button>
 
-    <div class="cart-title-row">
-      <div>
+    <div class="cart-header">
+      <div class="cart-header-icon" aria-hidden="true">🛒</div>
+      <div class="cart-header-copy">
         <div class="modal-kicker">កន្ត្រករបស់អ្នក</div>
         <h3>ពិនិត្យមេរៀនមុនទូទាត់</h3>
-        <p>ពិនិត្យមេរៀន តម្លៃ និងសរុបមុនចាប់ផ្តើមការទូទាត់។</p>
+        <p>ពិនិត្យមេរៀន និងតម្លៃឲ្យបានត្រឹមត្រូវ មុនចាប់ផ្តើមការទូទាត់។</p>
       </div>
-      <div class="cart-bag">🛒</div>
     </div>
 
-    <div class="cart-list" id="cartList"></div>
+    <div class="cart-content">
+      <div class="cart-list" id="cartList"></div>
 
-    <div class="cart-summary">
-      <div><span>ចំនួនមេរៀន</span><strong id="cartItemCount">0</strong></div>
-      <div class="cart-total-row"><span>សរុបតម្លៃ</span><strong id="cartTotal">$0.00</strong></div>
+      <aside class="cart-summary-card">
+        <div class="cart-summary-head">
+          <span>សង្ខេបការបញ្ជាទិញ</span>
+          <b>ABA KHQR</b>
+        </div>
+
+        <div class="cart-summary-line">
+          <span>ចំនួនមេរៀន</span>
+          <strong id="cartItemCount">0</strong>
+        </div>
+
+        <div class="cart-summary-line cart-total-row">
+          <span>សរុបតម្លៃ</span>
+          <strong id="cartTotal">$0.00</strong>
+        </div>
+
+        <button class="cart-checkout-btn" id="cartCheckoutBtn" type="button">
+          បន្តទៅការទូទាត់
+        </button>
+
+        <p class="cart-checkout-note" id="cartCheckoutNote">
+          ការទូទាត់តាម ABA PayWay ត្រូវបានដំណើរការមួយវគ្គម្តង។
+        </p>
+      </aside>
     </div>
-
-    <div class="cart-checkout-note" id="cartCheckoutNote">
-      ABA PayWay បច្ចុប្បន្នទូទាត់មួយវគ្គម្តង។ សរុបខាងលើសម្រាប់ឆែកមើលកន្ត្រករបស់អ្នក។
-    </div>
-
-    <button class="cart-checkout-btn" id="cartCheckoutBtn" type="button">ចាប់ផ្តើមទូទាត់</button>
   </div>
 </div>
 
