@@ -90,11 +90,26 @@
     </div>
   </section>
 
-  <section class="courses" id="courses">
+  <section class="courses popular-auto-section" id="courses">
     <div class="container">
-      <div class="section-head"><h2>វគ្គសិក្សាពេញនិយម</h2><a href="#courses">មើលវគ្គទាំងអស់ →</a></div>
-      <div class="course-grid">
-        <article class="course-card">
+      <div class="section-head popular-section-head">
+        <div>
+          <span class="popular-eyebrow">ជ្រើសរើសមេរៀនដែលអ្នកចូលចិត្ត</span>
+          <h2>មេរៀនពេញនិយម</h2>
+        </div>
+        <div class="popular-controls">
+          <span class="auto-badge"><i></i> ដើរស្វ័យប្រវត្តិ</span>
+          <button class="popular-arrow" id="popularPrev" type="button" aria-label="ថយក្រោយ">‹</button>
+          <button class="popular-arrow" id="popularNext" type="button" aria-label="ទៅមុខ">›</button>
+        </div>
+      </div>
+
+      <div class="course-marquee-shell">
+        <div class="course-marquee-fade fade-left"></div>
+        <div class="course-marquee-fade fade-right"></div>
+        <div class="course-marquee-window" id="popularMarquee" aria-label="មេរៀនពេញនិយម">
+          <div class="course-marquee-track" id="popularTrack">
+            <article class="course-card">
           <div class="course-thumb"><img src="assets/course-chinese-v12.svg" alt="មូលដ្ឋានភាសាចិន"><span>中文</span></div>
           <div class="course-body"><h3>មូលដ្ឋានភាសាចិន</h3><div class="course-meta">★ 4.9 <em>(1,250)</em><small>2,500+ សិស្ស</small></div><div class="course-bottom"><strong>$12.00</strong><div class="course-actions">
       <button class="add-cart-btn" type="button" data-course-id="chinese-basics" aria-label="បន្ថែមទៅកន្ត្រក">＋ កន្ត្រក</button>
@@ -119,7 +134,11 @@
           <div class="course-thumb"><img src="assets/course-finance-v12.svg" alt="ហិរញ្ញវត្ថុផ្ទាល់ខ្លួន"><span>FREE</span></div>
           <div class="course-body"><h3>ហិរញ្ញវត្ថុផ្ទាល់ខ្លួនសម្រាប់អ្នកចាប់ផ្តើម</h3><div class="course-meta">★ 4.8 <em>(1,100)</em><small>2,000+ សិស្ស</small></div><div class="course-bottom"><strong>ឥតគិតថ្លៃ</strong><button class="free-btn">រៀនឥឡូវ</button></div></div>
         </article>
+          </div>
+        </div>
       </div>
+
+      <div class="popular-mobile-note">អូសទៅឆ្វេង ឬស្តាំ ដើម្បីមើលមេរៀនបន្ថែម</div>
     </div>
   </section>
 
@@ -141,7 +160,7 @@
   <div class="modal-card popular-modal-card">
     <button data-close="popularCoursesModal" aria-label="បិទ">×</button>
     <div class="modal-kicker">មេរៀនថ្មីៗ</div>
-    <h3>វគ្គសិក្សាពេញនិយម</h3>
+    <h3>មេរៀនពេញនិយម</h3>
     <p class="modal-lead">ជ្រើសរើសវគ្គដែលអ្នកចង់រៀន ហើយចាប់ផ្តើមអភិវឌ្ឍជំនាញរបស់អ្នក។</p>
 
     <div class="popular-popup-grid">

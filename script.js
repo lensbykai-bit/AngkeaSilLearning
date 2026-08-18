@@ -190,3 +190,119 @@ const search=$('#courseSearch'), results=$('#searchResults'); function renderSea
 const tabs=$$('.auth-tab'), forms=$$('.auth-form'); tabs.forEach(t=>t.addEventListener('click',()=>{tabs.forEach(x=>x.classList.toggle('active',x===t));forms.forEach(f=>f.classList.toggle('active',f.dataset.panel===t.dataset.tab))})); forms.forEach(f=>f.addEventListener('submit',e=>{e.preventDefault();showToast('ប្រព័ន្ធគណនីពិតនឹងភ្ជាប់នៅ Version បន្ទាប់។')}));
 const purchase=$('#purchaseModal'), frame=$('#purchaseFrame'); function openPurchase(id){if(!purchase||!frame)return;frame.src=`payment.html?courseId=${encodeURIComponent(id)}&embed=1`;purchase.classList.add('open');body.classList.add('modal-open')} function closePurchase(){purchase?.classList.remove('open');body.classList.remove('modal-open');setTimeout(()=>{if(frame&&!purchase?.classList.contains('open'))frame.src='about:blank'},180)} $('#purchaseClose')?.addEventListener('click',closePurchase); purchase?.addEventListener('click',e=>{if(e.target===purchase)closePurchase()});
 document.addEventListener('click',e=>{const a=e.target.closest('.enroll-btn,.search-buy');if(!a)return;const u=new URL(a.href,location.href);const id=u.searchParams.get('courseId');if(id){e.preventDefault();closeModal('searchModal');openPurchase(id)}}); document.addEventListener('keydown',e=>{if(e.key!=='Escape')return;$$('.modal.open').forEach(m=>closeModal(m.id));if(purchase?.classList.contains('open'))closePurchase()});
+
+// ============================================================
+// v1.7 — Popular lessons auto marquee
+// ============================================================
+(function initPopularMarquee(){
+  const viewport = document.getElementById("popularMarquee");
+  const track = document.getElementById("popularTrack");
+  const prev = document.getElementById("popularPrev");
+  const next = document.getElementById("popularNext");
+
+  if (!viewport || !track) return;
+
+  const originals = [...track.children];
+  if (!originals.length) return;
+
+  // Duplicate once for seamless looping.
+  originals.forEach((card) => {
+    const clone = card.cloneNode(true);
+    clone.dataset.marqueeClone = "true";
+    clone.removeAttribute("id");
+    track.appendChild(clone);
+  });
+
+  let paused = false;
+  let dragging = false;
+  let lastX = 0;
+  let resumeTimer = null;
+  let lastFrame = performance.now();
+
+  function loopWidth(){
+    // Width occupied by one full original set.
+    let width = 0;
+    const gap = parseFloat(getComputedStyle(track).gap) || 0;
+    originals.forEach((el, index) => {
+      width += el.getBoundingClientRect().width;
+      if (index < originals.length) width += gap;
+    });
+    return width;
+  }
+
+  function normalizeScroll(){
+    const half = loopWidth();
+    if (!half) return;
+    if (viewport.scrollLeft >= half) viewport.scrollLeft -= half;
+    if (viewport.scrollLeft < 0) viewport.scrollLeft += half;
+  }
+
+  function frame(now){
+    const dt = Math.min(40, now - lastFrame);
+    lastFrame = now;
+
+    if (!paused && !dragging && !document.hidden) {
+      // Right-to-left visual movement: scroll content toward the left.
+      viewport.scrollLeft += dt * 0.028;
+      normalizeScroll();
+    }
+    requestAnimationFrame(frame);
+  }
+
+  function pause(){
+    paused = true;
+    clearTimeout(resumeTimer);
+  }
+
+  function resume(delay=900){
+    clearTimeout(resumeTimer);
+    resumeTimer = setTimeout(() => paused = false, delay);
+  }
+
+  viewport.addEventListener("mouseenter", pause);
+  viewport.addEventListener("mouseleave", () => resume(500));
+  viewport.addEventListener("focusin", pause);
+  viewport.addEventListener("focusout", () => resume(700));
+  viewport.addEventListener("touchstart", pause, {passive:true});
+  viewport.addEventListener("touchend", () => resume(1200), {passive:true});
+
+  viewport.addEventListener("pointerdown", (e) => {
+    dragging = true;
+    paused = true;
+    lastX = e.clientX;
+    viewport.setPointerCapture?.(e.pointerId);
+  });
+
+  viewport.addEventListener("pointermove", (e) => {
+    if (!dragging) return;
+    const dx = e.clientX - lastX;
+    lastX = e.clientX;
+    viewport.scrollLeft -= dx;
+    normalizeScroll();
+  });
+
+  function endDrag(){
+    if (!dragging) return;
+    dragging = false;
+    resume(1100);
+  }
+  viewport.addEventListener("pointerup", endDrag);
+  viewport.addEventListener("pointercancel", endDrag);
+
+  prev?.addEventListener("click", () => {
+    pause();
+    viewport.scrollBy({left:-Math.min(330, viewport.clientWidth * .72), behavior:"smooth"});
+    setTimeout(normalizeScroll, 450);
+    resume(1600);
+  });
+
+  next?.addEventListener("click", () => {
+    pause();
+    viewport.scrollBy({left:Math.min(330, viewport.clientWidth * .72), behavior:"smooth"});
+    setTimeout(normalizeScroll, 450);
+    resume(1600);
+  });
+
+  window.addEventListener("resize", normalizeScroll);
+  requestAnimationFrame(frame);
+})();

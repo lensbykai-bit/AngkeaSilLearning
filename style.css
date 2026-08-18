@@ -1195,3 +1195,221 @@ select,
     font-size:12px;
   }
 }
+
+
+/* ============================================================
+   v1.7 — Popular lessons auto marquee
+   ============================================================ */
+.popular-auto-section{
+  position:relative;
+  padding:16px 0 42px;
+  overflow:hidden;
+}
+.popular-section-head{
+  align-items:flex-end;
+  margin-bottom:16px;
+}
+.popular-section-head>div:first-child{
+  display:grid;
+  gap:2px;
+}
+.popular-eyebrow{
+  font-size:9px;
+  color:#b7791f;
+  font-weight:800;
+  letter-spacing:.02em;
+}
+.popular-section-head h2{
+  margin:0;
+  font-size:29px;
+  line-height:1.35;
+  color:#0b2448;
+}
+.popular-controls{
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+.auto-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  height:34px;
+  padding:0 11px;
+  border-radius:999px;
+  border:1px solid #dce5ef;
+  background:#f9fbfe;
+  color:#607087;
+  font-size:9px;
+  font-weight:700;
+  white-space:nowrap;
+}
+.auto-badge i{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#2ca66f;
+  box-shadow:0 0 0 4px rgba(44,166,111,.10);
+  animation:aslAutoPulse 1.7s ease-in-out infinite;
+}
+@keyframes aslAutoPulse{
+  0%,100%{opacity:.45;transform:scale(.85)}
+  50%{opacity:1;transform:scale(1)}
+}
+.popular-arrow{
+  width:35px;
+  height:35px;
+  border-radius:50%;
+  border:1px solid #dbe4ee;
+  background:#fff;
+  color:#173b68;
+  display:grid;
+  place-items:center;
+  font-family:Arial,sans-serif;
+  font-size:24px;
+  line-height:1;
+  cursor:pointer;
+  box-shadow:0 6px 16px rgba(11,45,92,.07);
+  transition:.2s ease;
+}
+.popular-arrow:hover{
+  transform:translateY(-1px);
+  border-color:#b9cde3;
+  background:#f4f8fd;
+}
+.course-marquee-shell{
+  position:relative;
+  border-radius:18px;
+}
+.course-marquee-window{
+  width:100%;
+  overflow-x:auto;
+  overflow-y:hidden;
+  scrollbar-width:none;
+  overscroll-behavior-x:contain;
+  scroll-behavior:auto;
+  cursor:grab;
+  padding:4px 2px 15px;
+}
+.course-marquee-window::-webkit-scrollbar{
+  display:none;
+}
+.course-marquee-window:active{
+  cursor:grabbing;
+}
+.course-marquee-track{
+  display:flex;
+  gap:16px;
+  width:max-content;
+  min-width:100%;
+}
+.course-marquee-track .course-card{
+  flex:0 0 clamp(270px,24vw,315px);
+  width:clamp(270px,24vw,315px);
+  border-radius:16px;
+  border-color:#dfe7f0;
+  box-shadow:0 10px 26px rgba(16,40,74,.08);
+  transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;
+}
+.course-marquee-track .course-card:hover{
+  transform:translateY(-5px);
+  border-color:#c8d8e8;
+  box-shadow:0 18px 38px rgba(16,40,74,.15);
+}
+.course-marquee-track .course-thumb{
+  height:150px;
+}
+.course-marquee-track .course-body{
+  padding:13px 14px 14px;
+}
+.course-marquee-track .course-body h3{
+  min-height:46px;
+  font-size:15px;
+  line-height:1.55;
+  color:#102844;
+  word-break:normal;
+  overflow-wrap:break-word;
+}
+.course-marquee-track .course-meta{
+  padding-top:1px;
+  font-size:9px;
+}
+.course-marquee-track .course-bottom{
+  padding-top:5px;
+  border-top:1px solid #edf1f5;
+}
+.course-marquee-track .course-bottom>strong{
+  font-size:17px;
+  color:#0d2a4d;
+}
+.course-marquee-track .add-cart-btn,
+.course-marquee-track .enroll-btn,
+.course-marquee-track .free-btn{
+  border-radius:8px;
+}
+.course-marquee-fade{
+  position:absolute;
+  top:0;
+  bottom:12px;
+  width:45px;
+  z-index:4;
+  pointer-events:none;
+}
+.fade-left{
+  left:0;
+  background:linear-gradient(90deg,#fff,rgba(255,255,255,0));
+}
+.fade-right{
+  right:0;
+  background:linear-gradient(270deg,#fff,rgba(255,255,255,0));
+}
+.popular-mobile-note{
+  display:none;
+  text-align:center;
+  color:#718096;
+  font-size:9px;
+  margin-top:2px;
+}
+
+/* Cloned cards are visual repeats only; keep repeated free card id-free. */
+.course-card[data-marquee-clone="true"]{
+  user-select:none;
+}
+
+@media(max-width:900px){
+  .course-marquee-track .course-card{
+    flex-basis:280px;
+    width:280px;
+  }
+}
+@media(max-width:720px){
+  .popular-auto-section{
+    padding-bottom:32px;
+  }
+  .popular-section-head{
+    align-items:flex-end;
+  }
+  .popular-section-head h2{
+    font-size:24px;
+  }
+  .auto-badge{
+    display:none;
+  }
+  .popular-arrow{
+    width:33px;
+    height:33px;
+  }
+  .course-marquee-track{
+    gap:12px;
+  }
+  .course-marquee-track .course-card{
+    flex-basis:260px;
+    width:260px;
+  }
+  .course-marquee-fade{
+    width:22px;
+  }
+  .popular-mobile-note{
+    display:block;
+  }
+}
