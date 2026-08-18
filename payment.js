@@ -1,9 +1,5 @@
 const API_BASE = String(window.ASL_PAYWAY_API || "").replace(/\/+$/, "");
 const params = new URLSearchParams(window.location.search);
-const EMBED_MODE = params.get("embed") === "1";
-if (EMBED_MODE) {
-  document.body.classList.add("embed-mode");
-}
 
 const LEGACY_COURSE_MAP = {
   "មូលដ្ឋានភាសាចិន": "chinese-basics",
@@ -198,7 +194,7 @@ async function checkPayment({ manual = false } = {}) {
       setStatus("ការទូទាត់បានជោគជ័យ", "success");
 
       if (el.notice) {
-        el.notice.textContent = "ប្រព័ន្ធបានបញ្ជាក់ថាប្រតិបត្តិការនេះ APPROVED។";
+        el.notice.textContent = "ABA PayWay បានបញ្ជាក់ថាប្រតិបត្តិការនេះ APPROVED។";
       }
 
       if (el.checkPayment) el.checkPayment.disabled = true;
@@ -254,93 +250,6 @@ async function checkPayment({ manual = false } = {}) {
   }
 }
 
-
-/*
- * PayWay template3 includes an ABA PAY brand area around the KHQR ticket.
- * For the compact popup we display only the KHQR ticket itself.
- * This changes presentation only; the QR data is untouched.
- */
-async function khqrTicketOnly(dataUrl) {
-  if (!dataUrl) return dataUrl;
-
-  return new Promise((resolve) => {
-    const image = new Image();
-
-    image.onload = () => {
-      try {
-        const w = image.naturalWidth;
-        const h = image.naturalHeight;
-        const canvas = document.createElement("canvas");
-        canvas.width = w;
-        canvas.height = h;
-        const ctx = canvas.getContext("2d", { willReadFrequently: true });
-        ctx.drawImage(image, 0, 0);
-        const pixels = ctx.getImageData(0, 0, w, h).data;
-
-        // Find the red KHQR header. It is the most reliable landmark in template3_color.
-        let minX = w, maxX = -1, minY = h, maxY = -1;
-        for (let y = 0; y < h; y++) {
-          for (let x = 0; x < w; x++) {
-            const i = (y * w + x) * 4;
-            const r = pixels[i], g = pixels[i + 1], b = pixels[i + 2], a = pixels[i + 3];
-            if (a > 180 && r > 165 && g < 105 && b < 105 && r > g * 1.55) {
-              if (x < minX) minX = x;
-              if (x > maxX) maxX = x;
-              if (y < minY) minY = y;
-              if (y > maxY) maxY = y;
-            }
-          }
-        }
-
-        if (maxX < minX || maxY < minY) {
-          resolve(dataUrl);
-          return;
-        }
-
-        const headerWidth = maxX - minX + 1;
-        const x1 = Math.max(0, minX - Math.round(headerWidth * 0.02));
-        const x2 = Math.min(w - 1, maxX + Math.round(headerWidth * 0.02));
-
-        // Follow the white ticket downward until its white background ends.
-        let bottom = Math.min(h - 1, maxY + Math.round(headerWidth * 2.4));
-        let lastGood = maxY;
-        for (let y = maxY; y < h; y++) {
-          let light = 0;
-          let total = 0;
-          for (let x = x1; x <= x2; x += 2) {
-            const i = (y * w + x) * 4;
-            const r = pixels[i], g = pixels[i + 1], b = pixels[i + 2];
-            total++;
-            if (r > 205 && g > 205 && b > 205) light++;
-          }
-          if (total && light / total > 0.18) lastGood = y;
-          if (y > maxY + headerWidth * 1.0 && y - lastGood > Math.max(10, headerWidth * 0.12)) break;
-        }
-        bottom = Math.min(h - 1, lastGood + Math.round(headerWidth * 0.04));
-
-        const cropW = x2 - x1 + 1;
-        const cropH = bottom - minY + 1;
-        if (cropW < 80 || cropH < 120) {
-          resolve(dataUrl);
-          return;
-        }
-
-        const out = document.createElement("canvas");
-        out.width = cropW;
-        out.height = cropH;
-        out.getContext("2d").drawImage(canvas, x1, minY, cropW, cropH, 0, 0, cropW, cropH);
-        resolve(out.toDataURL("image/png"));
-      } catch (error) {
-        console.warn("KHQR crop fallback:", error);
-        resolve(dataUrl);
-      }
-    };
-
-    image.onerror = () => resolve(dataUrl);
-    image.src = dataUrl;
-  });
-}
-
 async function createQr() {
   stopTimers();
   activeTranId = "";
@@ -373,7 +282,7 @@ async function createQr() {
     API_BASE.includes("YOUR-BACKEND-DOMAIN")
   ) {
     showError(
-      "ប្រព័ន្ធទូទាត់ KHQR មិនទាន់បានកំណត់សម្រាប់ Website Online ទេ។",
+      "Backend សម្រាប់ ABA PayWay មិនទាន់បានកំណត់សម្រាប់ Website Online ទេ។",
       false
     );
     return;
@@ -389,7 +298,7 @@ async function createQr() {
     const result = await response.json().catch(() => ({}));
 
     if (!response.ok || !result.ok) {
-      throw new Error(result.message || "មិនអាចបង្កើតកូដ KHQR បាន។");
+      throw new Error(result.message || "ABA PayWay មិនអាចបង្កើតកូដបាន។");
     }
 
     activeTranId = result.tranId;
@@ -404,11 +313,11 @@ async function createQr() {
     if (el.tranId) el.tranId.textContent = result.tranId;
 
     if (!result.qrImage) {
-      throw new Error("ប្រព័ន្ធមិនបានផ្ញើរូប QR មកវិញ។");
+      throw new Error("PayWay មិនបានផ្ញើរូប QR មកវិញ។");
     }
 
     if (el.paymentQr) {
-      el.paymentQr.src = await khqrTicketOnly(result.qrImage);
+      el.paymentQr.src = result.qrImage;
       el.paymentQr.hidden = false;
     }
 
@@ -418,7 +327,7 @@ async function createQr() {
 
     if (el.notice) {
       el.notice.textContent =
-        "ក្រោយបង់រួច ប្រព័ន្ធនឹងពិនិត្យស្ថានភាពការទូទាត់ដោយស្វ័យប្រវត្តិ។";
+        "ក្រោយបង់រួច ប្រព័ន្ធនឹងពិនិត្យស្ថានភាព ABA PayWay ដោយស្វ័យប្រវត្តិ។";
     }
 
     if (el.checkPayment) el.checkPayment.disabled = false;
@@ -431,7 +340,7 @@ async function createQr() {
 
   } catch (err) {
     console.error("PayWay create QR error:", err);
-    showError(err.message || "មានបញ្ហាក្នុងការតភ្ជាប់ទៅប្រព័ន្ធ KHQR។");
+    showError(err.message || "មានបញ្ហាក្នុងការតភ្ជាប់ទៅ ABA PayWay។");
   }
 }
 
