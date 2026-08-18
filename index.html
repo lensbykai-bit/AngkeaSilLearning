@@ -90,26 +90,22 @@
     </div>
   </section>
 
-  <section class="courses popular-auto-section" id="courses">
+  <section class="courses popular-clean-section" id="courses">
     <div class="container">
-      <div class="section-head popular-section-head">
-        <div>
-          <span class="popular-eyebrow">ជ្រើសរើសមេរៀនដែលអ្នកចូលចិត្ត</span>
+      <div class="popular-clean-head">
+        <div class="popular-title-group">
+          <span class="popular-eyebrow">មេរៀនដែលអ្នកសិក្សាចូលចិត្តជាងគេ</span>
           <h2>មេរៀនពេញនិយម</h2>
+          <p>ជ្រើសរើសមេរៀនដែលសមនឹងគោលដៅរបស់អ្នក ហើយចាប់ផ្តើមរៀនតាមល្បឿនផ្ទាល់ខ្លួន។</p>
         </div>
-        <div class="popular-controls">
-          <span class="auto-badge"><i></i> ដើរស្វ័យប្រវត្តិ</span>
-          <button class="popular-arrow" id="popularPrev" type="button" aria-label="ថយក្រោយ">‹</button>
-          <button class="popular-arrow" id="popularNext" type="button" aria-label="ទៅមុខ">›</button>
-        </div>
+        <button class="view-all-lessons-btn" id="viewAllLessonsBtn" type="button">
+          <span>មើលទាំងអស់</span>
+          <b>→</b>
+        </button>
       </div>
 
-      <div class="course-marquee-shell">
-        <div class="course-marquee-fade fade-left"></div>
-        <div class="course-marquee-fade fade-right"></div>
-        <div class="course-marquee-window" id="popularMarquee" aria-label="មេរៀនពេញនិយម">
-          <div class="course-marquee-track" id="popularTrack">
-            <article class="course-card">
+      <div class="popular-static-grid">
+        <article class="course-card">
           <div class="course-thumb"><img src="assets/course-chinese-v12.svg" alt="មូលដ្ឋានភាសាចិន"><span>中文</span></div>
           <div class="course-body"><h3>មូលដ្ឋានភាសាចិន</h3><div class="course-meta">★ 4.9 <em>(1,250)</em><small>2,500+ សិស្ស</small></div><div class="course-bottom"><strong>$12.00</strong><div class="course-actions">
       <button class="add-cart-btn" type="button" data-course-id="chinese-basics" aria-label="បន្ថែមទៅកន្ត្រក">＋ កន្ត្រក</button>
@@ -134,11 +130,7 @@
           <div class="course-thumb"><img src="assets/course-finance-v12.svg" alt="ហិរញ្ញវត្ថុផ្ទាល់ខ្លួន"><span>FREE</span></div>
           <div class="course-body"><h3>ហិរញ្ញវត្ថុផ្ទាល់ខ្លួនសម្រាប់អ្នកចាប់ផ្តើម</h3><div class="course-meta">★ 4.8 <em>(1,100)</em><small>2,000+ សិស្ស</small></div><div class="course-bottom"><strong>ឥតគិតថ្លៃ</strong><button class="free-btn">រៀនឥឡូវ</button></div></div>
         </article>
-          </div>
-        </div>
       </div>
-
-      <div class="popular-mobile-note">អូសទៅឆ្វេង ឬស្តាំ ដើម្បីមើលមេរៀនបន្ថែម</div>
     </div>
   </section>
 
@@ -154,6 +146,70 @@
 
 <footer><div class="container footer-wrap"><a class="brand footer-brand" href="#home"><img src="assets/logo.svg" alt=""><span><strong>អង្គារសិល៍ ឡឺនីង</strong><small>រៀនថ្ងៃនេះ បង្កើតអនាគតថ្ងៃស្អែក។</small></span></a><p>© 2026 អង្គារសិល៍ ឡឺនីង។ រក្សាសិទ្ធិគ្រប់យ៉ាង។</p></div></footer>
 
+
+
+<!-- All lessons popup -->
+<div class="modal premium-modal" id="allLessonsModal">
+  <div class="modal-card all-lessons-modal-card">
+    <button data-close="allLessonsModal" aria-label="បិទ">×</button>
+
+    <div class="all-lessons-head">
+      <div>
+        <div class="modal-kicker">មេរៀនវីដេអូ</div>
+        <h3>មើលមេរៀនទាំងអស់</h3>
+        <p>មេរៀនបន្ថែមត្រូវបានរៀបជាប្រភេទ ដើម្បីឲ្យអ្នកងាយស្វែងរក និងជ្រើសរើស។</p>
+      </div>
+      <div class="video-count-badge">8+ វីដេអូ</div>
+    </div>
+
+    <div class="video-lesson-grid">
+      <article class="video-lesson-card">
+        <div class="video-thumb thumb-blue"><span>▶</span><b>中文</b></div>
+        <div><small>ភាសា</small><strong>ភាសាចិនសម្រាប់អ្នកចាប់ផ្តើម</strong><span>12 មេរៀន</span></div>
+      </article>
+
+      <article class="video-lesson-card">
+        <div class="video-thumb thumb-green"><span>▶</span><b>XLS</b></div>
+        <div><small>អាជីវកម្ម</small><strong>Excel សម្រាប់ការងារ</strong><span>10 មេរៀន</span></div>
+      </article>
+
+      <article class="video-lesson-card">
+        <div class="video-thumb thumb-purple"><span>▶</span><b>JS</b></div>
+        <div><small>បច្ចេកវិទ្យា</small><strong>HTML, CSS និង JavaScript</strong><span>15 មេរៀន</span></div>
+      </article>
+
+      <article class="video-lesson-card">
+        <div class="video-thumb thumb-gold"><span>▶</span><b>FREE</b></div>
+        <div><small>ហិរញ្ញវត្ថុ</small><strong>គ្រប់គ្រងលុយផ្ទាល់ខ្លួន</strong><span>8 មេរៀន</span></div>
+      </article>
+
+      <article class="video-lesson-card">
+        <div class="video-thumb thumb-cyan"><span>▶</span><b>AI</b></div>
+        <div><small>បច្ចេកវិទ្យា</small><strong>មូលដ្ឋាន AI សម្រាប់អ្នកចាប់ផ្តើម</strong><span>9 មេរៀន</span></div>
+      </article>
+
+      <article class="video-lesson-card">
+        <div class="video-thumb thumb-rose"><span>▶</span><b>MK</b></div>
+        <div><small>Marketing</small><strong>Digital Marketing មូលដ្ឋាន</strong><span>11 មេរៀន</span></div>
+      </article>
+
+      <article class="video-lesson-card">
+        <div class="video-thumb thumb-indigo"><span>▶</span><b>WEB</b></div>
+        <div><small>Website</small><strong>បង្កើត Website ដំបូងរបស់អ្នក</strong><span>13 មេរៀន</span></div>
+      </article>
+
+      <article class="video-lesson-card">
+        <div class="video-thumb thumb-orange"><span>▶</span><b>BIZ</b></div>
+        <div><small>អាជីវកម្ម</small><strong>មូលដ្ឋានអាជីវកម្មអនឡាញ</strong><span>10 មេរៀន</span></div>
+      </article>
+    </div>
+
+    <div class="all-lessons-footer">
+      <span>មេរៀនថ្មីៗនឹងត្រូវបានបន្ថែមជាបន្តបន្ទាប់។</span>
+      <a href="#courses" data-close-link="allLessonsModal">ត្រឡប់ទៅមេរៀនពេញនិយម</a>
+    </div>
+  </div>
+</div>
 
 <!-- Popular courses popup -->
 <div class="modal premium-modal" id="popularCoursesModal">
