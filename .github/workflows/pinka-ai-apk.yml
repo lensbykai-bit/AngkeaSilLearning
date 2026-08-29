@@ -1,0 +1,180 @@
+name: Build PINKA Ai APK
+
+on:
+  push:
+    branches:
+      - pinka-ai-apk-build
+    paths:
+      - 'pinka_ai_app/**'
+      - '.github/workflows/pinka-ai-apk.yml'
+  workflow_dispatch:
+
+jobs:
+  build-apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Generate PINKA Ai logo
+        run: |
+          mkdir -p pinka_ai_app/assets/images
+          python3 - <<'PY'
+          import math, struct, zlib
+          W = H = 512
+          px = bytearray(W*H*4)
+
+          def rounded_inside(x,y,x0,y0,x1,y1,r):
+              if x0+r <= x <= x1-r or y0+r <= y <= y1-r:
+                  return x0 <= x <= x1 and y0 <= y <= y1
+              cx = x0+r if x < x0+r else x1-r
+              cy = y0+r if y < y0+r else y1-r
+              return (x-cx)**2 + (y-cy)**2 <= r*r
+
+          def blend(x,y,c,a=1.0):
+              if not (0 <= x < W and 0 <= y < H): return
+              i=(y*W+x)*4
+              oa=px[i+3]/255.0
+              na=a + oa*(1-a)
+              if na <= 0: return
+              for k in range(3):
+                  old=px[i+k]/255.0
+                  new=c[k]/255.0
+                  px[i+k]=int(((new*a + old*oa*(1-a))/na)*255)
+              px[i+3]=int(na*255)
+
+          # glossy dark-pink rounded square
+          for y in range(H):
+              for x in range(W):
+                  if not rounded_inside(x,y,18,18,493,493,92):
+                      continue
+                  t=y/(H-1)
+                  d=math.hypot(x-256,y-215)/360
+                  glow=max(0.0,1-d)
+                  r=int(38 + 85*(1-t) + 75*glow)
+                  g=int(7 + 17*(1-t) + 9*glow)
+                  b=int(31 + 49*(1-t) + 43*glow)
+                  i=(y*W+x)*4
+                  px[i:i+4]=bytes((min(255,r),min(255,g),min(255,b),255))
+
+          # neon border
+          for y in range(H):
+              for x in range(W):
+                  outer=rounded_inside(x,y,20,20,491,491,90)
+                  inner=rounded_inside(x,y,34,34,477,477,78)
+                  if outer and not inner:
+                      blend(x,y,(255,93,181),0.92)
+
+          # circular aura behind P
+          cx,cy=264,225
+          for y in range(70,390):
+              for x in range(75,445):
+                  d=math.hypot(x-cx,y-cy)
+                  if 145 < d < 165:
+                      a=max(0,1-abs(d-155)/10)
+                      blend(x,y,(255,63,159),0.45*a)
+
+          # stylized 3D P: stem + upper bowl
+          for y in range(100,385):
+              for x in range(140,390):
+                  stem=(160 <= x <= 225 and 115 <= y <= 380)
+                  outer=((x-250)/138)**2 + ((y-205)/112)**2 <= 1
+                  inner=((x-260)/75)**2 + ((y-205)/55)**2 <= 1
+                  bowl=outer and not inner and y <= 315 and x >= 185
+                  if stem or bowl:
+                      shade=max(0,min(1,(390-y)/290))
+                      col=(255, int(87+120*shade), int(176+70*shade))
+                      blend(x,y,col,1.0)
+
+          # inner highlight for depth
+          for y in range(116,365):
+              for x in range(172,370):
+                  if 172 <= x <= 188 and 130 <= y <= 360:
+                      blend(x,y,(255,237,248),0.65)
+
+          # play triangle
+          ax,ay=258,178
+          bx,by=258,244
+          cx2,cy2=318,211
+          def area(x1,y1,x2,y2,x3,y3):
+              return abs((x1*(y2-y3)+x2*(y3-y1)+x3*(y1-y2))/2)
+          A=area(ax,ay,bx,by,cx2,cy2)
+          for y in range(172,250):
+              for x in range(250,326):
+                  a1=area(x,y,bx,by,cx2,cy2)
+                  a2=area(ax,ay,x,y,cx2,cy2)
+                  a3=area(ax,ay,bx,by,x,y)
+                  if abs((a1+a2+a3)-A)<1.0:
+                      blend(x,y,(255,242,249),0.98)
+
+          # waveform
+          bars=[18,30,46,62,82,56,40,68,94,66,44]
+          start=250
+          for idx,h in enumerate(bars):
+              x0=start+idx*13
+              for x in range(x0,x0+6):
+                  for y in range(332-h//2,332+h//2):
+                      blend(x,y,(255,120,190),0.95)
+
+          # sparkles
+          for sx,sy,rr in [(98,118,12),(414,119,15),(407,374,9),(112,367,7)]:
+              for y in range(sy-rr,sy+rr+1):
+                  for x in range(sx-rr,xsx if False else sx+rr+1):
+                      pass
+              for d in range(-rr,rr+1):
+                  a=1-abs(d)/(rr+1)
+                  blend(sx+d,sy,(255,240,250),a)
+                  blend(sx,sy+d,(255,240,250),a)
+
+          raw=bytearray()
+          for y in range(H):
+              raw.append(0)
+              raw.extend(px[y*W*4:(y+1)*W*4])
+          def chunk(t,data):
+              return struct.pack('>I',len(data))+t+data+struct.pack('>I',zlib.crc32(t+data)&0xffffffff)
+          png=b'\x89PNG\r\n\x1a\n'+chunk(b'IHDR',struct.pack('>IIBBBBB',W,H,8,6,0,0,0))+chunk(b'IDAT',zlib.compress(bytes(raw),9))+chunk(b'IEND',b'')
+          open('pinka_ai_app/assets/images/pinka_logo.png','wb').write(png)
+          PY
+
+      - name: Generate Android wrapper
+        run: |
+          rm -rf /tmp/pinka_seed
+          flutter create --platforms=android --org com.pinka --project-name pinka_ai /tmp/pinka_seed
+          rm -rf pinka_ai_app/android
+          cp -a /tmp/pinka_seed/android pinka_ai_app/android
+          sed -i 's/android:label="pinka_ai"/android:label="PINKA Ai"/' pinka_ai_app/android/app/src/main/AndroidManifest.xml
+
+      - name: Get packages
+        working-directory: pinka_ai_app
+        run: flutter pub get
+
+      - name: Apply PINKA launcher icon
+        working-directory: pinka_ai_app
+        run: dart run flutter_launcher_icons
+
+      - name: Build release APK
+        working-directory: pinka_ai_app
+        run: flutter build apk --release
+
+      - name: Prepare APK
+        run: |
+          cp pinka_ai_app/build/app/outputs/flutter-apk/app-release.apk PINKA-Ai-v1.0.0.apk
+          sha256sum PINKA-Ai-v1.0.0.apk > PINKA-Ai-v1.0.0.sha256
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: PINKA-Ai-APK
+          path: |
+            PINKA-Ai-v1.0.0.apk
+            PINKA-Ai-v1.0.0.sha256
+          if-no-files-found: error
+          retention-days: 7
