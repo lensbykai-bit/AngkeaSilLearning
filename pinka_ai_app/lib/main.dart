@@ -39,10 +39,6 @@ class PinkaAiApp extends StatelessWidget {
           secondary: pinkSoft,
           surface: card,
         ),
-        textTheme: base.textTheme.apply(
-          bodyColor: const Color(0xFFF5F6F8),
-          displayColor: const Color(0xFFF5F6F8),
-        ),
       ),
       home: const HomeScreen(),
     );
@@ -61,29 +57,21 @@ class _HomeScreenState extends State<HomeScreen> {
   PlatformFile? subtitle;
 
   Future<void> pickVideo() async {
-    final result = await FilePicker.platform.pickFiles(type: FileType.video);
-    if (!mounted || result == null || result.files.isEmpty) return;
-    setState(() => video = result.files.single);
+    final file = await FilePicker.pickFile(type: FileType.video);
+    if (!mounted || file == null) return;
+    setState(() => video = file);
   }
 
   Future<void> pickSubtitle() async {
-    final result = await FilePicker.platform.pickFiles(
+    final file = await FilePicker.pickFile(
       type: FileType.custom,
       allowedExtensions: const ['srt', 'vtt'],
-      withData: true,
     );
-    if (!mounted || result == null || result.files.isEmpty) return;
-    setState(() => subtitle = result.files.single);
+    if (!mounted || file == null) return;
+    setState(() => subtitle = file);
   }
 
   bool get canContinue => video != null || subtitle != null;
-
-  void openWorkspace() {
-    if (!canContinue) return;
-    Navigator.of(context).push(MaterialPageRoute(
-      builder: (_) => WorkspaceScreen(video: video, subtitle: subtitle),
-    ));
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -137,7 +125,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   SizedBox(
                     height: 64,
                     child: FilledButton.icon(
-                      onPressed: canContinue ? openWorkspace : null,
+                      onPressed: canContinue
+                          ? () => Navigator.of(context).push(MaterialPageRoute(
+                                builder: (_) => WorkspaceScreen(
+                                  video: video,
+                                  subtitle: subtitle,
+                                ),
+                              ))
+                          : null,
                       icon: const Icon(Icons.arrow_forward_rounded),
                       label: const Text(
                         'ចូលទៅកាន់ការបកប្រែ',
@@ -171,7 +166,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 38),
                 ]),
               ),
             ),
@@ -189,7 +184,6 @@ class PinkaHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 250,
-      width: double.infinity,
       child: Stack(
         fit: StackFit.expand,
         children: [
@@ -235,8 +229,8 @@ class NetworkPainter extends CustomPainter {
       ..strokeWidth = 1.2;
     final node = Paint()..color = const Color(0xFF656DDB);
     final glow = Paint()..color = const Color(0x344D55EC);
-
     final points = <Offset>[];
+
     for (var i = 0; i < 24; i++) {
       points.add(Offset(
         18 + random.nextDouble() * (size.width - 36),
@@ -244,20 +238,20 @@ class NetworkPainter extends CustomPainter {
       ));
     }
     for (var i = 0; i < points.length; i++) {
-      if (i < points.length - 1 && i % 2 == 0) {
+      if (i < points.length - 1 && i.isEven) {
         canvas.drawLine(points[i], points[i + 1], line);
       }
       canvas.drawCircle(points[i], 10, glow);
       canvas.drawCircle(points[i], 4, node);
     }
 
-    void drawWave(double start, double end, double y, Color color) {
-      final p = Path()..moveTo(start, y);
+    void wave(double start, double end, double y, Color color) {
+      final path = Path()..moveTo(start, y);
       for (double x = start; x <= end; x += 4) {
-        p.lineTo(x, y + math.sin(x / 11) * 8 + math.sin(x / 4.3) * 2);
+        path.lineTo(x, y + math.sin(x / 11) * 8 + math.sin(x / 4.3) * 2);
       }
       canvas.drawPath(
-        p,
+        path,
         Paint()
           ..color = color
           ..style = PaintingStyle.stroke
@@ -266,9 +260,9 @@ class NetworkPainter extends CustomPainter {
       );
     }
 
-    drawWave(size.width * .04, size.width * .31, size.height * .43,
+    wave(size.width * .04, size.width * .31, size.height * .43,
         const Color(0x66727AE5));
-    drawWave(size.width * .69, size.width * .96, size.height * .45,
+    wave(size.width * .69, size.width * .96, size.height * .45,
         const Color(0xFF5962CB));
   }
 
@@ -312,9 +306,7 @@ class StepCard extends StatelessWidget {
             width: selected ? 1.4 : 1,
           ),
           boxShadow: selected
-              ? const [
-                  BoxShadow(color: Color(0x32FF3E9D), blurRadius: 24),
-                ]
+              ? const [BoxShadow(color: Color(0x32FF3E9D), blurRadius: 24)]
               : const [],
         ),
         child: Row(
@@ -405,12 +397,20 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
   @override
   void initState() {
     super.initState();
-    var text = '';
-    final bytes = widget.subtitle?.bytes;
-    if (bytes != null) {
-      text = utf8.decode(bytes, allowMalformed: true);
+    controller = TextEditingController();
+    _loadSubtitle();
+  }
+
+  Future<void> _loadSubtitle() async {
+    final file = widget.subtitle;
+    if (file == null) return;
+    try {
+      final bytes = await file.readAsBytes();
+      if (!mounted) return;
+      controller.text = utf8.decode(bytes, allowMalformed: true);
+    } catch (_) {
+      // Keep editor usable even if the selected file cannot be read.
     }
-    controller = TextEditingController(text: text);
   }
 
   @override
@@ -442,7 +442,7 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
             ),
             const SizedBox(height: 14),
             const Text(
-              'ជំនាន់ APK នេះមាន UI, Upload Video និង Import Subtitle រួច។ មុខងារ Gemini AI ត្រូវភ្ជាប់ API នៅជំនាន់បន្ទាប់ ដើម្បីបកប្រែពិតប្រាកដ។',
+              'APK ជំនាន់នេះមាន Upload Video និង Import Subtitle រួច។ Gemini AI ត្រូវភ្ជាប់ API នៅជំនាន់បន្ទាប់ ដើម្បីបកប្រែដោយស្វ័យប្រវត្តិ។',
               style: TextStyle(color: PinkaAiApp.secondary, height: 1.55),
             ),
             const SizedBox(height: 18),
@@ -511,9 +511,7 @@ class _WorkspaceScreenState extends State<WorkspaceScreen> {
                       'Chinese',
                       'Thai',
                       'Vietnamese',
-                    ]
-                        .map((e) => DropdownMenuItem(value: e, child: Text(e)))
-                        .toList(),
+                    ].map((e) => DropdownMenuItem(value: e, child: Text(e))).toList(),
                     onChanged: (value) {
                       setState(() => language = value ?? 'Khmer');
                     },
