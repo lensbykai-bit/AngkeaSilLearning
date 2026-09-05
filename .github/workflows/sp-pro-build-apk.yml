@@ -1,0 +1,67 @@
+name: Build SP Pro APK
+
+on:
+  push:
+    branches: [ sp-pro-rebuild-apk ]
+    paths-ignore:
+      - 'downloads/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: sp-pro-rebuild-apk
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Generate Android project
+        working-directory: sp_pro_rebuild_app
+        run: flutter create --platforms=android --org com.sppro --project-name sp_pro_rebuild .
+
+      - name: Configure Android app
+        working-directory: sp_pro_rebuild_app
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('android/app/src/main/AndroidManifest.xml')
+          s = p.read_text()
+          if '<uses-permission android:name="android.permission.INTERNET" />' not in s:
+              s = s.replace('<manifest xmlns:android="http://schemas.android.com/apk/res/android">', '<manifest xmlns:android="http://schemas.android.com/apk/res/android">\n    <uses-permission android:name="android.permission.INTERNET" />')
+          s = s.replace('android:label="sp_pro_rebuild"', 'android:label="SP Pro"')
+          p.write_text(s)
+          PY
+
+      - name: Get packages
+        working-directory: sp_pro_rebuild_app
+        run: flutter pub get
+
+      - name: Build release APK
+        working-directory: sp_pro_rebuild_app
+        run: flutter build apk --release
+
+      - name: Save APK to branch
+        run: |
+          mkdir -p downloads
+          cp sp_pro_rebuild_app/build/app/outputs/flutter-apk/app-release.apk downloads/SP_Pro_Rebuild_v2.apk
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add downloads/SP_Pro_Rebuild_v2.apk
+          git commit -m "Build SP Pro Rebuild v2 APK" || exit 0
+          git push origin HEAD:sp-pro-rebuild-apk
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: SP-Pro-Rebuild-v2-APK
+          path: sp_pro_rebuild_app/build/app/outputs/flutter-apk/app-release.apk
